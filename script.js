@@ -1,5 +1,6 @@
 var mmm = 0
-	var num = document.getElementById("t");
+var num = document.getElementById("t");
+var jgl=false;
 function calCulate(val) {
 	switch (val) {
 		case "=":
@@ -12,13 +13,49 @@ function calCulate(val) {
 			mmm += Number(eval(num.value))
 			break;
 		case "MR":
-			num.value = mmm.toString()
+			num.value += mmm.toString()
 			break;
 		case "M-":
-			mmm -= Number(num.value)
+			mmm -= Number(eval(num.value))
 			break;
 		case "MC":
 			mmm=0
+			break;
+		case "+":
+			if(jgl==false){
+				num.value = num.value+val;
+				jgl=true
+			}
+			else{
+				num.value = num.value.slice(0,-1)+val;
+			}
+			break;
+		case "-":
+			if(jgl==false){
+				num.value = num.value+val;
+				jgl=true
+			}
+			else{
+				num.value = num.value.slice(0,-1)+val;
+			}
+			break;
+		case "*":
+			if(jgl==false){
+				num.value = num.value+val;
+				jgl=true
+			}
+			else{
+				num.value = num.value.slice(0,-1)+val;
+			}
+			break;
+		case "/":
+			if(jgl==false){
+				num.value = num.value+val;
+				jgl=true
+			}
+			else{
+				num.value = num.value.slice(0,-1)+val;
+			}
 			break;
 		default:
 			num.value = num.value+val;
