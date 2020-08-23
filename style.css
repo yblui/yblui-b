@@ -1,0 +1,30 @@
+#t {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 40pt;
+	width: 412px;
+	height: 100px;
+	outline: none;
+	border: none
+}
+
+input[type="button"] {
+	width: 100px;
+	background-color: white;
+	border: solid 1px;
+	outline: none;
+	height: 100px;
+	font-size: 30pt;
+}
+
+#equ {
+	background-color: #0087fb;
+	border: none;
+	color: white;
+}
+
+input[type="button"]:hover {
+	background-color: #AAAAAA;
+	border: none;
+	cursor: pointer
+}
