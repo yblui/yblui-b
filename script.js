@@ -16,38 +16,14 @@ function calCulate(val) {
 			num.value += mmm.toString()
 			break;
 		case "M-":
-			mmm -= Number(eval(num.value))
+			mmm -= Number(eval(num.value));
 			break;
 		case "MC":
-			mmm=0
+			mmm=0;
 			break;
 		case "+":
-			if(jgl==false){
-				num.value = num.value+val;
-				jgl=true
-			}
-			else{
-				num.value = num.value.slice(0,-1)+val;
-			}
-			break;
 		case "-":
-			if(jgl==false){
-				num.value = num.value+val;
-				jgl=true
-			}
-			else{
-				num.value = num.value.slice(0,-1)+val;
-			}
-			break;
 		case "*":
-			if(jgl==false){
-				num.value = num.value+val;
-				jgl=true
-			}
-			else{
-				num.value = num.value.slice(0,-1)+val;
-			}
-			break;
 		case "/":
 			if(jgl==false){
 				num.value = num.value+val;
@@ -59,6 +35,7 @@ function calCulate(val) {
 			break;
 		default:
 			num.value = num.value+val;
+			jgl=false;
 			break;
 	}
 }
