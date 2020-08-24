@@ -1,24 +1,17 @@
 var mmm = 0;
 var num = document.getElementById("t");
 var jgl = false;
+var i;
 function calCulate(val) {
 	switch (val) {
 		case "=":
-			var wb="";
-			var lsval=num.value;
-			var calcval=num.value;
-			while (true){
-				var jg=lsval.search(/[\+\-\*\/].*?\%/);
-				if(jg!=-1){
-					wb=Number(lsval.slice(jg+1,lsval.search("%")-1))/100;
-					calcval=calcval.replace(lsval.slice(jg,lsval.search("%")),lsval[jg]+wb+"%")
-					lsval=lsval.replace(/[\+\-\*\/].*?\%/,"")
-				}
-				else{
-					break;
+			var calcval=num.value.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\*/g,"@*@").replace(/\//g,"@/@").split("@");
+			for (i = 0; i < calcval.length; i++) {
+				if (calcval[i].indexOf("%")!=-1){
+					calcval[i]=Number(calcval[i].split().pop().join(""))/100
 				}
 			}
-			num.value = eval(calcval);
+			num.value = eval(calcval.join(""));
 			break;
 		case "<":
 			num.value = num.value.slice(0,-1);
