@@ -1,14 +1,11 @@
-var mmm = 0;
-var num = document.getElementById("t");
-var jgl = false;
-var i;
+var mmm = 0,num = document.getElementById("t"),jgl = false,i;
 function calCulate(val) {
 	switch (val) {
 		case "=":
 			var calcval=num.value.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\*/g,"@*@").replace(/\//g,"@/@").split("@");
 			for (i = 0; i < calcval.length; i++) {
 				if (calcval[i].indexOf("%")!=-1){
-					calcval[i]=Number(calcval[i].split().pop().join(""))/100
+					calcval[i]=Number(calcval[i].replace("%",""))/100
 				}
 			}
 			num.value = eval(calcval.join(""));
