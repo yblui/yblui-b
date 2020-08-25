@@ -1,10 +1,11 @@
 var mmm = 0,num = document.getElementById("t"),jgl = false,i;
+var mhd=false;
 function calCulate(val) {
 	switch (val) {
 		case "=":
-			var calcval=num.value.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
-			calcval=calcval.replace(/sin/g,"Math.sin").replace(/cos/g,"Math.cos").replace(/tan/g,"Math.tan");
+			var calcval=num.value.replace(/sin/g,"Math.sin").replace(/cos/g,"Math.cos").replace(/tan/g,"Math.tan");
 			calcval=calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
+			calcval=calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
 			for (i = 0; i < calcval.length; i++) {
 				if (calcval[i].indexOf("%")!=-1){
 					calcval[i]=Number(calcval[i].replace("%",""))/100;
@@ -15,6 +16,21 @@ function calCulate(val) {
 		case "<":
 			num.value = num.value.slice(0,-1);
 			break;
+		case ">":
+			for (i = 0; i < document.getElementsByClassName("gj").length; i++) {
+				if(mhd==false){
+					document.getElementsByClassName("gj")[i].style.display="inline"
+				} else{
+					document.getElementsByClassName("gj")[i].style.display="none"
+				}
+			}
+			if (mhd){
+				document.getElementById("exp").class=""
+				mhd=false
+			} else{
+				document.getElementById("exp").class="equ"
+				mhd=true;
+			}
 		case "AC":
 			num.value = "";
 			break;
