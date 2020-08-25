@@ -7,7 +7,7 @@ function calCulate(val) {
 			calcval=calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
 			for (i = 0; i < calcval.length; i++) {
 				if (calcval[i].indexOf("%")!=-1){
-					calcval[i]=Number(calcval[i].replace("%",""))/100
+					calcval[i]=Number(calcval[i].replace("%",""))/100;
 				}
 			}
 			num.value = eval(calcval.join(""));
@@ -36,7 +36,7 @@ function calCulate(val) {
 		case "÷":
 			if(jgl==false){
 				num.value = num.value+val;
-				jgl=true
+				jgl=true;
 			}
 			else{
 				num.value = num.value.slice(0,-1)+val;
@@ -49,6 +49,7 @@ function calCulate(val) {
 		case "cosh":
 		case "tanh":
 			num.value = num.value+val+"(";
+			break;
 		default:
 			num.value = num.value+val;
 			jgl=false;
