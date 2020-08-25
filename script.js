@@ -25,10 +25,10 @@ function calCulate(val) {
 				}
 			}
 			if (mhd){
-				document.getElementById("exp").class=""
+				document.getElementById("exp").className=""
 				mhd=false
 			} else{
-				document.getElementById("exp").class="equ"
+				document.getElementById("exp").className="equ"
 				mhd=true;
 			}
 		case "AC":
