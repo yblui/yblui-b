@@ -6,29 +6,35 @@
     height: 100px;
     outline: none;
     border: none;
-    font-family:"Microsoft Yahei UI",sans-serif
+	text-align:right;
+    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
 }
 
 input[type="button"] {
-	width: 100px;
-	background-color: white;
-	border: solid 1px gray;
-	outline: none;
-	height: 100px;
-	font-size: 30pt;
+    width: 100px;
+    background-color: white;
+    border: solid 1px gray;
+    outline: none;
+    height: 100px;
+    font-size: 30pt;
     margin:2px;
     border-radius:9px;
-    font-family:"Microsoft Yahei UI",sans-serif
+    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
 }
 
-#equ {
-	background-color: black;
-	border: none;
-	color: white;
+#equ, .equ {
+    background-color: black;
+    border: none;
+    color: white;
 }
 
 input[type="button"]:hover {
-	background-color: #ccc;
-	border: none;
-	cursor: pointer
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+#t::selection{
+	background-color: black;
+	color: white;
 }
