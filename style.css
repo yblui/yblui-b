@@ -7,7 +7,7 @@
     outline: none;
     border: none;
     text-align:right;
-    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
+    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
 }
 
 input[type="button"] {
@@ -19,7 +19,7 @@ input[type="button"] {
     font-size: 30pt;
     margin:2px;
     border-radius:9px;
-    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
+    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
 }
 
 #equ,.equ {
@@ -35,6 +35,10 @@ input[type="button"]:hover {
 }
 
 #t::selection{
-	background-color: black;
-	color: white;
+    background-color: black;
+    color: white;
+}
+
+.gj{
+    display:none;
 }
