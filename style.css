@@ -6,7 +6,7 @@
     height: 100px;
     outline: none;
     border: none;
-	text-align:right;
+    text-align:right;
     font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
 }
 
@@ -22,10 +22,10 @@ input[type="button"] {
     font-family:"Microsoft Yahei UI","Segoe UI",sans-serif
 }
 
-#equ, .equ {
-    background-color: black;
-    border: none;
-    color: white;
+#equ,.equ {
+    background-color: black!important;
+    border: none!important;
+    color: white!important;
 }
 
 input[type="button"]:hover {
