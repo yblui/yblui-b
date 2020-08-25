@@ -1,10 +1,22 @@
 var mmm = 0,num = document.getElementById("t"),jgl = false,i;
 var mhd=false;
+function Int(intv){
+	if(intv>0){
+		return Math.floor(intv)
+	}
+	if(intv<0){
+		return Math.ceil(intv)
+	}
+	if(intv==0){
+		return 0;
+	}
+}
 function calCulate(val) {
 	switch (val) {
 		case "=":
-			var calcval=num.value.replace(/sin/g,"Math.sin").replace(/cos/g,"Math.cos").replace(/tan/g,"Math.tan");
+			var calcval=num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 			calcval=calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
+			calcval=calcval.replace(/π/g,"Math.PI");
 			calcval=calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
 			for (i = 0; i < calcval.length; i++) {
 				if (calcval[i].indexOf("%")!=-1){
@@ -64,8 +76,13 @@ function calCulate(val) {
 		case "sinh":
 		case "cosh":
 		case "tanh":
+		case "dms":
+		case "ln":
+		case "Int"
 			num.value = num.value+val+"(";
 			break;
+		case "pi":
+			num.value = num.value+"π"
 		default:
 			num.value = num.value+val;
 			jgl=false;
