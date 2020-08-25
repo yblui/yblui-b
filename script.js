@@ -43,6 +43,7 @@ function calCulate(val) {
 				document.getElementById("exp").className="equ"
 				mhd=true;
 			}
+			break;
 		case "AC":
 			num.value = "";
 			break;
@@ -78,11 +79,12 @@ function calCulate(val) {
 		case "tanh":
 		case "dms":
 		case "ln":
-		case "Int"
+		case "Int":
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
 			num.value = num.value+"π"
+			break;
 		default:
 			num.value = num.value+val;
 			jgl=false;
