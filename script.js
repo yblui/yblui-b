@@ -2,10 +2,10 @@ var mmm = 0,num = document.getElementById("t"),jgl = false,i;
 var mhd=false;
 function Int(intv){
 	if(intv > 0){
-		return Math.floor(intv)
+		return Math.floor(intv);
 	}
 	if(intv < 0){
-		return Math.ceil(intv)
+		return Math.ceil(intv);
 	}
 	if(intv == 0){
 		return 0;
@@ -27,6 +27,18 @@ function dyh(){
 	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
 	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(");
+	calcval = calcval.replace(/\+√(/g,"+Math.sqrt(").replace(/\-√(/g,"-Math.sqrt(").replace(/\×√(/g,"×Math.sqrt(").replace(/\÷√(/g,"÷Math.sqrt(");
+	calcval = calcval.replace(/√/g,"√@").replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@×@").replace(/\÷/g,"@÷@").split("@");
+	if(calcval[0]=="√"){
+		calcval[0]="Math.sqrt"
+	}
+	for (i = 0; i < calcval.length; i++) {
+		if (calcval[i].indexOf("√")!=-1){
+			calcval[i]="Math.pow"
+			calcval[i+1]=calcval[i+1].split("").pop().join("")+",1/"+calcval[i].replace("√","")+")"
+		}
+	}
+	calcval=calcval.join("");
 	calcval = calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
 	for (i = 0; i < calcval.length; i++) {
 		if (calcval[i].indexOf("%")!=-1){
@@ -95,6 +107,7 @@ function calCulate(val) {
 		case "dms":
 		case "ln":
 		case "Int":
+		case "√"
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
@@ -106,11 +119,11 @@ function calCulate(val) {
 				num.value += "."
 			}
 			var aws=num.value.length-num.value.indexOf(".")
-			var tmp=num.value.replace(".","").split()
+			var tmp=num.value.replace(".","").split("")
 			tmp[1]="."+tmp[1]
-			tmp=tmp.join()
+			tmp=tmp.join("")
 			var awb=tmp.length-tmp.indexOf(".")
-			num.value=tmp+"e"+(aws-awb)
+			num.value=Number(tmp)+"e"+(awb-aws)
 			break;
 		default:
 			num.value = num.value+val;
