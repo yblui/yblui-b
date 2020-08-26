@@ -1,5 +1,4 @@
-var mmm = 0,num = document.getElementById("t"),jgl = false,i;
-var mhd=false;
+var mmm = 0,num = document.getElementById("t"),jgl = false,i,mhd=false;
 function Int(intv){
 	if(intv > 0){
 		return Math.floor(intv);
@@ -12,8 +11,8 @@ function Int(intv){
 	}
 }
 function dms(dmsv){
-	var min=(Int((dmsv-Int(dmsv))*60)).toString();
-	if (Int((dmsv-Int(dmsv))*60)<10){
+	var min=(Int((dmsv - Int(dmsv)) * 60)).toString();
+	if (Int((dmsv-Int(dmsv)) * 60) < 10){
 		min="0"+min;
 	}
 	if ((((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60)<10){
@@ -107,7 +106,7 @@ function calCulate(val) {
 		case "dms":
 		case "ln":
 		case "Int":
-		case "√"
+		case "√":
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
