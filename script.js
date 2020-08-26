@@ -12,30 +12,33 @@ function Int(intv){
 	}
 }
 function dms(dmsv){
-	var min=Int((dmsv-Int(dmsv))*60)
+	var min=(Int((dmsv-Int(dmsv))*60)).toString();
 	if (Int((dmsv-Int(dmsv))*60)<10){
-		min="0"+min
+		min="0"+min;
 	}
 	if ((((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60)<10){
-		var sec="0"+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
+		var sec="0"+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
 	} else {
-		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
+		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
 	}
-	return Int(dmsv).toString()+"."+min+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
+	return Number(Int(dmsv).toString()+"."+min+sec)
+}
+function dyh(){
+	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
+	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
+	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(");
+	calcval = calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
+	for (i = 0; i < calcval.length; i++) {
+		if (calcval[i].indexOf("%")!=-1){
+			calcval[i]=Number(calcval[i].replace("%",""))/100;
+		}
+	}
+	num.value = eval(calcval.join(""));
 }
 function calCulate(val) {
 	switch (val) {
 		case "=":
-			var calcval=num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
-			calcval=calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
-			calcval=calcval.replace(/π/g,"Math.PI");
-			calcval=calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
-			for (i = 0; i < calcval.length; i++) {
-				if (calcval[i].indexOf("%")!=-1){
-					calcval[i]=Number(calcval[i].replace("%",""))/100;
-				}
-			}
-			num.value = eval(calcval.join(""));
+			dyh()
 			break;
 		case "<":
 			num.value = num.value.slice(0,-1);
@@ -43,9 +46,9 @@ function calCulate(val) {
 		case ">":
 			for (i = 0; i < document.getElementsByClassName("gj").length; i++) {
 				if(mhd==false){
-					document.getElementsByClassName("gj")[i].style.display="inline"
+					document.getElementsByClassName("gj")[i].style.display = "inline"
 				} else{
-					document.getElementsByClassName("gj")[i].style.display="none"
+					document.getElementsByClassName("gj")[i].style.display = "none"
 				}
 			}
 			if (mhd){
@@ -96,6 +99,18 @@ function calCulate(val) {
 			break;
 		case "pi":
 			num.value = num.value+"π"
+			break;
+		case "F-E":
+			dyh();
+			if(num.value.indexOf(".")==-1){
+				num.value += "."
+			}
+			var aws=num.value.length-num.value.indexOf(".")
+			var tmp=num.value.replace(".","").split()
+			tmp[1]="."+tmp[1]
+			tmp=tmp.join()
+			var awb=tmp.length-tmp.indexOf(".")
+			num.value=tmp+"e"+(aws-awb)
 			break;
 		default:
 			num.value = num.value+val;
