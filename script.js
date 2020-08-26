@@ -1,15 +1,27 @@
 var mmm = 0,num = document.getElementById("t"),jgl = false,i;
 var mhd=false;
 function Int(intv){
-	if(intv>0){
+	if(intv > 0){
 		return Math.floor(intv)
 	}
-	if(intv<0){
+	if(intv < 0){
 		return Math.ceil(intv)
 	}
-	if(intv==0){
+	if(intv == 0){
 		return 0;
 	}
+}
+function dms(dmsv){
+	var min=Int((dmsv-Int(dmsv))*60)
+	if (Int((dmsv-Int(dmsv))*60)<10){
+		min="0"+min
+	}
+	if ((((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60)<10){
+		var sec="0"+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
+	} else {
+		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
+	}
+	return Int(dmsv).toString()+"."+min+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"")
 }
 function calCulate(val) {
 	switch (val) {
@@ -63,9 +75,9 @@ function calCulate(val) {
 		case "-":
 		case "×":
 		case "÷":
-			if(jgl==false){
+			if(jgl == false){
 				num.value = num.value+val;
-				jgl=true;
+				jgl = true;
 			}
 			else{
 				num.value = num.value.slice(0,-1)+val;
