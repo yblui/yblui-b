@@ -18,7 +18,7 @@ function dms(dmsv){
 	if (Int((dmsv-Int(dmsv)) * 60) < 10){
 		min="0"+min;
 	}
-	if ((((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60)<10){
+	if ((((dmsv-Int(dmsv)) * 60-Int((dmsv - Int(dmsv))*60)) * 60)<10) {
 		var sec="0"+(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
 	} else {
 		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
@@ -30,10 +30,32 @@ function epow(epv){
 }
 function ivf(){
 	if (ivd) {
-		
+		document.getElementById("inb").style.color="black";
+		document.getElementById("inb").style.backgroundColor="white";
+		document.getElementById("lnb").value="ln";
+		document.getElementById("sinb").value="sin";
+		document.getElementById("cosb").value="cos";
+		document.getElementById("tanb").value="tan";
+		document.getElementById("sinhb").value="sinh";
+		document.getElementById("coshb").value="cosh";
+		document.getElementById("tanhb").value="tanh";
+		document.getElementById("intb").value="Int";
+		document.getElementById("dmsb").value="dms";
+		document.getElementById("pib").value="pi";
 		ivd = false;
 	} else {
-		
+		document.getElementById("inb").style.color="white";
+		document.getElementById("inb").style.backgroundColor="black";
+		document.getElementById("lnb").value="e^x";
+		document.getElementById("sinb").value="sin-1";
+		document.getElementById("cosb").value="cos-1";
+		document.getElementById("tanb").value="tan-1";
+		document.getElementById("sinhb").value="sinh-1";
+		document.getElementById("coshb").value="cosh-1";
+		document.getElementById("tanhb").value="tanh-1";
+		document.getElementById("intb").value="Frac";
+		document.getElementById("dmsb").value="deg";
+		document.getElementById("pib").value="2*π";
 		ivd = true;
 	}
 }
@@ -48,11 +70,11 @@ function dyh(){
 	}
 	for (i = 0; i < calcval.length; i++) {
 		if (calcval[i].indexOf("√")!=-1){
-			calcval[i+1]=calcval[i+1].split("").slice(0,-1).join("")+",1/"+calcval[i].replace("√","")+")"
-			calcval[i]="Math.pow"
-			calcval = calcval.join("")
+			calcval[i+1]=calcval[i+1].split("").slice(0,-1).join("")+",1/"+calcval[i].replace("√","")+")";
+			calcval[i]="Math.pow";
 		}
 	}
+	calcval = calcval.join("")
 	calcval = calcval.replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@*@").replace(/\÷/g,"@/@").split("@");
 	for (i = 0; i < calcval.length; i++) {
 		if (calcval[i].indexOf("%")!=-1){
@@ -62,6 +84,7 @@ function dyh(){
 	num.value = eval(calcval.join(""));
 }
 function calCulate(val) {
+	ivd=false;
 	switch (val) {
 		case "=":
 			dyh()
