@@ -8,11 +8,12 @@
     border: none;
     text-align:right;
     font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
+    background-color:transparent;
 }
 
 input[type="button"] {
     width: 100px;
-    background-color: white;
+    background-color: transparent;
     border: solid 1px gray;
     outline: none;
     height: 100px;
@@ -41,4 +42,9 @@ input[type="button"]:hover {
 
 .gj{
     display:none;
+}
+
+body{
+    background-color:#fcfcfc;
+    text-align:center;
 }
