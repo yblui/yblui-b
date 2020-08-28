@@ -23,15 +23,25 @@ function dms(dmsv){
 	} else {
 		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
 	}
-	return Number(Int(dmsv).toString()+"."+min+sec)
+	return Number(Int(dmsv).toString()+"."+min+sec);
 }
 function epow(epv){
-	return Math.E ** epv
+	return Math.E ** epv;
+}
+function deg(dgv){
+	
+}
+function ism(){
+	if(mmm==0){
+		document.getElementById("mxs").innerHTML=""
+	} else {
+		document.getElementById("mxs").innerHTML="M"
+	}
 }
 function dyh(){
 	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
-	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(").replace(/Mod/g,"%");
+	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(");
 	calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
 	calcval = calcval.replace(/√/g,"√@").replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@×@").replace(/\÷/g,"@÷@").split("@");
 	if(calcval[0]=="√"){
@@ -50,7 +60,8 @@ function dyh(){
 			calcval[i]=Number(calcval[i].replace("%",""))/100;
 		}
 	}
-	num.value = eval(calcval.join(""));
+	calcval=calcval.join("").replace(/Mod/g,"%")
+	num.value = eval(calcval);
 }
 function calCulate(val) {
 	switch (val) {
@@ -81,15 +92,18 @@ function calCulate(val) {
 			break;
 		case "M+":
 			mmm += Number(eval(num.value));
+			ism();
 			break;
 		case "MR":
 			num.value += mmm.toString();
 			break;
 		case "M-":
 			mmm -= Number(eval(num.value));
+			ism();
 			break;
 		case "MC":
 			mmm = 0;
+			ism();
 			break;
 		case "+":
 		case "-":
@@ -130,36 +144,38 @@ function calCulate(val) {
 			var awb=tmp.length-tmp.indexOf(".")
 			num.value=Number(tmp)+"e"+(awb-aws)
 			break;
+		case "Exp":
+			num.value+="e"
 		case "Inv":
 			if (ivd) {
-	        	document.getElementById("inb").style.color="black";
-	        	document.getElementById("inb").style.backgroundColor="white";
-	        	document.getElementById("lnb").value="ln";
-	        	document.getElementById("sinb").value="sin";
-	        	document.getElementById("cosb").value="cos";
-	        	document.getElementById("tanb").value="tan";
-	        	document.getElementById("sinhb").value="sinh";
-	        	document.getElementById("coshb").value="cosh";
-	        	document.getElementById("tanhb").value="tanh";
-	        	document.getElementById("intb").value="Int";
-	        	document.getElementById("dmsb").value="dms";
-	        	document.getElementById("pib").value="pi";
-	        	ivd = false;
-	        } else {
-	        	document.getElementById("inb").style.color="white";
-	        	document.getElementById("inb").style.backgroundColor="black";
-	        	document.getElementById("lnb").value="e^x";
-	        	document.getElementById("sinb").value="sin-1";
-	        	document.getElementById("cosb").value="cos-1";
-	        	document.getElementById("tanb").value="tan-1";
-	        	document.getElementById("sinhb").value="sinh-1";
-	        	document.getElementById("coshb").value="cosh-1";
-	        	document.getElementById("tanhb").value="tanh-1";
-	        	document.getElementById("intb").value="Frac";
-	        	document.getElementById("dmsb").value="deg";
-	        	document.getElementById("pib").value="2*π";
-	        	ivd = true;
-	        }
+	        		document.getElementById("inb").style.color="black";
+	        		document.getElementById("inb").style.backgroundColor="white";
+	        		document.getElementById("lnb").value="ln";
+	        		document.getElementById("sinb").value="sin";
+	        		document.getElementById("cosb").value="cos";
+	        		document.getElementById("tanb").value="tan";
+	        		document.getElementById("sinhb").value="sinh";
+	        		document.getElementById("coshb").value="cosh";
+	        		document.getElementById("tanhb").value="tanh";
+	        		document.getElementById("intb").value="Int";
+	        		document.getElementById("dmsb").value="dms";
+	        		document.getElementById("pib").value="pi";
+	        		ivd = false;
+	        	} else {
+	        		document.getElementById("inb").style.color="white";
+	        		document.getElementById("inb").style.backgroundColor="black";
+	        		document.getElementById("lnb").value="e^x";
+	        		document.getElementById("sinb").value="sin-1";
+	        		document.getElementById("cosb").value="cos-1";
+	        		document.getElementById("tanb").value="tan-1";
+	        		document.getElementById("sinhb").value="sinh-1";
+	        		document.getElementById("coshb").value="cosh-1";
+	        		document.getElementById("tanhb").value="tanh-1";
+	        		document.getElementById("intb").value="Frac";
+	        		document.getElementById("dmsb").value="deg";
+	        		document.getElementById("pib").value="2*π";
+	        		ivd = true;
+	        	}
 			break;
 		default:
 			num.value = num.value+val;
