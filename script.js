@@ -25,16 +25,27 @@ function dms(dmsv){
 	}
 	return Number(Int(dmsv).toString() + "."+min+sec);
 }
+function fact(fav){
+	fav=Int(fav);
+	fcr=1
+	for (var fai=1;fai<=fav;fai++){
+		fcr*=fai
+	}
+	return fcr;
+}
 function epow(epv){
 	return Math.E ** epv;
 }
 function deg(dgv){
+	dgv=dgv.toString()
 	if (dgv.slice(dgv.indexOf(".")+1,-1).length==1){
 		dgv=dgv+"000"
 	} else if (dgv.slice(dgv.indexOf(".")+1,-1).length==3){
 		dgv += "0"
+	} else if (dgv.indexOf(".")==-1){
+		dgv += ".0000";
 	}
-	return int(dgv)+Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6+Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036;
+	return Int(Number(dgv))+(Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6)+(Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036);
 }
 function ism(){
 	if(mmm==0){
@@ -133,6 +144,7 @@ function calCulate(val) {
 		case "ln":
 		case "Int":
 		case "√":
+		case "fact"
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
