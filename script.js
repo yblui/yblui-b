@@ -11,7 +11,7 @@ function Int(intv){
 	}
 }
 function frac(frv) {
-	return frv - Int(frv)
+	return frv - Int(frv);
 }
 function dms(dmsv){
 	var min=(Int((dmsv - Int(dmsv)) * 60)).toString();
@@ -27,9 +27,9 @@ function dms(dmsv){
 }
 function fact(fav){
 	fav=Int(fav);
-	fcr=1
-	for (var fai=1;fai<=fav;fai++){
-		fcr*=fai
+	fcr=1;
+	for (var fai=1; fai<=fav; fai++){
+		fcr *= fai;
 	}
 	return fcr;
 }
@@ -144,7 +144,7 @@ function calCulate(val) {
 		case "ln":
 		case "Int":
 		case "√":
-		case "fact"
+		case "fact":
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
@@ -155,10 +155,10 @@ function calCulate(val) {
 			if(num.value.indexOf(".")==-1){
 				num.value += "."
 			}
-			var aws=num.value.length-num.value.indexOf(".")
-			var tmp=num.value.replace(".","").split("")
-			tmp[1]="."+tmp[1]
-			tmp=tmp.join("")
+			var aws=num.value.length-num.value.indexOf(".");
+			var tmp=num.value.replace(".","").split("");
+			tmp[1]="."+tmp[1];
+			tmp=tmp.join("");
 			var awb=tmp.length-tmp.indexOf(".")
 			num.value=Number(tmp)+"e"+(awb-aws)
 			break;
