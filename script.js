@@ -151,7 +151,8 @@ function calCulate(val) {
 			num.value=Number(tmp)+"e"+(awb-aws)
 			break;
 		case "Exp":
-			num.value+="e"
+			num.value += "e";
+			break;
 		case "Inv":
 			if (ivd) {
 	        		document.getElementById("inb").style.color="black";
