@@ -23,13 +23,18 @@ function dms(dmsv){
 	} else {
 		var sec=(((dmsv-Int(dmsv))*60-Int((dmsv-Int(dmsv))*60))*60).toString().replace(/\./,"");
 	}
-	return Number(Int(dmsv).toString()+"."+min+sec);
+	return Number(Int(dmsv).toString() + "."+min+sec);
 }
 function epow(epv){
 	return Math.E ** epv;
 }
 function deg(dgv){
-	
+	if (dgv.slice(dgv.indexOf(".")+1,-1).length==1){
+		dgv=dgv+"000"
+	} else if (dgv.slice(dgv.indexOf(".")+1,-1).length==3){
+		dgv += "0"
+	}
+	return int(dgv)+Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6+Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036;
 }
 function ism(){
 	if(mmm==0){
@@ -124,13 +129,14 @@ function calCulate(val) {
 		case "cosh":
 		case "tanh":
 		case "dms":
+		case "deg":
 		case "ln":
 		case "Int":
 		case "√":
 			num.value = num.value+val+"(";
 			break;
 		case "pi":
-			num.value = num.value+"π"
+			num.value += "π"
 			break;
 		case "F-E":
 			dyh();
@@ -178,7 +184,7 @@ function calCulate(val) {
 	        	}
 			break;
 		default:
-			num.value = num.value+val;
+			num.value = num.value + val;
 			jgl=false;
 			break;
 	}
