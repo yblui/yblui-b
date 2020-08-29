@@ -47,6 +47,9 @@ function deg(dgv){
 	}
 	return Int(Number(dgv))+(Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6)+(Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036);
 }
+function ln(lnv){
+	
+}
 function ism(){
 	if(mmm==0){
 		document.getElementById("mxs").innerHTML=""
@@ -153,7 +156,7 @@ function calCulate(val) {
 		case "sinh-1":
 		case "cosh-1":
 		case "tanh-1":
-			num.value += "a"+val+"(";
+			num.value += "a"+val.slice(0,-3)+"(";
 			break;
 		case "pi":
 			num.value += "π"
