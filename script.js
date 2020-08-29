@@ -147,6 +147,14 @@ function calCulate(val) {
 		case "fact":
 			num.value = num.value+val+"(";
 			break;
+		case "sin-1":
+		case "cos-1":
+		case "tan-1":
+		case "sinh-1":
+		case "cosh-1":
+		case "tanh-1":
+			num.value += "a"+val+"(";
+			break;
 		case "pi":
 			num.value += "π"
 			break;
