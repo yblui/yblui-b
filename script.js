@@ -2,11 +2,9 @@ var mmm = 0,num = document.getElementById("t"),jgl = false,i,mhd=false,ivd=false
 function Int(intv){
 	if(intv > 0){
 		return Math.floor(intv);
-	}
-	if(intv < 0){
+	} else if(intv < 0){
 		return Math.ceil(intv);
-	}
-	if(intv == 0){
+	} else {
 		return 0;
 	}
 }
@@ -48,10 +46,10 @@ function deg(dgv){
 	return Int(Number(dgv))+(Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6)+(Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036);
 }
 function ln(lnv){
-	var fwa=[-800,800];
-	if(lnv<1){
+	var fwa=[-800, 800];
+	if(lnv<1) {
 		fwa[1]=0
-	} else if(lnv>1){
+	} else if(lnv>1) {
 		fwa[0]=0
 	} else{
 		return 0;
@@ -68,7 +66,7 @@ function ln(lnv){
 	return (fwa[1]+fwa[0])/2
 }
 function ism(){
-	if(mmm==0){
+	if(mmm == 0){
 		document.getElementById("mxs").innerHTML=""
 	} else {
 		document.getElementById("mxs").innerHTML="M"
@@ -79,7 +77,7 @@ function dyh(){
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
 	calcval = calcval.replace(/aMath\.sin/g,"Math.asin").replace(/aMath\.cos/g,"Math.acos").replace(/aMath\.tan/g,"Math.atan");
 	calcval = calcval.replace(/aMath\.sinh/g,"Math.asinh").replace(/aMath\.cosh/g,"Math.acosh").replace(/aMath\.tanh/g,"Math.atanh");
-	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(");
+	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(").replace(/e\*\*/,"Math.E**");
 	calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
 	calcval = calcval.replace(/√/g,"√@").replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@×@").replace(/\÷/g,"@÷@").split("@");
 	if(calcval[0]=="√"){
