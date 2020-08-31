@@ -198,6 +198,9 @@ function calCulate(val) {
 		case "Exp":
 			num.value += "e";
 			break;
+		case "e^x":
+			num.value += "e^";
+			break;
 		case "Inv":
 			if (ivd) {
 	        		document.getElementById("inb").style.color="black";
