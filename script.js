@@ -48,7 +48,25 @@ function deg(dgv){
 	return Int(Number(dgv))+(Number(dgv.slice(dgv.indexOf(".")+1,dgv.indexOf(".")+3))*3.6)+(Number(dgv.substr(dgv.indexOf(".")+3).split("").splice(2,0,".").join(""))*0.036);
 }
 function ln(lnv){
-	
+	// powe(?)=[input]
+	var fwa=[-999999999999999999,999999999999999999];
+	if(lnv<1){
+		fwa[1]=0
+	} else if(lnv>1){
+		fwa[0]=0
+	} else{
+		return 0;
+	}
+	while ((fwa[1]-fwa[0])>0.0000000001){
+		if(epow((fwa[0]+fwa[1])/2)<lnv){
+			fwa[1]=(fwa[0]+fwa[1])/2
+		} else if(epow((fwa[0]+fwa[1])/2)>lnv){
+			fwa[0]=(fwa[0]+fwa[1])/2
+		} else{
+			return (fwa[0]+fwa[1])/2;
+		}
+	}
+	return (fwa[1]+fwa[0])/2
 }
 function ism(){
 	if(mmm==0){
