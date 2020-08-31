@@ -77,6 +77,8 @@ function ism(){
 function dyh(){
 	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
+	calcval = calcval.replace(/aMath\.sin/g,"Math.asin").replace(/aMath\.cos/g,"Math.acos").replace(/aMath\.tan/g,"Math.atan");
+	calcval = calcval.replace(/aMath\.sinh/g,"Math.asinh").replace(/aMath\.cosh/g,"Math.acosh").replace(/aMath\.tanh/g,"Math.atanh");
 	calcval = calcval.replace(/π/g,"Math.PI").replace(/\^/g,"**").replace(/log\(/g,"Math.log(");
 	calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
 	calcval = calcval.replace(/√/g,"√@").replace(/\+/g,"@+@").replace(/\-/g,"@-@").replace(/\×/g,"@×@").replace(/\÷/g,"@÷@").split("@");
@@ -176,7 +178,7 @@ function calCulate(val) {
 		case "sinh-1":
 		case "cosh-1":
 		case "tanh-1":
-			num.value += "a"+val.slice(0,-3)+"(";
+			num.value = num.value+"a"+val.slice(0,-2)+"(";
 			break;
 		case "pi":
 			num.value += "π"
