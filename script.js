@@ -164,8 +164,11 @@ function calCulate(val) {
 		case "ln":
 		case "Int":
 		case "√":
-		case "fact":
+		case "log":
 			num.value = num.value+val+"(";
+			break;
+		case "!":
+			num.value = num.value+"fact(";
 			break;
 		case "sin-1":
 		case "cos-1":
