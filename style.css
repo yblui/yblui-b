@@ -9,9 +9,10 @@
     text-align:right;
     font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
     background-color:transparent;
+    user-select:text;
 }
 
-input[type="button"] {
+input[type="button"],button {
     width: 100px;
     background-color: transparent;
     border: solid 1px gray;
@@ -29,7 +30,7 @@ input[type="button"] {
     color: white!important;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover,button:hover {
     background-color: #ccc;
     border: none;
     cursor: pointer;
@@ -52,4 +53,8 @@ body {
 #mxs{
     font-size: 18pt;
     color: gray;
+}
+
+*{
+    user-select:none
 }
