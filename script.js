@@ -151,8 +151,10 @@ function calCulate(val) {
 				}
 			}
 			calcval=calcval.join("").replace(/Mod/g,"%")
+			if (isNaN(eval(calcval))==false){
 			mmm += Number(eval(calcval));
 			ism();
+			}
 			break;
 		case "MR":
 			num.value += mmm.toString();
@@ -182,8 +184,10 @@ function calCulate(val) {
 				}
 			}
 			calcval=calcval.join("").replace(/Mod/g,"%")
+			if (isNaN(eval(calcval))==false){
 			mmm -= Number(eval(calcval));
 			ism();
+			}
 			break;
 		case "MC":
 			mmm = 0;
