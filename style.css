@@ -48,6 +48,8 @@ input[type="button"]:hover,button:hover {
 body {
     background-color: #fcfcfc;
     text-align: center;
+    margin: auto;
+    width: fit-content;
 }
 
 #mxs{
@@ -57,4 +59,9 @@ body {
 
 *{
     user-select:none
+}
+
+hr{
+    border:solid gray;
+    border-width:1px 0 0 0;
 }
