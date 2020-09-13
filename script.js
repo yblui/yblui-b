@@ -67,9 +67,14 @@ function ln(lnv){
 }
 function history(){
 	hst=hst.replace(/;/g,"<hr />")
-	if(hex){hex=false;
-	       document.getElementById("hsp").innerHTML=""}
-	else{document.getElementById("hsp").innerHTML=hst;}
+	if(hex){
+		hex=false;
+		document.getElementById("hsp").innerHTML="";
+	}
+	else{
+		hex=true;
+		document.getElementById("hsp").innerHTML=hst;
+	}
 }
 function ism(){
 	if(mmm == 0){
