@@ -98,9 +98,9 @@ function epow(epv){
 function deg(dgv){
 	dgv=dgv.toString()
 	if (dgv.slice(dgv.indexOf(".")+1,-1).length==1){
-		dgv=dgv+"000"
+		dgv=dgv+"000";
 	} else if (dgv.slice(dgv.indexOf(".")+1,-1).length==3){
-		dgv += "0"
+		dgv += "0";
 	} else if (dgv.indexOf(".")==-1){
 		dgv += ".0000";
 	}
@@ -117,9 +117,9 @@ function ln(lnv){
 	}
 	while ((fwa[1]-fwa[0])>0.0000000001){
 		if(epow((fwa[0]+fwa[1])/2)<lnv){
-			fwa[0]=(fwa[0]+fwa[1])/2
+			fwa[0]=(fwa[0]+fwa[1])/2;
 		} else if(epow((fwa[0]+fwa[1])/2)>lnv){
-			fwa[1]=(fwa[0]+fwa[1])/2
+			fwa[1]=(fwa[0]+fwa[1])/2;
 		} else{
 			return (fwa[0]+fwa[1])/2;
 		}
@@ -139,9 +139,9 @@ function history(){
 }
 function ism(){
 	if(mmm == 0){
-		document.getElementById("mxs").innerHTML=""
+		document.getElementById("mxs").innerHTML="";
 	} else {
-		document.getElementById("mxs").innerHTML="M"
+		document.getElementById("mxs").innerHTML="M";
 	}
 }
 function dyh(){
@@ -169,7 +169,7 @@ function dyh(){
 			calcval[i]=Number(calcval[i].replace("%",""))/100;
 		}
 	}
-	calcval=calcval.join("").replace(/Mod/g,"%")
+	calcval=calcval.join("").replace(/Mod/g,"%");
 	num.value = eval(calcval);
 	hst+=eval(calcval)+";"
 }
@@ -184,16 +184,16 @@ function calCulate(val) {
 		case ">":
 			for (i = 0; i < document.getElementsByClassName("gj").length; i++) {
 				if(mhd==false){
-					document.getElementsByClassName("gj")[i].style.display = "inline"
+					document.getElementsByClassName("gj")[i].style.display = "inline";
 				} else{
-					document.getElementsByClassName("gj")[i].style.display = "none"
+					document.getElementsByClassName("gj")[i].style.display = "none";
 				}
 			}
 			if (mhd){
-				document.getElementById("exp").className=""
-				mhd=false
+				document.getElementById("exp").className="";
+				mhd=false;
 			} else{
-				document.getElementById("exp").className="equ"
+				document.getElementById("exp").className="equ";
 				mhd=true;
 			}
 			break;
@@ -224,7 +224,7 @@ function calCulate(val) {
 					calcval[i]=Number(calcval[i].replace("%",""))/100;
 				}
 			}
-			calcval=calcval.join("").replace(/Mod/g,"%")
+			calcval=calcval.join("").replace(/Mod/g,"%");
 			if (isNaN(eval(calcval))==false){
 			mmm += Number(eval(calcval));
 			ism();
@@ -302,10 +302,10 @@ function calCulate(val) {
 		case "sinh^-1":
 		case "cosh^-1":
 		case "tanh^-1":
-			num.value = num.value+"a"+val.slice(0,-2)+"(";
+			num.value = num.value+"a"+val.slice(0,-3)+"(";
 			break;
 		case "pi":
-			num.value += "π"
+			num.value += "π";
 			break;
 		case "F-E":
 			dyh();
