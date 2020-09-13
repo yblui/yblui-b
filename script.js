@@ -8,6 +8,67 @@ function Int(intv){
 		return 0;
 	}
 }
+function ike(event){
+	switch (event.keyCode){
+		case 49:
+		case 97:
+			calCulate("1");
+			break;
+		case 50:
+		case 98:
+			calCulate("2");
+			break;
+		case 51:
+		case 99:
+			calCulate("3");
+			break;
+		case 52:
+		case 100:
+			calCulate("4");
+			break;
+		case 53:
+		case 101:
+			calCulate("5");
+			break;
+		case 54:
+		case 102:
+			calCulate("6");
+			break;
+		case 55:
+		case 103:
+			calCulate("7");
+			break;
+		case 56:
+		case 104:
+			calCulate("8");
+			break;
+		case 57:
+		case 105:
+			calCulate("9");
+			break;
+		case 48:
+		case 96:
+			calCulate("0");
+			break;
+		case 107:
+			calCulate("+");
+			break;
+		case 189:
+		case 109:
+			calCulate("-");
+			break;
+		case 106:
+			calCulate("×");
+			break;
+		case 191:
+		case 111:
+			calCulate("÷");
+			break;
+		case 187:
+			calCulate("=");
+			break;
+	}
+}
 function frac(frv) {
 	return frv - Int(frv);
 }
