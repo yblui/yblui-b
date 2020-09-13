@@ -1,4 +1,4 @@
-var mmm = 0,num = document.getElementById("t"),jgl = false,i,mhd=false,ivd=false,hst="";
+var mmm = 0,num = document.getElementById("t"),jgl = false,i,mhd=false,ivd=false,hst="",hex=false;
 function Int(intv){
 	if(intv > 0){
 		return Math.floor(intv);
@@ -67,7 +67,9 @@ function ln(lnv){
 }
 function history(){
 	hst=hst.replace(/;/g,"<hr />")
-	document.getElementById("hsp").innerHTML=hst;
+	if(hex){hex=false;
+	       document.getElementById("hsp").innerHTML=""}
+	else{document.getElementById("hsp").innerHTML=hst;}
 }
 function ism(){
 	if(mmm == 0){
@@ -228,12 +230,12 @@ function calCulate(val) {
 		case "!":
 			num.value = num.value+"fact(";
 			break;
-		case "sin-1":
-		case "cos-1":
-		case "tan-1":
-		case "sinh-1":
-		case "cosh-1":
-		case "tanh-1":
+		case "sin^-1":
+		case "cos^-1":
+		case "tan^-1":
+		case "sinh^-1":
+		case "cosh^-1":
+		case "tanh^-1":
 			num.value = num.value+"a"+val.slice(0,-2)+"(";
 			break;
 		case "pi":
@@ -276,12 +278,12 @@ function calCulate(val) {
 	        		document.getElementById("inb").style.color="white";
 	        		document.getElementById("inb").style.backgroundColor="black";
 	        		document.getElementById("lnb").value="e^x";
-	        		document.getElementById("sinb").value="sin-1";
-	        		document.getElementById("cosb").value="cos-1";
-	        		document.getElementById("tanb").value="tan-1";
-	        		document.getElementById("sinhb").value="sinh-1";
-	        		document.getElementById("coshb").value="cosh-1";
-	        		document.getElementById("tanhb").value="tanh-1";
+	        		document.getElementById("sinb").value="sin^-1";
+	        		document.getElementById("cosb").value="cos^-1";
+	        		document.getElementById("tanb").value="tan^-1";
+	        		document.getElementById("sinhb").value="sinh^-1";
+	        		document.getElementById("coshb").value="cosh^-1";
+	        		document.getElementById("tanhb").value="tanh^-1";
 	        		document.getElementById("intb").value="Frac";
 	        		document.getElementById("dmsb").value="deg";
 	        		document.getElementById("pib").value="2*π";
