@@ -67,7 +67,11 @@ function ike(event){
 		case 187:
 			calCulate("=");
 			break;
+		case 8:
+			calCulate("<")
 	}
+	dyh();
+	document.getElementById("prv").innerHTML=eval(calcval)
 }
 function frac(frv) {
 	return frv - Int(frv);
@@ -170,13 +174,13 @@ function dyh(){
 		}
 	}
 	calcval=calcval.join("").replace(/Mod/g,"%");
-	num.value = eval(calcval);
-	hst+=eval(calcval)+";"
 }
 function calCulate(val) {
 	switch (val) {
 		case "=":
 			dyh();
+			num.value = eval(calcval);
+			hst+=eval(calcval)+";"
 			break;
 		case "<":
 			num.value = num.value.slice(0,-1);
