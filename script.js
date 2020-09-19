@@ -70,8 +70,7 @@ function ike(event){
 		case 8:
 			calCulate("<")
 	}
-	dyh();
-	document.getElementById("prv").innerHTML=eval(calcval)
+	dyh("b");
 }
 function frac(frv) {
 	return frv - Int(frv);
@@ -148,7 +147,7 @@ function ism(){
 		document.getElementById("mxs").innerHTML="M";
 	}
 }
-function dyh(){
+function dyh(typ){
 	hst+=num.value+"=";
 	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
@@ -174,13 +173,16 @@ function dyh(){
 		}
 	}
 	calcval=calcval.join("").replace(/Mod/g,"%");
+	if(typ=="a"){num.value = eval(calcval);
+			hst+=eval(calcval)+";"}
+	else{
+		document.getElementById("prv").innerHTML=eval(calcval)
+	}
 }
 function calCulate(val) {
 	switch (val) {
 		case "=":
-			dyh();
-			num.value = eval(calcval);
-			hst+=eval(calcval)+";"
+			dyh("a");
 			break;
 		case "<":
 			num.value = num.value.slice(0,-1);
@@ -312,7 +314,7 @@ function calCulate(val) {
 			num.value += "π";
 			break;
 		case "F-E":
-			dyh();
+			dyh("a");
 			if(num.value.indexOf(".")==-1){
 				num.value += "."
 			}
