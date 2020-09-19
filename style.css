@@ -3,7 +3,6 @@
     margin-bottom: 10px;
     font-size: 30pt;
     width: 412px;
-    height: 100px;
     outline: none;
     border: none;
     text-align:right;
@@ -73,4 +72,10 @@ p {
 p[onclick="history()"]:hover {
     cursor:pointer;
     background-color:#ccc;
+}
+
+#prv{
+    text-align:right;
+    opacity:0.5;
+    font-size:20pt;
 }
