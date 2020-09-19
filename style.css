@@ -1,7 +1,7 @@
 #t {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 40pt;
+    font-size: 30pt;
     width: 412px;
     height: 100px;
     outline: none;
@@ -52,16 +52,25 @@ body {
     width: fit-content;
 }
 
-#mxs{
+#mxs {
     font-size: 18pt;
     color: gray;
 }
 
-*{
-    user-select:none
+* {
+    user-select:none;
 }
 
-hr{
+hr {
     border:solid gray;
     border-width:1px 0 0 0;
+}
+
+p {
+    font-size:20pt;
+}
+
+p[onclick="history()"]:hover {
+    cursor:pointer;
+    background-color:#ccc;
 }
