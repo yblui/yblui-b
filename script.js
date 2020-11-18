@@ -367,4 +367,5 @@ function calCulate(val) {
 			jgl=false;
 			break;
 	}
+	dyh("b")
 }
