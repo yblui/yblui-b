@@ -153,6 +153,7 @@ function ism(){
 function dyh(typ){
 	if(typ=="a"){
 	hst+=num.value+"=";
+	}
 	var calcval = num.value.replace(/sin\(/g,"Math.sin(").replace(/cos\(/g,"Math.cos(").replace(/tan\(/g,"Math.tan(");
 	calcval = calcval.replace(/sinh/g,"Math.sinh").replace(/cosh/g,"Math.cosh").replace(/tanh/g,"Math.tanh");
 	calcval = calcval.replace(/aMath\.sin/g,"Math.asin").replace(/aMath\.cos/g,"Math.acos").replace(/aMath\.tan/g,"Math.atan");
@@ -177,6 +178,7 @@ function dyh(typ){
 		}
 	}
 	calcval=calcval.join("").replace(/Mod/g,"%");
+	if(typ=="a"){
 	num.value = eval(calcval);
 			hst+=eval(calcval)+";"}
 	else{
