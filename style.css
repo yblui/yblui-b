@@ -58,6 +58,7 @@ body {
 
 * {
     user-select:none;
+    font-family: sans-serif;
 }
 
 hr {
