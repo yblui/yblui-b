@@ -35,6 +35,12 @@ function ike(event) {
             calCulate("4");
             break;
         case 53:
+            if (event.shiftKey) {
+                calCulate("%");
+            } else {
+                calCulate("5");
+            }
+            break;
         case 101:
             calCulate("5");
             break;
@@ -51,10 +57,22 @@ function ike(event) {
             calCulate("8");
             break;
         case 57:
+            if (event.shiftKey) {
+                calCulate("(");
+            } else {
+                calCulate("9")
+            }
+            break;
         case 105:
             calCulate("9");
             break;
         case 48:
+            if (event.shiftKey) {
+                calCulate(")");
+            } else {
+                calCulate("0")
+            }
+            break;
         case 96:
             calCulate("0");
             break;
@@ -83,14 +101,18 @@ function ike(event) {
             calCulate("AC");
             break;
         case 27:
-            history.go(0);
+            history.go(-1);
             break;
         case 110:
         case 190:
             calCulate(".");
             break;
     }
-    dyh("b");
+    try {
+        dyh("b");
+    } catch (err) {
+        document.getElementById("prv").innerHTML = "错误";
+    }
 }
 
 function frac(frv) {
@@ -98,16 +120,9 @@ function frac(frv) {
 }
 
 function dms(dmsv) {
-    var min = (Int((dmsv - Int(dmsv)) * 60)).toString();
-    if (Int((dmsv - Int(dmsv)) * 60) < 10) {
-        min = "0" + min;
-    }
-    if ((((dmsv - Int(dmsv)) * 60 - Int((dmsv - Int(dmsv)) * 60)) * 60) < 10) {
-        var sec = "0" + (((dmsv - Int(dmsv)) * 60 - Int((dmsv - Int(dmsv)) * 60)) * 60).toString().replace(/\./, "");
-    } else {
-        var sec = (((dmsv - Int(dmsv)) * 60 - Int((dmsv - Int(dmsv)) * 60)) * 60).toString().replace(/\./, "");
-    }
-    return Number(Int(dmsv).toString() + "." + min + sec);
+    var min = Int(frac(dmsv) * 60) / 100;
+    var sec = (frac(dmsv) - min * 100 / 60) * 3600 / 10000;
+    return Int(dmsv) + min + sec;
 }
 
 function fact(fav) {
@@ -154,10 +169,10 @@ function ln(lnv) {
             return (fwa[0] + fwa[1]) / 2;
         }
     }
-    return (fwa[1] + fwa[0]) / 2
+    return (fwa[1] + fwa[0]) / 2;
 }
 
-function history() {
+function his() {
     hst = hst.replace(/;/g, "<hr />")
     if (hex) {
         hex = false;
@@ -193,7 +208,7 @@ function dyh(typ) {
     calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
         /\÷/g, "@÷@").split("@");
     if (calcval[0] == "√") {
-        calcval[0] = "Math.sqrt"
+        calcval[0] = "Math.sqrt";
     }
     for (i = 0; i < calcval.length; i++) {
         if (calcval[i].indexOf("√") != -1) {
@@ -201,7 +216,7 @@ function dyh(typ) {
             calcval[i] = "Math.pow";
         }
     }
-    calcval = calcval.join("")
+    calcval = calcval.join("");
     calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split("@");
     for (i = 0; i < calcval.length; i++) {
         if (calcval[i].indexOf("%") != -1) {
@@ -211,9 +226,9 @@ function dyh(typ) {
     calcval = calcval.join("").replace(/Mod/g, "%");
     if (typ == "a") {
         num.value = eval(calcval);
-        hst += eval(calcval) + ";"
+        hst += eval(calcval) + ";";
     } else {
-        document.getElementById("prv").innerHTML = eval(calcval)
+        document.getElementById("prv").innerHTML = eval(calcval);
     }
 }
 
@@ -259,7 +274,7 @@ function calCulate(val) {
             calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
                 /\÷/g, "@÷@").split("@");
             if (calcval[0] == "√") {
-                calcval[0] = "Math.sqrt"
+                calcval[0] = "Math.sqrt";
             }
             for (i = 0; i < calcval.length; i++) {
                 if (calcval[i].indexOf("√") != -1) {
@@ -268,7 +283,7 @@ function calCulate(val) {
                     calcval[i] = "Math.pow";
                 }
             }
-            calcval = calcval.join("")
+            calcval = calcval.join("");
             calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
                 "@");
             for (i = 0; i < calcval.length; i++) {
@@ -300,7 +315,7 @@ function calCulate(val) {
             calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
                 /\÷/g, "@÷@").split("@");
             if (calcval[0] == "√") {
-                calcval[0] = "Math.sqrt"
+                calcval[0] = "Math.sqrt";
             }
             for (i = 0; i < calcval.length; i++) {
                 if (calcval[i].indexOf("√") != -1) {
@@ -309,7 +324,7 @@ function calCulate(val) {
                     calcval[i] = "Math.pow";
                 }
             }
-            calcval = calcval.join("")
+            calcval = calcval.join("");
             calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
                 "@");
             for (i = 0; i < calcval.length; i++) {
@@ -369,7 +384,7 @@ function calCulate(val) {
         case "F-E":
             dyh("a");
             if (num.value.indexOf(".") == -1) {
-                num.value += "."
+                num.value += ".";
             }
             var aws = num.value.length - num.value.indexOf(".");
             var tmp = num.value.replace(".", "").split("");
@@ -420,5 +435,9 @@ function calCulate(val) {
             jgl = false;
             break;
     }
-    dyh("b");
+    try {
+        dyh("b");
+    } catch (err) {
+        document.getElementById("prv").innerHTML = "错误"
+    }
 }

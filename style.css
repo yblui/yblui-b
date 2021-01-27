@@ -48,7 +48,6 @@ body {
     background-color: #fcfcfc;
     text-align: center;
     margin: auto;
-    width: fit-content;
 }
 
 #mxs {
@@ -57,6 +56,8 @@ body {
 }
 
 * {
+    -webkit-user-select: none;
+    -ms-user-select: none;
     user-select:none;
     font-family: sans-serif;
 }
