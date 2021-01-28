@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Montserrat;
+    src: url("https://yblui.github.io/yblui-e/Montserrat-Regular-8.otf");
+}
+
 #t {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -5,13 +10,16 @@
     width: 412px;
     outline: none;
     border: none;
-    text-align:right;
-    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
-    background-color:transparent;
-    user-select:text;
+    text-align: right;
+    background-color: transparent;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    font-family: Montserrat, sans-serif;
 }
 
-input[type="button"],button {
+input[type="button"],
+button {
     width: 100px;
     background-color: transparent;
     border: solid 1px gray;
@@ -20,16 +28,18 @@ input[type="button"],button {
     font-size: 30pt;
     margin: 2px;
     border-radius: 9px;
-    font-family:"Microsoft Yahei UI","Segoe UI",sans-serif;
+    font-family: Montserrat, sans-serif;
 }
 
-#equ,.equ {
-    background-color: black!important;
-    border: none!important;
-    color: white!important;
+#equ,
+.equ {
+    background-color: black !important;
+    border: none !important;
+    color: white !important;
 }
 
-input[type="button"]:hover,button:hover {
+input[type="button"]:hover,
+button:hover {
     background-color: #ccc;
     border: none;
     cursor: pointer;
@@ -48,6 +58,8 @@ body {
     background-color: #fcfcfc;
     text-align: center;
     margin: auto;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
 #mxs {
@@ -58,26 +70,26 @@ body {
 * {
     -webkit-user-select: none;
     -ms-user-select: none;
-    user-select:none;
-    font-family: sans-serif;
+    user-select: none;
+    font-family: Montserrat, sans-serif;
 }
 
 hr {
-    border:solid gray;
-    border-width:1px 0 0 0;
+    border: solid gray;
+    border-width: 1px 0 0 0;
 }
 
 p {
-    font-size:20pt;
+    font-size: 20pt;
 }
 
-p[onclick="history()"]:hover {
-    cursor:pointer;
-    background-color:#ccc;
+p[onclick]:hover {
+    cursor: pointer;
+    background-color: #ccc;
 }
 
-#prv{
-    text-align:right;
-    opacity:0.5;
-    font-size:20pt;
+#prv {
+    text-align: right;
+    opacity: 0.5;
+    font-size: 20pt;
 }

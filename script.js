@@ -107,9 +107,19 @@ function ike(event) {
         case 190:
             calCulate(".");
             break;
+        case 37:
+            if (mhd) {
+                calCulate(">");
+            }
+            break;
+        case 39:
+            if (mhd == false) {
+                calCulate(">");
+            }
+            break;
     }
     try {
-        dyh("b");
+        dyh(false);
     } catch (err) {
         document.getElementById("prv").innerHTML = "错误";
     }
@@ -173,13 +183,16 @@ function ln(lnv) {
 }
 
 function his() {
-    hst = hst.replace(/;/g, "<hr />")
     if (hex) {
         hex = false;
         document.getElementById("hsp").innerHTML = "";
     } else {
         hex = true;
-        document.getElementById("hsp").innerHTML = hst;
+        hst=hst.split(";").slice(0,hst.split(";").length-1)
+        for (var i = 0; i < hst.length; i++) {
+            document.getElementById("hsp").innerHTML=document.getElementById("hsp").innerHTML+"<p onclick='document.getElementById(`t`).value=`"+hst[i]+"`.split(`=`)[1]'>"+hst[i]+"</p><hr />";
+        }
+        hst=""
     }
 }
 
@@ -192,7 +205,7 @@ function ism() {
 }
 
 function dyh(typ) {
-    if (typ == "a") {
+    if (typ) {
         hst += num.value + "=";
     }
     var calcval = num.value.replace(/sin\(/g, "Math.sin(").replace(/cos\(/g, "Math.cos(").replace(/tan\(/g, "Math.tan(");
@@ -224,7 +237,7 @@ function dyh(typ) {
         }
     }
     calcval = calcval.join("").replace(/Mod/g, "%");
-    if (typ == "a") {
+    if (typ) {
         num.value = eval(calcval);
         hst += eval(calcval) + ";";
     } else {
@@ -235,7 +248,7 @@ function dyh(typ) {
 function calCulate(val) {
     switch (val) {
         case "=":
-            dyh("a");
+            dyh(true);
             break;
         case "<":
             num.value = num.value.slice(0, -1);
@@ -382,16 +395,25 @@ function calCulate(val) {
             num.value += "π";
             break;
         case "F-E":
-            dyh("a");
-            if (num.value.indexOf(".") == -1) {
-                num.value += ".";
+            dyh(true);
+            if (Number(num.value) >= 10) {
+                if (num.value.indexOf(".") == -1) {
+                    num.value += ".";
+                }
+                var aws = num.value.length - num.value.indexOf(".");
+                var tmp = num.value.replace(".", "").split("");
+                tmp[1] = "." + tmp[1];
+                tmp = tmp.join("");
+                var awb = tmp.length - tmp.indexOf(".");
+                num.value = Number(tmp) + "e+" + (awb - aws);
+            } else if (Number(num.value) < 1) {
+                var jnu = 0;
+                while (Number(num.value) < 1) {
+                    num.value = Number(num.value) * 10;
+                    jnu++;
+                }
+                num.value = num.value + "e-" + jnu;
             }
-            var aws = num.value.length - num.value.indexOf(".");
-            var tmp = num.value.replace(".", "").split("");
-            tmp[1] = "." + tmp[1];
-            tmp = tmp.join("");
-            var awb = tmp.length - tmp.indexOf(".");
-            num.value = Number(tmp) + "e" + (awb - aws);
             break;
         case "Exp":
             num.value += "e";
@@ -436,8 +458,8 @@ function calCulate(val) {
             break;
     }
     try {
-        dyh("b");
+        dyh(false);
     } catch (err) {
-        document.getElementById("prv").innerHTML = "错误"
+        document.getElementById("prv").innerHTML = "错误";
     }
 }
