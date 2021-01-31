@@ -8,15 +8,31 @@
         <title>Yblui-b - YBLUI.github.io</title>
     </head>
     <body onkeyup="ike(event)">
+        <span class="b sld" id="sci">科学型</span><span class="b" id="pro">程序员</span><br />
         <input type="text" name="t" id="t" />
         <span id="mxs"></span>
         <br />
         <p id="prv"></p>
+        <pre id="pre">
+            <code>
+<span id="bis">0000 0000 0000 0000 0000 0000 0000 0000</span>
+<span class="light">31                  15                0</span>
+            </code>
+<input type="button" value="十进制" class="xjz ivt" onclick="c('dec')" id="dec"><input type="button" value="十六进制" class="xjz" onclick="c('hex')" id="hex"><input type="button" value="八进制" class="xjz" onclick="c('oct')" id="oct"><input type="button" value="二进制" class="xjz" onclick="c('bin')" id="bin">
+        </pre>
+        <br />
         <input type="button" value="MC" onclick="calCulate('MC')" />
         <input type="button" value="MR" onclick="calCulate('MR')" />
         <input type="button" value="M+" onclick="calCulate('M+')" />
         <input type="button" value="M-" onclick="calCulate('M-')" />
         <br />
+        <input type="button" value="A" />
+        <input type="button" value="B" />
+        <input type="button" value="C" />
+        <input type="button" value="D" />
+        <input type="button" value="E" />
+        <input type="button" value="F" />
+        <br/>
         <input type="button" value="AC" onclick="calCulate('AC')" />
         <input type="button" value="<" onclick="calCulate('<')" />
         <input type="button" value="%" onclick="calCulate('%')" />
