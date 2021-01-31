@@ -71,16 +71,18 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: Montserrat, sans-serif;
 }
 
 hr {
     border: solid gray;
     border-width: 1px 0 0 0;
+    margin: 0;
 }
 
 p {
     font-size: 20pt;
+    margin: 9px;
+    font-family: Montserrat, sans-serif;
 }
 
 p[onclick]:hover {
@@ -92,4 +94,39 @@ p[onclick]:hover {
     text-align: right;
     opacity: 0.5;
     font-size: 20pt;
+}
+
+.sld {
+    border-bottom: solid 9px black;
+    border-radius: 9px
+}
+
+.b {
+    margin: 0 9px;
+    font-family: Montserrat, sans-serif;
+}
+
+pre code span {
+    font-family: Consolas, monospace;
+    margin: 0
+}
+
+.light {
+    color: gray
+}
+
+pre {
+    display: none
+}
+
+.xjz {
+    border: none !important;
+    height: auto !important;
+    width: auto !important;
+    border-radius: 0 !important;
+}
+
+.ivt {
+    background-color: black !important;
+    color: white;
 }
