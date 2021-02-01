@@ -26,13 +26,13 @@
         <input type="button" value="M+" onclick="calCulate('M+')" />
         <input type="button" value="M-" onclick="calCulate('M-')" />
         <br />
-        <input type="button" value="A" />
-        <input type="button" value="B" />
-        <input type="button" value="C" />
-        <input type="button" value="D" />
-        <input type="button" value="E" />
-        <input type="button" value="F" />
-        <br/>
+        <input type="button" value="a" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="b" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="c" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="d" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="e" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="f" class="ppl" onclick="calCulate(this.value)"/>
+        <br class="ppl"/>
         <input type="button" value="AC" onclick="calCulate('AC')" />
         <input type="button" value="<" onclick="calCulate('<')" />
         <input type="button" value="%" onclick="calCulate('%')" />
@@ -41,6 +41,8 @@
         <input type="button" class="gj" value="log" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="ln" id="lnb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="sin" id="sinb" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="RoL" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="RoR" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="7" onclick="calCulate('7')" />
         <input type="button" value="8" onclick="calCulate('8')" />
@@ -50,6 +52,8 @@
         <input type="button" class="gj" value="tan" id="tanb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="Mod" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="Inv" id="inb" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="Or" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="Xor" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="4" onclick="calCulate('4')" />
         <input type="button" value="5" onclick="calCulate('5')" />
@@ -59,6 +63,8 @@
         <input type="button" class="gj" value="cosh" id="coshb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="tanh" id="tanhb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="Exp" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="Lsh" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="Rsh" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="1" onclick="calCulate('1')" />
         <input type="button" value="2" onclick="calCulate('2')" />
@@ -68,6 +74,8 @@
         <input type="button" class="gj" value="dms" id="dmsb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="pi" id="pib" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="F-E" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="Not" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="And" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="0" onclick="calCulate('0')" />
         <input type="button" value="." onclick="calCulate('.')" />
@@ -77,6 +85,8 @@
         <input type="button" class="gj" value=")" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="!" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="^" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value="(" onclick="calCulate(this.value)" />
+        <input type="button" class="pr" value=")" onclick="calCulate(this.value)" />
         <p onclick="his()">历史记录</p>
         <p id="hsp"></p>
         <script src="script.js"></script>
