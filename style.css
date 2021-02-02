@@ -50,7 +50,7 @@ button:hover {
     color: white;
 }
 
-.gj {
+.gj, .pr {
     display: none;
 }
 
@@ -98,7 +98,7 @@ p[onclick]:hover {
 
 .sld {
     border-bottom: solid 9px black;
-    border-radius: 9px
+    border-radius: 9px;
 }
 
 .b {
@@ -108,15 +108,15 @@ p[onclick]:hover {
 
 pre code span {
     font-family: Consolas, monospace;
-    margin: 0
+    margin: 0;
 }
 
 .light {
-    color: gray
+    color: gray;
 }
 
 pre {
-    display: none
+    display: none;
 }
 
 .xjz {
@@ -129,4 +129,8 @@ pre {
 .ivt {
     background-color: black !important;
     color: white;
+}
+
+.ppl{
+    display:none;
 }
