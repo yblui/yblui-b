@@ -18,7 +18,7 @@
 <span id="bis">0000 0000 0000 0000 0000 0000 0000 0000</span>
 <span class="light">31                  15                0</span>
             </code>
-<input type="button" value="十进制" class="xjz ivt" onclick="c('dec')" id="dec"><input type="button" value="十六进制" class="xjz" onclick="c('hex')" id="hex"><input type="button" value="八进制" class="xjz" onclick="c('oct')" id="oct"><input type="button" value="二进制" class="xjz" onclick="c('bin')" id="bin">
+<input type="button" value="十进制" class="xjz ivt" onclick="ch('dec')" id="dec"><input type="button" value="十六进制" class="xjz" onclick="ch('hex')" id="hex"><input type="button" value="八进制" class="xjz" onclick="ch('oct')" id="oct"><input type="button" value="二进制" class="xjz" onclick="ch('bin')" id="bin">
         </pre>
         <br />
         <input type="button" value="MC" onclick="calCulate('MC')" />
@@ -26,12 +26,12 @@
         <input type="button" value="M+" onclick="calCulate('M+')" />
         <input type="button" value="M-" onclick="calCulate('M-')" />
         <br />
-        <input type="button" value="a" class="ppl" onclick="calCulate(this.value)"/>
-        <input type="button" value="b" class="ppl" onclick="calCulate(this.value)"/>
-        <input type="button" value="c" class="ppl" onclick="calCulate(this.value)"/>
-        <input type="button" value="d" class="ppl" onclick="calCulate(this.value)"/>
-        <input type="button" value="e" class="ppl" onclick="calCulate(this.value)"/>
-        <input type="button" value="f" class="ppl" onclick="calCulate(this.value)"/>
+        <input type="button" value="a" class="ppl" id="sa" onclick="calCulate(this.value)"/>
+        <input type="button" value="b" class="ppl" id="sb" onclick="calCulate(this.value)"/>
+        <input type="button" value="c" class="ppl" id="sc" onclick="calCulate(this.value)"/>
+        <input type="button" value="d" class="ppl" id="sd" onclick="calCulate(this.value)"/>
+        <input type="button" value="e" class="ppl" id="se" onclick="calCulate(this.value)"/>
+        <input type="button" value="f" class="ppl" id="sf" onclick="calCulate(this.value)"/>
         <br class="ppl"/>
         <input type="button" value="AC" onclick="calCulate('AC')" />
         <input type="button" value="<" onclick="calCulate('<')" />
@@ -44,9 +44,9 @@
         <input type="button" class="pr" value="RoL" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="RoR" onclick="calCulate(this.value)" />
         <br />
-        <input type="button" value="7" onclick="calCulate('7')" />
-        <input type="button" value="8" onclick="calCulate('8')" />
-        <input type="button" value="9" onclick="calCulate('9')" />
+        <input type="button" value="7" id="s7" onclick="calCulate('7')" />
+        <input type="button" value="8" id="s8" onclick="calCulate('8')" />
+        <input type="button" value="9" id="s9" onclick="calCulate('9')" />
         <input type="button" value="÷" onclick="calCulate('÷')" />
         <input type="button" class="gj" value="cos" id="cosb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="tan" id="tanb" onclick="calCulate(this.value)" />
@@ -55,9 +55,9 @@
         <input type="button" class="pr" value="Or" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Xor" onclick="calCulate(this.value)" />
         <br />
-        <input type="button" value="4" onclick="calCulate('4')" />
-        <input type="button" value="5" onclick="calCulate('5')" />
-        <input type="button" value="6" onclick="calCulate('6')" />
+        <input type="button" value="4" id="s4" onclick="calCulate('4')" />
+        <input type="button" value="5" id="s5" onclick="calCulate('5')" />
+        <input type="button" value="6" id="s6" onclick="calCulate('6')" />
         <input type="button" value="×" onclick="calCulate('×')" />
         <input type="button" class="gj" value="sinh" id="sinhb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="cosh" id="coshb" onclick="calCulate(this.value)" />
@@ -66,9 +66,9 @@
         <input type="button" class="pr" value="Lsh" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Rsh" onclick="calCulate(this.value)" />
         <br />
-        <input type="button" value="1" onclick="calCulate('1')" />
-        <input type="button" value="2" onclick="calCulate('2')" />
-        <input type="button" value="3" onclick="calCulate('3')" />
+        <input type="button" value="1" id="s1" onclick="calCulate('1')" />
+        <input type="button" value="2" id="s2" onclick="calCulate('2')" />
+        <input type="button" value="3" id="s3" onclick="calCulate('3')" />
         <input type="button" value="-" onclick="calCulate('-')" />
         <input type="button" class="gj" value="Int" id="intb" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value="dms" id="dmsb" onclick="calCulate(this.value)" />
@@ -77,7 +77,7 @@
         <input type="button" class="pr" value="Not" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="And" onclick="calCulate(this.value)" />
         <br />
-        <input type="button" value="0" onclick="calCulate('0')" />
+        <input type="button" value="0" id="s0" onclick="calCulate('0')" />
         <input type="button" value="." onclick="calCulate('.')" />
         <input type="button" id="equ" value="=" onclick="calCulate('=')" />
         <input type="button" value="+" onclick="calCulate('+')" />
