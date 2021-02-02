@@ -125,11 +125,7 @@ function ike(event) {
                 document.getElementById("pre").style.display = "block"
                 prg = true
                 for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-                    if (mhd == false) {
-                        document.getElementsByClassName("ppl")[i].style.display = "inline";
-                    } else {
-                        document.getElementsByClassName("ppl")[i].style.display = "none";
-                    }
+                    document.getElementsByClassName("ppl")[i].style.display = "inline";
                 }
             } else {
                 document.getElementById("pro").classList.remove("sld")
@@ -137,11 +133,11 @@ function ike(event) {
                 document.getElementById("pre").style.display = "none"
                 prg = false
                 for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-                    if (mhd == false) {
-                        document.getElementsByClassName("ppl")[i].style.display = "none";
-                    } else {
-                        document.getElementsByClassName("ppl")[i].style.display = "inline";
-                    }
+                    document.getElementsByClassName("ppl")[i].style.display = "none";
+                }
+                for (i = 0; i < 8; i++) {
+                    document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.visibility =
+                        "visible"
                 }
             }
             break;
@@ -293,6 +289,8 @@ function dyh(typ) {
             } else {
                 num.value = eval(calcval);
             }
+        } else {
+            num.value = eval(calcval);
         }
         hst += eval(calcval) + ";";
     } else {
@@ -329,6 +327,12 @@ function calCulate(val) {
                 var geb = "pr"
             } else {
                 var geb = "gj"
+            }
+            for (i = 0; i < document.getElementsByClassName("pr").length; i++) {
+                document.getElementsByClassName("pr")[i].style.display = "none";
+            }
+            for (i = 0; i < document.getElementsByClassName("gj").length; i++) {
+                document.getElementsByClassName("gj")[i].style.display = "none";
             }
             for (i = 0; i < document.getElementsByClassName(geb).length; i++) {
                 if (mhd == false) {
@@ -531,13 +535,13 @@ function calCulate(val) {
             }
             break;
         case "RoL":
-            num.value = Number(num.value) << 1;
+            num.value = Number(num.value) << 1
             break;
         case "RoR":
-            num.value = Number(num.value) >>> 1;
+            num.value = Number(num.value) >>> 1
             break;
         case "Not":
-            num.value = ~Number(num.value);
+            num.value = ~Number(num.value)
             break;
         default:
             num.value = num.value + val;
@@ -554,26 +558,50 @@ function calCulate(val) {
     }
 }
 
-function c(cjz) {
-    if (cjz == "dec") {
-        document.getElementById("dec").classList.add("ivt");
-        document.getElementById("hex").classList.remove("ivt");
-        document.getElementById("oct").classList.remove("ivt");
-        document.getElementById("bin").classList.remove("ivt");
-    } else if (cjz == "hex") {
-        document.getElementById("hex").classList.add("ivt");
-        document.getElementById("dec").classList.remove("ivt");
-        document.getElementById("oct").classList.remove("ivt");
-        document.getElementById("bin").classList.remove("ivt");
-    } else if (cjz == "oct") {
-        document.getElementById("oct").classList.add("ivt");
-        document.getElementById("hex").classList.remove("ivt");
-        document.getElementById("dec").classList.remove("ivt");
-        document.getElementById("bin").classList.remove("ivt");
-    } else {
-        document.getElementById("bin").classList.add("ivt");
-        document.getElementById("hex").classList.remove("ivt");
-        document.getElementById("oct").classList.remove("ivt");
-        document.getElementById("dec").classList.remove("ivt");
+function ch(cjz) {
+    if (prg) {
+        if (cjz == "dec") {
+            document.getElementById("dec").classList.add("ivt")
+            document.getElementById("hex").classList.remove("ivt")
+            document.getElementById("oct").classList.remove("ivt")
+            document.getElementById("bin").classList.remove("ivt")
+            for (var i = 2; i <= 9; i++) {
+                document.getElementById("s" + i).style.visibility = "visible"
+            }
+            for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
+                document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden"
+            }
+        } else if (cjz == "hex") {
+            document.getElementById("hex").classList.add("ivt")
+            document.getElementById("dec").classList.remove("ivt")
+            document.getElementById("oct").classList.remove("ivt")
+            document.getElementById("bin").classList.remove("ivt")
+            for (i = 0; i < 14; i++) {
+                document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
+                    .style
+                    .visibility = "visible"
+            }
+        } else if (cjz == "oct") {
+            document.getElementById("oct").classList.add("ivt")
+            document.getElementById("hex").classList.remove("ivt")
+            document.getElementById("dec").classList.remove("ivt")
+            document.getElementById("bin").classList.remove("ivt")
+            for (var i = 2; i <= 7; i++) {
+                document.getElementById("s" + i).style.visibility = "visible"
+            }
+            for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
+                document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden"
+            }
+        } else {
+            document.getElementById("bin").classList.add("ivt")
+            document.getElementById("hex").classList.remove("ivt")
+            document.getElementById("oct").classList.remove("ivt")
+            document.getElementById("dec").classList.remove("ivt")
+            for (i = 0; i < 14; i++) {
+                document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
+                    .style
+                    .visibility = "hidden"
+            }
+        }
     }
 }
