@@ -247,6 +247,7 @@ function dyh(typ) {
         "Math.E**");
     calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(")
         .replace(/\÷√\(/g, "÷Math.sqrt(");
+    calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|").replace(/Lsh/g,"<<").replace(/Rsh/g,">>>")
     calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
         /\÷/g, "@÷@").split("@");
     if (calcval[0] == "√") {
@@ -364,6 +365,7 @@ function calCulate(val) {
                 /e\*\*/, "Math.E**");
             calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
                 "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
+            calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
             calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
                 /\÷/g, "@÷@").split("@");
             if (calcval[0] == "√") {
@@ -405,6 +407,7 @@ function calCulate(val) {
                 /e\*\*/, "Math.E**");
             calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
                 "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
+            calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
             calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
                 /\÷/g, "@÷@").split("@");
             if (calcval[0] == "√") {
@@ -561,46 +564,44 @@ function calCulate(val) {
 function ch(cjz) {
     if (prg) {
         if (cjz == "dec") {
-            document.getElementById("dec").classList.add("ivt")
-            document.getElementById("hex").classList.remove("ivt")
-            document.getElementById("oct").classList.remove("ivt")
-            document.getElementById("bin").classList.remove("ivt")
+            document.getElementById("dec").classList.add("ivt");
+            document.getElementById("hex").classList.remove("ivt");
+            document.getElementById("oct").classList.remove("ivt");
+            document.getElementById("bin").classList.remove("ivt");
             for (var i = 2; i <= 9; i++) {
-                document.getElementById("s" + i).style.visibility = "visible"
+                document.getElementById("s" + i).style.visibility = "visible";
             }
             for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
-                document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden"
+                document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else if (cjz == "hex") {
-            document.getElementById("hex").classList.add("ivt")
-            document.getElementById("dec").classList.remove("ivt")
-            document.getElementById("oct").classList.remove("ivt")
-            document.getElementById("bin").classList.remove("ivt")
+            document.getElementById("hex").classList.add("ivt");
+            document.getElementById("dec").classList.remove("ivt");
+            document.getElementById("oct").classList.remove("ivt");
+            document.getElementById("bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
                 document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style
-                    .visibility = "visible"
+                    .style.visibility = "visible"
             }
         } else if (cjz == "oct") {
-            document.getElementById("oct").classList.add("ivt")
-            document.getElementById("hex").classList.remove("ivt")
-            document.getElementById("dec").classList.remove("ivt")
-            document.getElementById("bin").classList.remove("ivt")
+            document.getElementById("oct").classList.add("ivt");
+            document.getElementById("hex").classList.remove("ivt");
+            document.getElementById("dec").classList.remove("ivt");
+            document.getElementById("bin").classList.remove("ivt");
             for (var i = 2; i <= 7; i++) {
-                document.getElementById("s" + i).style.visibility = "visible"
+                document.getElementById("s" + i).style.visibility = "visible";
             }
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
-                document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden"
+                document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else {
-            document.getElementById("bin").classList.add("ivt")
-            document.getElementById("hex").classList.remove("ivt")
-            document.getElementById("oct").classList.remove("ivt")
-            document.getElementById("dec").classList.remove("ivt")
+            document.getElementById("bin").classList.add("ivt");
+            document.getElementById("hex").classList.remove("ivt");
+            document.getElementById("oct").classList.remove("ivt");
+            document.getElementById("dec").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
                 document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style
-                    .visibility = "hidden"
+                    .style.visibility = "hidden";
             }
         }
     }
