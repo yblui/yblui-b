@@ -133,4 +133,5 @@ pre {
 
 .ppl{
     display:none;
+    visibility: hidden;
 }
