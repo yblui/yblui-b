@@ -249,7 +249,8 @@ function dyh(typ) {
         "Math.E**");
     calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(")
         .replace(/\÷√\(/g, "÷Math.sqrt(");
-    calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|").replace(/Lsh/g,"<<").replace(/Rsh/g,">>>")
+    calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|").replace(/Lsh/g, "<<").replace(
+        /Rsh/g, ">>>")
     calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
         /\÷/g, "@÷@").split("@");
     if (calcval[0] == "√") {
@@ -299,19 +300,23 @@ function dyh(typ) {
     } else {
         document.getElementById("prv").innerHTML = eval(calcval);
         if (prg) {
-            document.getElementById("bis").innerHTML = eval(calcval).toString(2);
+            var tbi = "";
+            tbi = eval(calcval).toString(2);
             if (document.getElementById("hex").classList.contains("ivt")) {
-                document.getElementById("bis").innerHTML = parseInt(eval(calcval), 16).toString(2);
+                tbi = parseInt(eval(calcval), 16).toString(2);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                document.getElementById("bis").innerHTML = parseInt(eval(calcval), 8).toString(2);
+                tbi = parseInt(eval(calcval), 8).toString(2);
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                document.getElementById("bis").innerHTML = eval(calcval)
+                tbi = eval(calcval)
             }
-            if (document.getElementById("bis").innerHTML.length > 32) {
+            if (tbi.length > 32) {
                 num.value = num.value.slice(0, -1);
             }
-            while (document.getElementById("bis").innerText.length < 32) {
-                document.getElementById("bis").innerText = "0" + document.getElementById("bis").innerText
+            while (tbi.length < 32) {
+                tbi = "0" + tbi
+            }
+            for (var i = 0; i <= 31; i++) {
+                document.getElementById("bi" + (i + 1)).innerText = tbi[i]
             }
         }
     }
@@ -567,12 +572,12 @@ function ch(cjz) {
     if (prg) {
         if (cjz == "dec") {
             dyh(true)
-            if(document.getElementById("hex").classList.contains("ivt")){
-                num.value=parseInt(num.value, 16)
-            } else if (document.getElementById("oct").classList.contains("ivt")){
-                num.value=parseInt(num.value, 8)
-            } else if(document.getElementById("bin").classList.contains("ivt")){
-                num.value=parseInt(num.value, 2)
+            if (document.getElementById("hex").classList.contains("ivt")) {
+                num.value = parseInt(num.value, 16)
+            } else if (document.getElementById("oct").classList.contains("ivt")) {
+                num.value = parseInt(num.value, 8)
+            } else if (document.getElementById("bin").classList.contains("ivt")) {
+                num.value = parseInt(num.value, 2)
             }
             document.getElementById("dec").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
@@ -586,12 +591,12 @@ function ch(cjz) {
             }
         } else if (cjz == "hex") {
             dyh(true)
-            if(document.getElementById("dec").classList.contains("ivt")){
-                num.value=Number(num.value).toString(16)
-            } else if (document.getElementById("oct").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 8)).toString(16)
-            } else if(document.getElementById("bin").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 2)).toString(16)
+            if (document.getElementById("dec").classList.contains("ivt")) {
+                num.value = Number(num.value).toString(16)
+            } else if (document.getElementById("oct").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 8)).toString(16)
+            } else if (document.getElementById("bin").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 2)).toString(16)
             }
             document.getElementById("hex").classList.add("ivt");
             document.getElementById("dec").classList.remove("ivt");
@@ -603,12 +608,12 @@ function ch(cjz) {
             }
         } else if (cjz == "oct") {
             dyh(true)
-            if(document.getElementById("hex").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 16)).toString(8)
-            } else if (document.getElementById("dec").classList.contains("ivt")){
-                num.value=Number(num.value).toString(8)
-            } else if(document.getElementById("bin").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 2)).toString(8)
+            if (document.getElementById("hex").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 16)).toString(8)
+            } else if (document.getElementById("dec").classList.contains("ivt")) {
+                num.value = Number(num.value).toString(8)
+            } else if (document.getElementById("bin").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 2)).toString(8)
             }
             document.getElementById("oct").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
@@ -622,12 +627,12 @@ function ch(cjz) {
             }
         } else {
             dyh(true)
-            if(document.getElementById("hex").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 16)).toString(2)
-            } else if (document.getElementById("oct").classList.contains("ivt")){
-                num.value=Number(parseInt(num.value, 8)).toString(2)
-            } else if(document.getElementById("dec").classList.contains("ivt")){
-                num.value=Number(num.value).toString(2)
+            if (document.getElementById("hex").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 16)).toString(2)
+            } else if (document.getElementById("oct").classList.contains("ivt")) {
+                num.value = Number(parseInt(num.value, 8)).toString(2)
+            } else if (document.getElementById("dec").classList.contains("ivt")) {
+                num.value = Number(num.value).toString(2)
             }
             document.getElementById("bin").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
@@ -638,5 +643,22 @@ function ch(cjz) {
                     .style.visibility = "hidden";
             }
         }
+    }
+}
+
+function cgebi(civ) {
+    if (document.getElementById("bi" + civ).innerText == "0") {
+        document.getElementById("bi" + civ).innerText = "1"
+    } else {
+        document.getElementById("bi" + civ).innerText = "0"
+    }
+    if (document.getElementById("hex").classList.contains("ivt")){
+        num.value=parseInt(document.getElementById("bis").innerText.replace(/\s/g,""),2).toString(16)
+    } else if(document.getElementById("oct").classList.contains("ivt")){
+        num.value=parseInt(document.getElementById("bis").innerText.replace(/\s/g,""),2).toString(8)
+    } else if(document.getElementById("bin").classList.contains("ivt")){
+        num.value=parseInt(document.getElementById("bis").innerText.replace(/\s/g,""),2).toString(2)
+    } else {
+        num.value=parseInt(document.getElementById("bis").innerText.replace(/\s/g,""),2)
     }
 }
