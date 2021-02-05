@@ -1,6 +1,7 @@
 @font-face {
     font-family: Montserrat;
     src: url("https://yblui.github.io/yblui-e/Montserrat-Regular-8.otf");
+    font-display: swap;
 }
 
 #t {
@@ -32,7 +33,7 @@ button {
 }
 
 #equ,
-.equ {
+.equ, .ivt {
     background-color: black !important;
     border: none !important;
     color: white !important;
@@ -124,11 +125,6 @@ pre {
     height: auto !important;
     width: auto !important;
     border-radius: 0 !important;
-}
-
-.ivt {
-    background-color: black !important;
-    color: white;
 }
 
 .ppl{
