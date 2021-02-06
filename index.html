@@ -4,17 +4,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="Description" content="Yblui-b" />
-        <meta name="theme-color" content="black" />
         <link rel="stylesheet" href="style.css" />
         <link rel="shortcut icon" href="favicon.ico" />
         <title>Yblui-b - YBLUI.github.io</title>
     </head>
     <body onkeyup="ike(event)">
         <span class="b sld" id="sci">科学型</span><span class="b" id="pro">程序员</span><br />
-        <input type="text" name="t" id="t" />
+        <label>
+            <input type="text" name="t" id="t" />
         <span id="mxs"></span>
         <br />
         <p id="prv"></p>
+        </label>
         <pre id="pre">
             <code>
 <span id="bis"><span id="bi1" onclick="cgebi('1')">0</span><span id="bi2" onclick="cgebi('2')">0</span><span id="bi3" onclick="cgebi('3')">0</span><span id="bi4" onclick="cgebi('4')">0</span> <span id="bi5" onclick="cgebi('5')">0</span><span id="bi6" onclick="cgebi('6')">0</span><span id="bi7" onclick="cgebi('7')">0</span><span id="bi8" onclick="cgebi('8')">0</span> <span id="bi9" onclick="cgebi('9')">0</span><span id="bi10" onclick="cgebi('10')">0</span><span id="bi11" onclick="cgebi('11')">0</span><span id="bi12" onclick="cgebi('12')">0</span> <span id="bi13" onclick="cgebi('13')">0</span><span id="bi14" onclick="cgebi('14')">0</span><span id="bi15" onclick="cgebi('15')">0</span><span id="bi16" onclick="cgebi('16')">0</span> <span id="bi17" onclick="cgebi('17')">0</span><span id="bi18" onclick="cgebi('18')">0</span><span id="bi19" onclick="cgebi('19')">0</span><span id="bi20" onclick="cgebi('20')">0</span> <span id="bi21" onclick="cgebi('21')">0</span><span id="bi22" onclick="cgebi('22')">0</span><span id="bi23" onclick="cgebi('23')">0</span><span id="bi24" onclick="cgebi('24')">0</span> <span id="bi25" onclick="cgebi('25')">0</span><span id="bi26" onclick="cgebi('26')">0</span><span id="bi27" onclick="cgebi('27')">0</span><span id="bi28" onclick="cgebi('28')">0</span> <span id="bi29" onclick="cgebi('29')">0</span><span id="bi30" onclick="cgebi('30')">0</span><span id="bi31" onclick="cgebi('31')">0</span><span id="bi32" onclick="cgebi('32')">0</span></span>
@@ -80,7 +81,7 @@
         <input type="button" class="pr" value="And" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="0" id="s0" onclick="calCulate('0')" />
-        <input type="button" value="." onclick="calCulate('.')" />
+        <input type="button" id="dot" value="." onclick="calCulate(this.value)" />
         <input type="button" id="equ" value="=" onclick="calCulate('=')" />
         <input type="button" value="+" onclick="calCulate('+')" />
         <input type="button" class="gj" value="(" onclick="calCulate(this.value)" />
