@@ -5,10 +5,9 @@
 }
 
 #t {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 30pt;
-    width: 412px;
+    width: 360px;
     outline: none;
     border: none;
     text-align: right;
@@ -21,14 +20,14 @@
 
 input[type="button"],
 button {
-    width: 100px;
+    width: 90px;
     background-color: transparent;
     border: solid 1px gray;
     outline: none;
-    height: 100px;
-    font-size: 30pt;
+    height: 90px;
+    font-size: 27pt;
     margin: 2px;
-    border-radius: 9px;
+    border-radius: 16%;
     font-family: Montserrat, sans-serif;
 }
 
@@ -81,7 +80,7 @@ hr {
 }
 
 p {
-    font-size: 20pt;
+    font-size: 18pt;
     margin: 9px;
     font-family: Montserrat, sans-serif;
 }
@@ -98,13 +97,16 @@ p[onclick]:hover {
 }
 
 .sld {
-    border-bottom: solid 9px black;
-    border-radius: 9px;
+    border-bottom: solid 3px black;
 }
 
 .b {
-    margin: 0 9px;
+    padding: 9px 30px;
     font-family: Montserrat, sans-serif;
+}
+
+.b:not(.sld):hover{
+    background-color: lightgray;
 }
 
 pre code span {
@@ -128,6 +130,6 @@ pre {
 }
 
 .ppl{
-    display:none;
+    display: none;
     visibility: hidden;
 }
