@@ -5,16 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="Description" content="Yblui-b" />
         <link rel="stylesheet" href="style.css" />
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="favicon.png" />
+        <link rel="apple-touch-icon" href="favicon.png" />
         <title>Yblui-b - YBLUI.github.io</title>
     </head>
     <body onkeyup="ike(event)">
-        <span class="b sld" id="sci">科学型</span><span class="b" id="pro">程序员</span><br />
+        <span class="b sld" id="sci" ondblclick="if(!this.classList.contains('sld'))chsld()">科学型</span><span class="b"
+            id="pro" ondblclick="if(!this.classList.contains('sld'))chsld()">程序员</span><br />
         <label>
             <input type="text" name="t" id="t" />
-        <span id="mxs"></span>
-        <br />
-        <p id="prv"></p>
+            <span id="mxs"></span>
+            <br />
+            <p id="prv"></p>
         </label>
         <pre id="pre">
             <code>
@@ -29,13 +31,13 @@
         <input type="button" value="M+" onclick="calCulate('M+')" />
         <input type="button" value="M-" onclick="calCulate('M-')" />
         <br />
-        <input type="button" value="a" class="ppl" id="sa" onclick="calCulate(this.value)"/>
-        <input type="button" value="b" class="ppl" id="sb" onclick="calCulate(this.value)"/>
-        <input type="button" value="c" class="ppl" id="sc" onclick="calCulate(this.value)"/>
-        <input type="button" value="d" class="ppl" id="sd" onclick="calCulate(this.value)"/>
-        <input type="button" value="e" class="ppl" id="se" onclick="calCulate(this.value)"/>
-        <input type="button" value="f" class="ppl" id="sf" onclick="calCulate(this.value)"/>
-        <br class="ppl"/>
+        <input type="button" value="a" class="ppl" id="sa" onclick="calCulate(this.value)" />
+        <input type="button" value="b" class="ppl" id="sb" onclick="calCulate(this.value)" />
+        <input type="button" value="c" class="ppl" id="sc" onclick="calCulate(this.value)" />
+        <input type="button" value="d" class="ppl" id="sd" onclick="calCulate(this.value)" />
+        <input type="button" value="e" class="ppl" id="se" onclick="calCulate(this.value)" />
+        <input type="button" value="f" class="ppl" id="sf" onclick="calCulate(this.value)" />
+        <br class="ppl" />
         <input type="button" value="AC" onclick="calCulate('AC')" />
         <input type="button" value="<" onclick="calCulate('<')" />
         <input type="button" value="%" onclick="calCulate('%')" />

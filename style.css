@@ -20,11 +20,11 @@
 
 input[type="button"],
 button {
-    width: 90px;
+    width: 83px;
     background-color: transparent;
     border: solid 1px gray;
     outline: none;
-    height: 90px;
+    height: 83px;
     font-size: 27pt;
     margin: 2px;
     border-radius: 16%;
