@@ -107,38 +107,7 @@ function ike(event) {
             }
             break;
         case 32:
-            if (document.getElementById("sci").classList.contains("sld")) {
-                document.getElementById("sci").classList.remove("sld");
-                document.getElementById("pro").classList.add("sld");
-                document.getElementById("pre").style.display = "block";
-                document.getElementById("dot").value = "Mod";
-                prg = true;
-                for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-                    document.getElementsByClassName("ppl")[i].style.display = "inline";
-                }
-            } else {
-                document.getElementById("pro").classList.remove("sld");
-                document.getElementById("sci").classList.add("sld");
-                if (document.getElementById("hex").classList.contains("ivt")) {
-                    num.value = parseInt(num.value, 16);
-                } else if (document.getElementById("oct").classList.contains("ivt")) {
-                    num.value = parseInt(num.value, 8);
-                } else if (document.getElementById("bin").classList.contains("ivt")) {
-                    num.value = parseInt(num.value, 2);
-                }
-                document.getElementById("pre").style.display = "none";
-                document.getElementById("dot").value = ".";
-                prg = false;
-                for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-                    document.getElementsByClassName("ppl")[i].style.display = "none";
-                }
-                for (i = 0; i < 8; i++) {
-                    document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.visibility =
-                        "visible";
-                }
-            }
-            calCulate(">");
-            calCulate(">");
+            chsld()
             break;
     }
     try {
@@ -149,6 +118,41 @@ function ike(event) {
     } catch (err) {
         document.getElementById("prv").innerHTML = "错误";
     }
+}
+
+function chsld() {
+    if (document.getElementById("sci").classList.contains("sld")) {
+        document.getElementById("sci").classList.remove("sld");
+        document.getElementById("pro").classList.add("sld");
+        document.getElementById("pre").style.display = "block";
+        document.getElementById("dot").value = "Mod";
+        prg = true;
+        for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
+            document.getElementsByClassName("ppl")[i].style.display = "inline";
+        }
+    } else {
+        document.getElementById("pro").classList.remove("sld");
+        document.getElementById("sci").classList.add("sld");
+        if (document.getElementById("hex").classList.contains("ivt")) {
+            num.value = parseInt(num.value, 16);
+        } else if (document.getElementById("oct").classList.contains("ivt")) {
+            num.value = parseInt(num.value, 8);
+        } else if (document.getElementById("bin").classList.contains("ivt")) {
+            num.value = parseInt(num.value, 2);
+        }
+        document.getElementById("pre").style.display = "none";
+        document.getElementById("dot").value = ".";
+        prg = false;
+        for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
+            document.getElementsByClassName("ppl")[i].style.display = "none";
+        }
+        for (i = 0; i < 8; i++) {
+            document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.visibility =
+                "visible";
+        }
+    }
+    calCulate(">");
+    calCulate(">");
 }
 
 function frac(frv) {
@@ -175,7 +179,7 @@ function epow(epv) {
 }
 
 function degrees(dgv) {
-    dgv = dgv.toString()
+    dgv = dgv.toString();
     if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 1) {
         dgv = dgv + "000";
     } else if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 3) {
@@ -212,17 +216,17 @@ function his() {
     if (hex) {
         hex = false;
         document.getElementById("hsp").innerHTML = "";
-        document.getElementById("hip").classList.remove("ivt")
+        document.getElementById("hip").classList.remove("ivt");
     } else {
         hex = true;
-        hst = hst.split(";").slice(0, hst.split(";").length - 1)
+        hst = hst.split(";").slice(0, hst.split(";").length - 1);
         for (var i = 0; i < hst.length; i++) {
             document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML +
                 "<p onclick='document.getElementById(`t`).value=`" + hst[i] + "`.split(`=`)[1];dyh(false)'>" + hst[i] +
                 "</p><hr />";
         }
-        hst = hst.join(";") + ";"
-        document.getElementById("hip").classList.add("ivt")
+        hst = hst.join(";") + ";";
+        document.getElementById("hip").classList.add("ivt");
     }
 }
 
@@ -249,7 +253,7 @@ function dyh(typ) {
     calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(")
         .replace(/\÷√\(/g, "÷Math.sqrt(");
     calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|").replace(/Lsh/g, "<<").replace(
-        /Rsh/g, ">>>")
+        /Rsh/g, ">>>");
     calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
         /\÷/g, "@÷@").split("@");
     if (calcval[0] == "√") {
@@ -272,22 +276,97 @@ function dyh(typ) {
     if (typ) {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 16).toString());
+                var spl = calcval.split(/[^0-9abcdef]+/g);
+                var fuh = calcval.split(/[0-9abcdef]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 16)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 num.value = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 8).toString());
+                var spl = calcval.split(/[^01234567]+/g);
+                var fuh = calcval.split(/[01234567]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 8)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 num.value = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 2).toString());
+                var spl = calcval.split(/[^01]+/g);
+                var fuh = calcval.split(/[01]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 2)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 num.value = eval(calcval).toString(2);
             } else {
                 num.value = eval(calcval);
@@ -297,25 +376,99 @@ function dyh(typ) {
         }
         hst += eval(calcval) + ";";
     } else {
-        document.getElementById("prv").innerHTML = eval(calcval);
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 16).toString());
+                var spl = calcval.split(/[^0-9abcdef]+/g);
+                var fuh = calcval.split(/[0-9abcdef]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 16)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 8).toString());
+                var spl = calcval.split(/[^01234567]+/g);
+                var fuh = calcval.split(/[01234567]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 8)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                var spl = calcval.split(/[\+\-\*\/\(\)]/g);
-                for (var tpl in spl) {
-                    calcval = calcval.replace(spl[tpl], parseInt(spl[tpl], 2).toString());
+                var spl = calcval.split(/[^01]+/g);
+                var fuh = calcval.split(/[01]+/g);
+                var tpl = 0
+                while (tpl <= spl.length - 1) {
+                    if (!spl[tpl]) {
+                        spl.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
                 }
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    if (!fuh[tpl]) {
+                        fuh.splice(tpl, 1);
+                        tpl--
+                    }
+                    tpl++
+                }
+                tpl = 0
+                for (var tpl in spl) {
+                    spl[tpl] = parseInt(spl[tpl], 2)
+                }
+                calcval = ""
+                tpl = 0
+                while (tpl <= fuh.length - 1) {
+                    calcval = calcval + spl[tpl] + fuh[tpl]
+                    tpl++
+                }
+                calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(2);
             } else {
                 document.getElementById("prv").innerText = eval(calcval);
@@ -351,6 +504,8 @@ function dyh(typ) {
             for (var i = 0; i <= 31; i++) {
                 document.getElementById("bi" + (i + 1)).innerText = tbi[i];
             }
+        } else {
+            document.getElementById("prv").innerHTML = eval(calcval);
         }
     }
 }
@@ -640,7 +795,7 @@ function ch(cjz) {
                     .style.visibility = "visible";
             }
         } else if (cjz == "oct") {
-            dyh(true)
+            dyh(true);
             if (document.getElementById("hex").classList.contains("ivt")) {
                 num.value = Number(parseInt(num.value, 16)).toString(8);
             } else if (document.getElementById("dec").classList.contains("ivt")) {
@@ -659,7 +814,7 @@ function ch(cjz) {
                 document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else {
-            dyh(true)
+            dyh(true);
             if (document.getElementById("hex").classList.contains("ivt")) {
                 num.value = Number(parseInt(num.value, 16)).toString(2);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
@@ -694,7 +849,7 @@ function cgebi(civ) {
     } else {
         num.value = parseInt(document.getElementById("bis").innerText.replace(/\s/g, ""), 2);
         if (document.getElementById("bis").innerText.replace(/\s/g, "")[0] == "1") {
-            var tbi = document.getElementById("bis").innerText.replace(/\s/g, "")
+            var tbi = document.getElementById("bis").innerText.replace(/\s/g, "");
             tbi = (parseInt(tbi, 2) - 1).toString(2);
             tbi = tbi.replace("1", "-");
             tbi = tbi.split("");
