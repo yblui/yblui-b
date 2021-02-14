@@ -27,15 +27,6 @@ function ike(event) {
         case 99:
         case 52:
         case 100:
-            calCulate(event.key);
-            break;
-        case 53:
-            if (event.shiftKey) {
-                calCulate("%");
-            } else {
-                calCulate("5");
-            }
-            break;
         case 101:
         case 54:
         case 102:
@@ -44,6 +35,13 @@ function ike(event) {
         case 56:
         case 104:
             calCulate(event.key);
+            break;
+        case 53:
+            if (event.shiftKey) {
+                calCulate("%");
+            } else {
+                calCulate("5");
+            }
             break;
         case 57:
             if (event.shiftKey) {
@@ -107,7 +105,7 @@ function ike(event) {
             }
             break;
         case 32:
-            chsld()
+            chsld();
             break;
     }
     try {
@@ -124,6 +122,13 @@ function chsld() {
     if (document.getElementById("sci").classList.contains("sld")) {
         document.getElementById("sci").classList.remove("sld");
         document.getElementById("pro").classList.add("sld");
+        if (document.getElementById("hex").classList.contains("ivt")) {
+            num.value = Number(num.value).toString(16);
+        } else if (document.getElementById("oct").classList.contains("ivt")) {
+            num.value = Number(num.value).toString(8);
+        } else if (document.getElementById("bin").classList.contains("ivt")) {
+            num.value = Number(num.value).toString(2);
+        }
         document.getElementById("pre").style.display = "block";
         document.getElementById("dot").value = "Mod";
         prg = true;
@@ -282,29 +287,32 @@ function dyh(typ) {
                 while (tpl <= spl.length - 1) {
                     if (!spl[tpl]) {
                         spl.splice(tpl, 1);
-                        tpl--
+                        tpl--;
                     }
-                    tpl++
+                    tpl++;
                 }
-                tpl = 0
+                tpl = 0;
                 while (tpl <= fuh.length - 1) {
                     if (!fuh[tpl]) {
                         fuh.splice(tpl, 1);
-                        tpl--
+                        tpl--;
                     }
-                    tpl++
+                    tpl++;
                 }
-                tpl = 0
+                tpl = 0;
                 for (var tpl in spl) {
                     spl[tpl] = parseInt(spl[tpl], 16)
                 }
-                calcval = ""
-                tpl = 0
+                calcval = "";
+                tpl = 0;
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 num.value = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
                 var spl = calcval.split(/[^01234567]+/g);
@@ -331,11 +339,14 @@ function dyh(typ) {
                 }
                 calcval = ""
                 tpl = 0
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 num.value = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
                 var spl = calcval.split(/[^01]+/g);
@@ -362,11 +373,14 @@ function dyh(typ) {
                 }
                 calcval = ""
                 tpl = 0
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 num.value = eval(calcval).toString(2);
             } else {
                 num.value = eval(calcval);
@@ -402,11 +416,14 @@ function dyh(typ) {
                 }
                 calcval = ""
                 tpl = 0
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
                 var spl = calcval.split(/[^01234567]+/g);
@@ -433,11 +450,14 @@ function dyh(typ) {
                 }
                 calcval = ""
                 tpl = 0
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
                 var spl = calcval.split(/[^01]+/g);
@@ -464,11 +484,14 @@ function dyh(typ) {
                 }
                 calcval = ""
                 tpl = 0
+                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
+                    spl.splice(0, 0, "")
+                }
                 while (tpl <= fuh.length - 1) {
                     calcval = calcval + spl[tpl] + fuh[tpl]
                     tpl++
                 }
-                calcval += spl[tpl]
+                if (spl[tpl]) calcval += spl[tpl]
                 document.getElementById("prv").innerText = eval(calcval).toString(2);
             } else {
                 document.getElementById("prv").innerText = eval(calcval);
