@@ -77,10 +77,10 @@ function ike(event) {
             break;
         case 187:
         case 13:
-        if(document.getElementById("tjx").classList.contains("sld")){
-            calCulate("Add")
-        } else {
-            calCulate("=");
+            if (document.getElementById("tjx").classList.contains("sld")) {
+                calCulate("Add")
+            } else {
+                calCulate("=");
             }
             break;
         case 8:
@@ -135,6 +135,7 @@ function chsld() {
             document.getElementsByClassName("ppl")[i].style.display = "inline";
         }
         document.getElementById("equ").value = "=";
+        document.getElementById("tjb").style.display = "none"
     } else if (document.getElementById("pro").classList.contains("sld")) {
         document.getElementById("pro").classList.remove("sld");
         document.getElementById("sci").classList.remove("sld");
@@ -157,11 +158,13 @@ function chsld() {
                 "visible";
         }
         document.getElementById("equ").value = "Add";
+        document.getElementById("tjb").style.display = "inline"
     } else {
         document.getElementById("sci").classList.add("sld");
         document.getElementById("pro").classList.remove("sld");
         document.getElementById("tjx").classList.remove("sld");
         document.getElementById("equ").value = "=";
+        document.getElementById("tjb").style.display = "none"
     }
     calCulate(">");
     calCulate(">");
@@ -784,7 +787,7 @@ function calCulate(val) {
         case "∑x":
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
-                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])
                 }
             }
@@ -793,7 +796,7 @@ function calCulate(val) {
         case "∑x^2":
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
-                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2
                 }
             }
@@ -802,8 +805,9 @@ function calCulate(val) {
         case "x":
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
-                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])/(document.getElementById("tjb").innerHTML.split("<hr>").length-1)
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) / (document.getElementById(
+                        "tjb").innerHTML.split("<hr>").length - 1)
                 }
             }
             num.value = sxm;
@@ -811,11 +815,28 @@ function calCulate(val) {
         case "x^2":
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
-                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])**2/(document.getElementById("tjb").innerHTML.split("<hr>").length-1)
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2 / (document.getElementById(
+                        "tjb").innerHTML.split("<hr>").length - 1)
                 }
             }
             num.value = sxm;
+            break;
+        case "σn":
+            var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
+                }
+            }
+            var sxn = 0
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxn = sxn + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
+                }
+            }
+            num.value = Math.sqrt(sxm / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
+                (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) ** 2);
             break;
         default:
             num.value = num.value + val;
