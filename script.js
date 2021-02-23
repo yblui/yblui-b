@@ -77,7 +77,11 @@ function ike(event) {
             break;
         case 187:
         case 13:
+        if(document.getElementById("tjx").classList.contains("sld")){
+            calCulate("Add")
+        } else {
             calCulate("=");
+            }
             break;
         case 8:
             calCulate("<");
@@ -494,7 +498,7 @@ function dyh(typ) {
                     calcval = calcval + spl[tpl] + fuh[tpl];
                     tpl++;
                 }
-                if (spl[tpl]){
+                if (spl[tpl]) {
                     calcval += spl[tpl];
                 }
                 document.getElementById("prv").innerText = eval(calcval).toString(2);
@@ -549,14 +553,19 @@ function calCulate(val) {
         case ">":
             if (prg) {
                 var geb = "pr";
-            } else {
+            } else if (document.getElementById("sci").classList.contains("sld")) {
                 var geb = "gj";
+            } else {
+                var geb = "tj";
             }
             for (i = 0; i < document.getElementsByClassName("pr").length; i++) {
                 document.getElementsByClassName("pr")[i].style.display = "none";
             }
             for (i = 0; i < document.getElementsByClassName("gj").length; i++) {
                 document.getElementsByClassName("gj")[i].style.display = "none";
+            }
+            for (i = 0; i < document.getElementsByClassName("tj").length; i++) {
+                document.getElementsByClassName("tj")[i].style.display = "none";
             }
             for (i = 0; i < document.getElementsByClassName(geb).length; i++) {
                 if (!mhd) {
@@ -769,6 +778,45 @@ function calCulate(val) {
         case "Not":
             num.value = ~Number(num.value)
             break;
+        case "Add":
+            document.getElementById("tjb").innerHTML += (num.value + "<hr />");
+            break;
+        case "∑x":
+            var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])
+                }
+            }
+            num.value = sxm;
+            break;
+        case "∑x^2":
+            var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2
+                }
+            }
+            num.value = sxm;
+            break;
+        case "x":
+            var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])/(document.getElementById("tjb").innerHTML.split("<hr>").length-1)
+                }
+            }
+            num.value = sxm;
+            break;
+        case "x^2":
+            var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]!=""){
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])**2/(document.getElementById("tjb").innerHTML.split("<hr>").length-1)
+                }
+            }
+            num.value = sxm;
+            break;
         default:
             num.value = num.value + val;
             jgl = false;
@@ -807,7 +855,7 @@ function ch(cjz) {
             }
         } else if (cjz == "hex") {
             dyh(true);
-            num.value=parseInt(document.getElementById("pre").innerText.replace(/\s/g,""),2).toString(16)
+            num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(16)
             document.getElementById("hex").classList.add("ivt");
             document.getElementById("dec").classList.remove("ivt");
             document.getElementById("oct").classList.remove("ivt");
@@ -818,7 +866,7 @@ function ch(cjz) {
             }
         } else if (cjz == "oct") {
             dyh(true);
-            num.value=parseInt(document.getElementById("pre").innerText.replace(/\s/g,""),2).toString(8)
+            num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(8)
             document.getElementById("oct").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
             document.getElementById("dec").classList.remove("ivt");
@@ -829,9 +877,9 @@ function ch(cjz) {
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
                 document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
-        } else if(cjz=="bin"){
+        } else if (cjz == "bin") {
             dyh(true);
-            num.value=parseInt(document.getElementById("pre").innerText.replace(/\s/g,""),2).toString(2)
+            num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(2)
             document.getElementById("bin").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
             document.getElementById("oct").classList.remove("ivt");
@@ -840,24 +888,24 @@ function ch(cjz) {
                 document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
                     .style.visibility = "hidden";
             }
-        } else if(cjz=="b1"){
+        } else if (cjz == "b1") {
             document.getElementById("b1").classList.add("ivt");
             document.getElementById("b2").classList.remove("ivt");
             document.getElementById("b3").classList.remove("ivt");
-            document.getElementById("fb").style.visibility="visible";
-            document.getElementById("fb2").style.visibility="visible";
-        } else if(cjz=="b2"){
+            document.getElementById("fb").style.visibility = "visible";
+            document.getElementById("fb2").style.visibility = "visible";
+        } else if (cjz == "b2") {
             document.getElementById("b2").classList.add("ivt");
             document.getElementById("b1").classList.remove("ivt");
             document.getElementById("b3").classList.remove("ivt");
-            document.getElementById("fb").style.visibility="hidden";
-            document.getElementById("fb2").style.visibility="visible";
+            document.getElementById("fb").style.visibility = "hidden";
+            document.getElementById("fb2").style.visibility = "visible";
         } else {
             document.getElementById("b3").classList.add("ivt");
             document.getElementById("b2").classList.remove("ivt");
             document.getElementById("b1").classList.remove("ivt");
-            document.getElementById("fb").style.visibility="hidden";
-            document.getElementById("fb2").style.visibility="hidden";
+            document.getElementById("fb").style.visibility = "hidden";
+            document.getElementById("fb2").style.visibility = "hidden";
         }
     }
 }
