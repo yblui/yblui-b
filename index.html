@@ -10,8 +10,12 @@
         <title>Yblui-b - YBLUI.github.io</title>
     </head>
     <body onkeyup="ike(event)">
+        <div id="mde">
         <span class="b sld" id="sci" ondblclick="if(!this.classList.contains('sld')) chsld()">科学型</span><span class="b"
-            id="pro" ondblclick="if(!this.classList.contains('sld')) chsld()">程序员</span><br />
+            id="pro" ondblclick="if(!this.classList.contains('sld')) chsld()">程序员</span><span class="b"
+            id="tjx" ondblclick="if(!this.classList.contains('sld')) chsld()">统计信息</span>
+        </div>
+        <p id="tjb"></p>
         <label>
             <input type="text" name="t" id="t"/>
             <span id="mxs"></span>
@@ -49,6 +53,8 @@
         <input type="button" class="gj" value="sin" id="sinb" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="RoL" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="RoR" onclick="calCulate(this.value)" />
+        <input type="button" class="tj" value="F-E" onclick="calCulate(this.value)"/>
+        <input type="button" class="tj" value="Exp" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="7" id="s7" onclick="calCulate('7')" />
         <input type="button" value="8" id="s8" onclick="calCulate('8')" />
@@ -60,6 +66,8 @@
         <input type="button" class="gj" value="Inv" id="inb" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Or" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Xor" onclick="calCulate(this.value)" />
+        <input type="button" class="tj" value="x" onclick="calCulate(this.value)" style="text-decoration: overline;"/>
+        <input type="button" class="tj" value="x^2" onclick="calCulate(this.value)" style="text-decoration: overline;"/>
         <br />
         <input type="button" value="4" id="s4" onclick="calCulate('4')" />
         <input type="button" value="5" id="s5" onclick="calCulate('5')" />
@@ -71,6 +79,8 @@
         <input type="button" class="gj" value="Exp" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Lsh" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Rsh" onclick="calCulate(this.value)" />
+        <input type="button" class="tj" value="∑x" onclick="calCulate(this.value)"/>
+        <input type="button" class="tj" value="∑x^2" onclick="calCulate(this.value)"/>
         <br />
         <input type="button" value="1" id="s1" onclick="calCulate('1')" />
         <input type="button" value="2" id="s2" onclick="calCulate('2')" />
@@ -82,10 +92,12 @@
         <input type="button" class="gj" value="F-E" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Not" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="And" onclick="calCulate(this.value)" />
+        <input type="button" class="tj" value="σn" onclick="calCulate(this.value)"/>
+        <input type="button" class="tj" value="σn-1" onclick="calCulate(this.value)"/>
         <br />
         <input type="button" value="0" id="s0" onclick="calCulate('0')" />
         <input type="button" id="dot" value="." onclick="calCulate(this.value)" />
-        <input type="button" id="equ" value="=" onclick="calCulate('=')" />
+        <input type="button" id="equ" value="=" onclick="calCulate(this.value)" />
         <input type="button" value="+" onclick="calCulate('+')" />
         <input type="button" class="gj" value="(" onclick="calCulate(this.value)" />
         <input type="button" class="gj" value=")" onclick="calCulate(this.value)" />
