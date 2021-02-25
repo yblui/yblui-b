@@ -50,7 +50,7 @@ button:hover {
     color: white;
 }
 
-.gj, .pr {
+.gj, .pr,.tj {
     display: none;
 }
 
@@ -90,7 +90,7 @@ p[onclick]:hover {
     background-color: #ccc;
 }
 
-#prv {
+#prv,#tle {
     text-align: right;
     opacity: 0.5;
     font-size: 20pt;
@@ -105,8 +105,9 @@ p[onclick]:hover {
     font-family: Montserrat, sans-serif;
 }
 
-.b:not(.sld):hover{
+#mde:hover{
     background-color: lightgray;
+    border-radius: 6px;
 }
 
 pre code span {
@@ -132,4 +133,8 @@ pre {
 .ppl{
     display: none;
     visibility: hidden;
+}
+
+#tjb{
+    display: none;
 }

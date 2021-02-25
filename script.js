@@ -773,13 +773,13 @@ function calCulate(val) {
             }
             break;
         case "RoL":
-            num.value = Number(num.value) << 1
+            num.value = Number(num.value) << 1;
             break;
         case "RoR":
-            num.value = Number(num.value) >>> 1
+            num.value = Number(num.value) >>> 1;
             break;
         case "Not":
-            num.value = ~Number(num.value)
+            num.value = ~Number(num.value);
             break;
         case "Add":
             document.getElementById("tjb").innerHTML += (num.value + "<hr />");
@@ -788,7 +788,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi])
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
                 }
             }
             num.value = sxm;
@@ -797,7 +797,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
                 }
             }
             num.value = sxm;
@@ -807,7 +807,7 @@ function calCulate(val) {
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) / (document.getElementById(
-                        "tjb").innerHTML.split("<hr>").length - 1)
+                        "tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -817,7 +817,7 @@ function calCulate(val) {
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2 / (document.getElementById(
-                        "tjb").innerHTML.split("<hr>").length - 1)
+                        "tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -829,7 +829,7 @@ function calCulate(val) {
                     sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
                 }
             }
-            var sxn = 0
+            var sxn = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxn = sxn + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
@@ -838,6 +838,9 @@ function calCulate(val) {
             num.value = Math.sqrt(sxm / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
                 (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) ** 2);
             break;
+	case "σn-1":
+	    
+	    break;
         default:
             num.value = num.value + val;
             jgl = false;
@@ -962,3 +965,4 @@ function cgebi(civ) {
         }
     }
 }
+
