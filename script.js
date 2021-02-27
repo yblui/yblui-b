@@ -136,6 +136,12 @@ function chsld() {
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none"
+	document.getElementById("pec").value="%"
+	document.getElementById("tjb").style.display = "none"
+        document.getElementById("tle").style.display = "none"
+	document.getElementById("cng").style.visibility="visible"
+	document.getElementById("cus").style.visibility="visible"
+	document.getElementById("prv").style.display = "block"
     } else if (document.getElementById("pro").classList.contains("sld")) {
         document.getElementById("pro").classList.remove("sld");
         document.getElementById("sci").classList.remove("sld");
@@ -158,13 +164,25 @@ function chsld() {
                 "visible";
         }
         document.getElementById("equ").value = "Add";
-        document.getElementById("tjb").style.display = "inline"
+	document.getElementById("tjb").style.display = "inline";
+        document.getElementById("tle").style.display = "block";
+        document.getElementById("tjb").style.display = "inline";
+	document.getElementById("pec").value="CAD";
+	document.getElementById("cng").style.visibility="hidden"
+        document.getElementById("cus").style.visibility="hidden"
+	document.getElementById("prv").style.display = "none"
     } else {
         document.getElementById("sci").classList.add("sld");
         document.getElementById("pro").classList.remove("sld");
         document.getElementById("tjx").classList.remove("sld");
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none"
+	document.getElementById("pec").value="%"
+        document.getElementById("tjb").style.display = "none"
+        document.getElementById("tle").style.display = "none"
+	document.getElementById("cng").style.visibility="visible"
+        document.getElementById("cus").style.visibility="visible"
+	document.getElementById("prv").style.display = "block"
     }
     calCulate(">");
     calCulate(">");
@@ -783,6 +801,7 @@ function calCulate(val) {
             break;
         case "Add":
             document.getElementById("tjb").innerHTML += (num.value + "<hr />");
+            document.getElementById("tle").innerHTML="计数="+(document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
             break;
         case "∑x":
             var sxm = 0;
@@ -840,6 +859,9 @@ function calCulate(val) {
             break;
 	case "σn-1":
 	    
+	    break;
+	case "CAD":
+            document.getElementById("tjb").innerHTML="";
 	    break;
         default:
             num.value = num.value + val;
