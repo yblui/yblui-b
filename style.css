@@ -22,12 +22,11 @@ input[type="button"],
 button {
     width: 83px;
     background-color: transparent;
-    border: solid 1px gray;
+    border: solid 2px lightgray;
     outline: none;
     height: 83px;
     font-size: 27pt;
     margin: 2px;
-    border-radius: 16%;
     font-family: Montserrat, sans-serif;
 }
 
@@ -41,8 +40,8 @@ button {
 input[type="button"]:hover,
 button:hover {
     background-color: #ccc;
-    border: none;
     cursor: pointer;
+    border-color:gray;
 }
 
 #t::selection {

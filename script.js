@@ -258,6 +258,7 @@ function his() {
                 "<p onclick='document.getElementById(`t`).value=`" + hst[i] + "`.split(`=`)[1];dyh(false)'>" + hst[i] +
                 "</p><hr />";
         }
+        document.getElementById("hsp").innerHTML=document.getElementById("hsp").innerHTML+"<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>"
         hst = hst.join(";") + ";";
         document.getElementById("hip").classList.add("ivt");
     }
@@ -802,6 +803,7 @@ function calCulate(val) {
         case "Add":
             document.getElementById("tjb").innerHTML += (num.value + "<hr />");
             document.getElementById("tle").innerHTML="计数="+(document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
+	    num.value = "";
             break;
         case "∑x":
             var sxm = 0;
@@ -858,8 +860,21 @@ function calCulate(val) {
                 (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) ** 2);
             break;
 	case "σn-1":
-	    
-	    break;
+	    var sxm = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
+                }
+            }
+            var sxn = 0;
+            for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
+                if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
+                    sxn = sxn + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
+                }
+            }
+            num.value = Math.sqrt(sxm / (document.getElementById("tjb").innerHTML.split("<hr>").length - 2) - (sxn ** 2) /
+                (document.getElementById("tjb").innerHTML.split("<hr>").length - 2) ** 2);
+            break;
 	case "CAD":
             document.getElementById("tjb").innerHTML="";
 	    break;
