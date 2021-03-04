@@ -536,13 +536,6 @@ function dyh(typ) {
             }
             var tbi = "";
             tbi = Number(eval(calcval)).toString(2);
-            if (document.getElementById("hex").classList.contains("ivt")) {
-                tbi = parseInt(eval(calcval), 16).toString(2);
-            } else if (document.getElementById("oct").classList.contains("ivt")) {
-                tbi = parseInt(eval(calcval), 8).toString(2);
-            } else if (document.getElementById("bin").classList.contains("ivt")) {
-                tbi = eval(calcval);
-            }
             if (tbi.length > 32) {
                 num.value = num.value.slice(0, -1);
             }
@@ -884,7 +877,8 @@ function calCulate(val) {
             break;
 	case "CAD":
             document.getElementById("tjb").innerHTML="";
-	    break;
+		    document.getElementById("tle").innerText="计数=0"
+		    break;
         default:
             num.value = num.value + val;
             jgl = false;

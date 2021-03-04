@@ -16,7 +16,7 @@
             id="tjx" ondblclick="if(!this.classList.contains('sld')) chsld()">统计信息</span>
         </div>
         <p id="tjb"></p>
-        <p id="tle"></p>
+        <p id="tle">计数=0</p>
         <label>
             <input type="text" name="t" id="t" disabled="disabled"/>
             <span id="mxs"></span>
@@ -77,7 +77,7 @@
         <input type="button" class="pr" value="Lsh" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Rsh" onclick="calCulate(this.value)" />
         <input type="button" class="tj" value="∑x" onclick="calCulate(this.value)"/>
-        <button class="tj" onclick="calCulate(this.innerText)">∑x<sup>2</sup></button>
+        <button type="button" class="tj" onclick="calCulate(this.innerText)">∑x<sup>2</sup></button>
         <br />
         <input type="button" value="1" id="s1" onclick="calCulate('1')" />
         <input type="button" value="2" id="s2" onclick="calCulate('2')" />
@@ -89,7 +89,7 @@
         <input type="button" class="gj" value="F-E" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="Not" onclick="calCulate(this.value)" />
         <input type="button" class="pr" value="And" onclick="calCulate(this.value)" />
-        <button class="tj" onclick="calCulate(this.innerText)">σ<sub>n</sub></button>
+        <button type="button" class="tj" onclick="calCulate(this.innerText)">σ<sub>n</sub></button>
         <input type="button" class="tj" value="σn-1" onclick="calCulate(this.value)" />
         <br />
         <input type="button" value="0" id="s0" onclick="calCulate('0')" />
