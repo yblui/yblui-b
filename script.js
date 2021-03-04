@@ -105,6 +105,13 @@ function ike(event) {
         case 32:
             chsld();
             break;
+        case 65:
+	case 66:
+	case 67:
+	case 68:
+	case 69:
+	case 70:
+		    calCulate(event.key);
     }
     try {
         dyh(false);
@@ -897,13 +904,7 @@ function ch(cjz) {
     if (prg) {
         if (cjz == "dec") {
             dyh(true);
-            if (document.getElementById("hex").classList.contains("ivt")) {
-                num.value = parseInt(num.value, 16);
-            } else if (document.getElementById("oct").classList.contains("ivt")) {
-                num.value = parseInt(num.value, 8);
-            } else if (document.getElementById("bin").classList.contains("ivt")) {
-                num.value = parseInt(num.value, 2);
-            }
+            num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2);
             document.getElementById("dec").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
             document.getElementById("oct").classList.remove("ivt");
