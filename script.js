@@ -171,9 +171,8 @@ function chsld() {
                 "visible";
         }
         document.getElementById("equ").value = "Add";
-	document.getElementById("tjb").style.display = "inline";
+	document.getElementById("tjb").style.display = "block";
         document.getElementById("tle").style.display = "block";
-        document.getElementById("tjb").style.display = "inline";
 	    document.getElementById("pec").style.visibility="visible"
 	document.getElementById("pec").value="CAD";
 	document.getElementById("cng").style.visibility="hidden"
@@ -801,13 +800,40 @@ function calCulate(val) {
             }
             break;
         case "RoL":
+		    dyh(false)
+		    if(document.getElementById("dec").classList.contains("ivt")){
             num.value = Number(num.value) << 1;
+		    } else if(document.getElementById("hex").classList.contains("ivt")){
+			    num.value=(parseInt(num.value,16)<<1).toString(16)
+		    } else if(document.getElementById("oct").classList.contains("ivt")){
+			    num.value=(parseInt(num.value,8)<<1).toString(8)
+		    } else{
+			    num.value=(parseInt(num.value,2)<<1).toString(2)
+		    }
             break;
         case "RoR":
+             dyh(false)
+                    if(document.getElementById("dec").classList.contains("ivt")){
             num.value = Number(num.value) >>> 1;
+                    } else if(document.getElementById("hex").classList.contains("ivt")){
+                            num.value=(parseInt(num.value,16)>>>1).toString(16)
+                    } else if(document.getElementById("oct").classList.contains("ivt")){
+                            num.value=(parseInt(num.value,8)>>>1).toString(8)
+                    } else{
+                            num.value=(parseInt(num.value,2)>>>1).toString(2)
+                    }
             break;
         case "Not":
+             dyh(false)
+                    if(document.getElementById("dec").classList.contains("ivt")){
             num.value = ~Number(num.value);
+                    } else if(document.getElementById("hex").classList.contains("ivt")){
+                            num.value=(~parseInt(num.value,16)).toString(16)
+                    } else if(document.getElementById("oct").classList.contains("ivt")){
+                            num.value=(~parseInt(num.value,8)).toString(8)
+                    } else{
+                            num.value=(~parseInt(num.value,2)).toString(2)
+                    }
             break;
         case "Add":
             document.getElementById("tjb").innerHTML += ("<span contenteditable='true'>"+num.value + "</span><hr />");
@@ -906,7 +932,7 @@ function calCulate(val) {
 function ch(cjz) {
     if (prg) {
         if (cjz == "dec") {
-            dyh(true);
+            dyh(false);
             num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2);
             document.getElementById("dec").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
@@ -919,7 +945,7 @@ function ch(cjz) {
                 document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else if (cjz == "hex") {
-            dyh(true);
+            dyh(false);
             num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(16)
             document.getElementById("hex").classList.add("ivt");
             document.getElementById("dec").classList.remove("ivt");
@@ -930,7 +956,7 @@ function ch(cjz) {
                     .style.visibility = "visible";
             }
         } else if (cjz == "oct") {
-            dyh(true);
+            dyh(false);
             num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(8)
             document.getElementById("oct").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
@@ -943,7 +969,7 @@ function ch(cjz) {
                 document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else if (cjz == "bin") {
-            dyh(true);
+            dyh(false);
             num.value = parseInt(document.getElementById("pre").innerText.replace(/\s/g, ""), 2).toString(2)
             document.getElementById("bin").classList.add("ivt");
             document.getElementById("hex").classList.remove("ivt");
