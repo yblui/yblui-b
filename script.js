@@ -143,7 +143,7 @@ function chsld() {
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none"
-	document.getElementById("pec").value="%"
+	document.getElementById("pec").style.visibility="hidden"
 	document.getElementById("tjb").style.display = "none"
         document.getElementById("tle").style.display = "none"
 	document.getElementById("cng").style.visibility="visible"
@@ -174,6 +174,7 @@ function chsld() {
 	document.getElementById("tjb").style.display = "inline";
         document.getElementById("tle").style.display = "block";
         document.getElementById("tjb").style.display = "inline";
+	    document.getElementById("pec").style.visibility="visible"
 	document.getElementById("pec").value="CAD";
 	document.getElementById("cng").style.visibility="hidden"
         document.getElementById("cus").style.visibility="hidden"
@@ -184,6 +185,7 @@ function chsld() {
         document.getElementById("tjx").classList.remove("sld");
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none"
+        document.getElementById("pec").style.visibility="visible"
 	document.getElementById("pec").value="%"
         document.getElementById("tjb").style.display = "none"
         document.getElementById("tle").style.display = "none"
@@ -536,16 +538,23 @@ function dyh(typ) {
             }
             var tbi = "";
             tbi = Number(eval(calcval)).toString(2);
-            if (tbi.length > 32) {
+		if(document.getElementById("b1").classList.contains("ivt")){
+			var lsn=32;
+		} else if (document.getElementById("b2").classList.contains("ivt")){
+			var lsn=16
+		} else {
+			var lsn=8;
+		}
+            if (tbi.length > lsn) {
                 num.value = num.value.slice(0, -1);
             }
-            while (tbi.length < 32) {
+            while (tbi.length < lsn) {
                 tbi = "0" + tbi;
             }
             if (tbi.indexOf("-") != -1) {
                 tbi = tbi.replace("-", "0");
                 tbi = tbi.split("");
-                for (var i = 0; i <= 31; i++) {
+                for (var i = 0; i <= (lsn-1); i++) {
                     if (tbi[i] == "0") {
                         tbi[i] = "1";
                     } else {
@@ -553,10 +562,10 @@ function dyh(typ) {
                     }
                 }
                 tbi = tbi.join("");
-                tbi = (parseInt(tbi, 2) + 1).toString(2);
+                tbi = (parseInt(tbi, 2) + 1).toString(2)
             }
-            for (var i = 0; i <= 31; i++) {
-                document.getElementById("bi" + (i + 1)).innerText = tbi[i];
+            for (var i = (32-lsn); i <= 31; i++) {
+		    document.getElementById("bi" + (i + 1)).innerText = tbi[i-(32-lsn)];
             }
         } else {
             document.getElementById("prv").innerHTML = eval(calcval);
@@ -801,7 +810,7 @@ function calCulate(val) {
             num.value = ~Number(num.value);
             break;
         case "Add":
-            document.getElementById("tjb").innerHTML += (num.value + "<hr />");
+            document.getElementById("tjb").innerHTML += ("<span contenteditable='true'>"+num.value + "</span><hr />");
             document.getElementById("tle").innerHTML="计数="+(document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
 	    num.value = "";
             break;
@@ -809,7 +818,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]);
                 }
             }
             num.value = sxm;
@@ -818,7 +827,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]) ** 2;
                 }
             }
             num.value = sxm;
@@ -827,7 +836,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) / (document.getElementById(
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]) / (document.getElementById(
                         "tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
@@ -837,7 +846,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2 / (document.getElementById(
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]) ** 2 / (document.getElementById(
                         "tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
@@ -847,13 +856,13 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]) ** 2;
                 }
             }
             var sxn = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxn = sxn + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
+                    sxn = sxn + Number(document.getElementById("tjb").innerText.split("\n")[sxi]);
                 }
             }
             num.value = Math.sqrt(sxm / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
@@ -863,13 +872,13 @@ function calCulate(val) {
 	    var sxm = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]) ** 2;
+                    sxm = sxm + Number(document.getElementById("tjb").innerText.split("\n")[sxi]) ** 2;
                 }
             }
             var sxn = 0;
             for (var sxi in document.getElementById("tjb").innerHTML.split("<hr>")) {
                 if (document.getElementById("tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxn = sxn + Number(document.getElementById("tjb").innerHTML.split("<hr>")[sxi]);
+                    sxn = sxn + Number(document.getElementById("tjb").innerText.split("\n")[sxi]);
                 }
             }
             num.value = Math.sqrt(sxm / (document.getElementById("tjb").innerHTML.split("<hr>").length - 2) - (sxn ** 2) /
