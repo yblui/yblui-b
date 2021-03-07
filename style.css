@@ -112,7 +112,6 @@ p[onclick]:hover {
 
 #mde:hover{
     background-color: lightgray;
-    border-radius: 6px;
 }
 
 pre code span {
@@ -143,7 +142,8 @@ pre {
 #tjb,#tle{
     display: none;
 }
+
 #tjb,#hsp{
 	max-height:400px;
-	overflow-y:auto
+	overflow-y:auto;
 }

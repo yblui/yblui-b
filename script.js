@@ -801,14 +801,37 @@ function calCulate(val) {
             break;
         case "RoL":
 		    dyh(false)
+		    if(document.getElementById("b1").classList.contains("ivt")){
+			    lsn=32
+		    } else if(document.getElementById("b2").classList.contains("ivt")){
+			    lsn=16
+		    } else {
+			    lsn=8
+		    }
 		    if(document.getElementById("dec").classList.contains("ivt")){
-            num.value = Number(num.value) << 1;
+			    if((Number(num.value) << 1).toString(2).length>lsn){
+            	num.value = parseInt((Number(num.value) << 1).toString(2).slice((Number(num.value) << 1).toString(2).length-lsn,(Number(num.value) << 1).toString(2).length),2);
+			    } else {
+				num.value=(Number(num.value) << 1)
+			    }
 		    } else if(document.getElementById("hex").classList.contains("ivt")){
-			    num.value=(parseInt(num.value,16)<<1).toString(16)
+			    if((parseInt(num.value,16) << 1).toString(2).length>lsn){
+            	num.value = parseInt((parseInt(num.value,16)<<1).toString(2).slice((parseInt(num.value,16) << 1).toString(2).length-lsn,(parseInt(num.value,16) << 1).toString(2).length),2).toString(16);
+			    } else {
+				num.value=(parseInt(num.value,16)<<1).toString(16)
+			    }
 		    } else if(document.getElementById("oct").classList.contains("ivt")){
-			    num.value=(parseInt(num.value,8)<<1).toString(8)
+			    if((parseInt(num.value,8) << 1).toString(2).length>lsn){
+            	num.value = parseInt((parseInt(num.value,8)<<1).toString(2).slice((parseInt(num.value,8) << 1).toString(2).length-lsn,(parseInt(num.value,8) << 1).toString(2).length),2).toString(8);
+			    } else {
+				num.value=(parseInt(num.value,8)<<1).toString(8)
+			    }
 		    } else{
-			    num.value=(parseInt(num.value,2)<<1).toString(2)
+			    if((parseInt(num.value,2) << 1).toString(2).length>lsn){
+            	num.value = parseInt((parseInt(num.value,2)<<1).toString(2).slice((parseInt(num.value,2) << 1).toString(2).length-lsn,(parseInt(num.value,2) << 1).toString(2).length),2).toString(2);
+			    } else {
+				num.value=(parseInt(num.value,2)<<1).toString(2)
+			    }
 		    }
             break;
         case "RoR":
