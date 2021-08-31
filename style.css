@@ -1,9 +1,3 @@
-@font-face {
-    font-family: Montserrat;
-    src: url("https://yblui.github.io/yblui-e/Montserrat-Regular-8.otf");
-    font-display: swap;
-}
-
 #t {
     margin: 10px 0;
     font-size: 30pt;
@@ -15,47 +9,46 @@
     -webkit-user-select: text;
     -ms-user-select: text;
     user-select: text;
-    font-family: Montserrat, sans-serif;
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
     color: black;
 }
 
-input[type="button"],
-button {
+input[type="button"], button {
     width: 83px;
     background-color: transparent;
     border: solid 2px lightgray;
     outline: none;
     height: 83px;
-    font-size: 27pt;
+    font-size: 18pt;
     margin: 2px;
-    font-family: Montserrat, sans-serif;
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
 
-#equ,
-.equ, .ivt {
+#equ, .equ, .ivt {
     background-color: black !important;
     border: none !important;
     color: white !important;
 }
 
-input[type="button"]:hover,
-button:hover {
+input[type="button"]:hover, button:hover {
     background-color: #ccc;
     cursor: pointer;
-    border-color:gray;
-    transition:0.3s
+    border-color: gray;
+    /*transition: 0.3s*/
 }
-input[type="button"]:active,button:active{
-	border-color:black;
-	background-color:gray;
-	transition:0.3s
+
+input[type="button"]:active, button:active {
+    border-color: black;
+    background-color: gray;
+    /*transition: 0.3s*/
 }
+
 #t::selection {
     background-color: black;
     color: white;
 }
 
-.gj, .pr,.tj {
+.gj, .pr, .tj {
     display: none;
 }
 
@@ -76,6 +69,7 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: 0.3s;
 }
 
 hr {
@@ -84,34 +78,42 @@ hr {
     margin: 0;
 }
 
-p {
+#hip, #hsp p {
     font-size: 18pt;
     margin: 9px;
-    font-family: Montserrat, sans-serif;
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
 
-p[onclick]:hover {
+#hip:hover, #hsp p:hover {
     cursor: pointer;
     background-color: #ccc;
 }
 
-#prv,#tle {
+#prv, #tle {
     text-align: right;
     opacity: 0.5;
     font-size: 20pt;
 }
 
 .sld {
-    border-bottom: solid 3px black;
+    border-left: solid 3px #065378;
 }
 
 .b {
     padding: 9px 30px;
-    font-family: Montserrat, sans-serif;
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
+    width: 200px;
 }
 
-#mde:hover{
-    background-color: lightgray;
+#mde {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    text-align: left;
+    overflow-y: auto;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 pre code span {
@@ -134,16 +136,31 @@ pre {
     border-radius: 0 !important;
 }
 
-.ppl{
+.ppl {
     display: none;
     visibility: hidden;
 }
 
-#tjb,#tle{
+#tjb, #tle {
     display: none;
 }
 
-#tjb,#hsp{
-	max-height:400px;
-	overflow-y:auto;
+#tjb, #hsp {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+b {
+    margin: 9px;
+}
+
+#mde p:hover{
+    background: #ccc;
+}
+
+#fri{
+    position:fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
 }
