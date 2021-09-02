@@ -14,11 +14,11 @@
 }
 
 input[type="button"], button {
-    width: 83px;
+    width: calc(100% / 6);
+    height: 83px;
     background-color: transparent;
     border: solid 2px lightgray;
     outline: none;
-    height: 83px;
     font-size: 18pt;
     margin: 2px;
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
@@ -56,8 +56,11 @@ body {
     background-color: #fcfcfc;
     text-align: center;
     margin: auto;
-    width: -moz-fit-content;
-    width: fit-content;
+    width: calc(100% - 600px);
+}
+
+html, body {
+    height: 100%;
 }
 
 #mxs {
@@ -114,6 +117,7 @@ hr {
     overflow-y: auto;
     height: 100%;
     overflow-x: hidden;
+    z-index: 100;
 }
 
 pre code span {
@@ -154,12 +158,12 @@ b {
     margin: 9px;
 }
 
-#mde p:hover{
+#mde p:hover {
     background: #ccc;
 }
 
-#fri{
-    position:fixed;
+#fri {
+    position: fixed;
     top: 0;
     right: 0;
     width: 300px;

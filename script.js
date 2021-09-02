@@ -134,9 +134,9 @@ function chsld() {
         calCulate(">");
         calCulate(">");
     } else {
-        document.getElementById("sci").classList.remove("sld");
-        document.getElementById("pro").classList.remove("sld");
-        document.getElementById("tjx").classList.remove("sld");
+        for(var t=0;t<document.getElementsByClassName("b").length;t++){
+            document.getElementsByClassName("b")[t].classList.remove("sld");
+        }
         arguments[0].classList.add("sld");
     }
     if (document.getElementById("pro").classList.contains("sld")) {
