@@ -51,19 +51,29 @@
 <input type="button" value="双字" class="xjz ivt" onclick="ch('b1');" id="b1"><input type="button" value="字" class="xjz" onclick="ch('b2');" id="b2"><input type="button" value="字节" class="xjz" onclick="ch('b3');" id="b3"></pre>
     <br />
     <div class="hie">
-        <select>
+        <select onchange="rqj(this.selectedIndex);">
             <option>日期之间的相隔时间</option>
             <option>添加或减去天数</option>
         </select>
-        开始日期<input type="date" />
-        结束日期<input type="date" />
-        差值
-        <form>
-            <input type="radio">添加
-            <input type="radio">减去
-        </form>
-        年<input type="text" />月<input type="text" />天<input type="text" />
-        日期
+        <br />
+        开始日期<br />
+        <input type="date" onchange="cck();" id="startDate"/>
+        <div class="jsa">
+            结束日期<br />
+            <input type="date" onchange="cck();" id="endDate"/>
+            差值<br />
+            <span id="czh"></span>
+        </div>
+        <div class="jsa">
+            <form>
+                <input type="radio" onclick="cck();" checked="checked">添加
+                <input type="radio" onclick="cck();">减去
+            </form>
+            年<input type="text" onchange="cck();" value="0" />月<input type="text" onchange="cck();" value="0" />天<input type="text" onchange="cck();" value="0" />
+            <br />
+            日期<br />
+            <span></span>
+        </div>
     </div>
     <div class="hie">
         <span>0</span>

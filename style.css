@@ -14,8 +14,8 @@
 }
 
 input[type="button"], button {
-    width: calc((100% / 6) - 20px);
-    height: 83px;
+    width: calc((100% / 8) - 20px);
+    height: calc((100% / 7) - 20px);
     background-color: transparent;
     border: solid 2px lightgray;
     outline: none;
@@ -47,7 +47,7 @@ input[type="button"]:active, button:active {
     color: white;
 }
 
-.gj, .pr, .tj, .hie, pre, #tjb, #tle, #jyi {
+.gj, .pr, .tj, .hie, pre, #tjb, #tle, #jyi, .jsa:nth-of-type(2) {
     display: none;
 }
 
@@ -165,6 +165,27 @@ b {
     background-color: #ccc;
 }
 
-.set{
-    border-bottom:solid 2px #065378;
+.set {
+    border-bottom: solid 2px #065378;
+}
+
+.hie input[type="date"], .hie select {
+    padding: 3px;
+    outline: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.hie input[type="date"]:hover, .hie select:hover {
+    opacity: 0.7;
+}
+
+.hie input[type="text"] {
+    padding: 3px;
+    outline: 0;
+}
+
+.hie input[type="text"]:focus {
+    border-color: #065378;
 }

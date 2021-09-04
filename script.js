@@ -1057,3 +1057,20 @@ function set(a) {
         document.getElementById("jyi").style.display = "block";
     }
 }
+
+function rqj(a) {
+    document.getElementsByClassName("jsa")[a].style.display = "block";
+    if (a == 0) {
+        document.getElementsByClassName("jsa")[1].style.display = "none";
+    } else {
+        document.getElementsByClassName("jsa")[0].style.display = "none";
+    }
+}
+
+function cck() {
+    if((new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value))>0){
+    document.getElementById("czh").innerText = (new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) / 86400000 + "天";
+    } else{
+        document.getElementById("czh").innerText = -(new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) / 86400000 + "天";
+    }
+}
