@@ -47,7 +47,7 @@ input[type="button"]:active, button:active {
     color: white;
 }
 
-.gj, .pr, .tj, .hie, pre, #tjb, #tle {
+.gj, .pr, .tj, .hie, pre, #tjb, #tle, #jyi {
     display: none;
 }
 
@@ -86,11 +86,6 @@ hr {
     font-size: 18pt;
     margin: 9px;
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
-}
-
-#hip:hover, #hsp p:hover {
-    cursor: pointer;
-    background-color: #ccc;
 }
 
 #prv, #tle {
@@ -159,4 +154,17 @@ b {
     top: 0;
     right: 0;
     width: 300px;
+}
+
+#hip, #jbt {
+    display: inline-block;
+}
+
+#hip:hover, #hsp p:hover, #jbt:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.set{
+    border-bottom:solid 2px #065378;
 }

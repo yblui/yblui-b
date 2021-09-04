@@ -639,6 +639,7 @@ function calCulate(val) {
                 mmm += Number(eval(calcval));
                 ism();
             }
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
             break;
         case "MR":
             num.value += mmm.toString();
@@ -681,10 +682,12 @@ function calCulate(val) {
                 mmm -= Number(eval(calcval));
                 ism();
             }
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
             break;
         case "MC":
             mmm = 0;
             ism();
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
             break;
         case "+":
         case "-":
@@ -1039,5 +1042,18 @@ function cgebi(civ) {
             tbi = tbi.join("");
             num.value = parseInt(tbi, 2);
         }
+    }
+}
+
+function set(a) {
+    a.classList.add("set");
+    if (a.id == "hip") {
+        document.getElementById("jbt").classList.remove("set");
+        document.getElementById("hsp").style.display = "block";
+        document.getElementById("jyi").style.display = "none";
+    } else {
+        document.getElementById("hip").classList.remove("set");
+        document.getElementById("hsp").style.display = "none";
+        document.getElementById("jyi").style.display = "block";
     }
 }
