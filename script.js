@@ -131,8 +131,6 @@ function chsld() {
             document.getElementById("pro").classList.remove("sld");
             document.getElementById("tjx").classList.remove("sld");
         }
-        calCulate(">");
-        calCulate(">");
     } else {
         for (var t = 0; t < document.getElementsByClassName("b").length; t++) {
             document.getElementsByClassName("b")[t].classList.remove("sld");
