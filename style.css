@@ -14,7 +14,7 @@
 }
 
 input[type="button"], button {
-    width: calc(100% / 6);
+    width: calc((100% / 6) - 20px);
     height: 83px;
     background-color: transparent;
     border: solid 2px lightgray;
@@ -22,10 +22,11 @@ input[type="button"], button {
     font-size: 18pt;
     margin: 2px;
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
+    border-radius: 0;
 }
 
 #equ, .equ, .ivt {
-    background-color: black !important;
+    background-color: #065378 !important;
     border: none !important;
     color: white !important;
 }
@@ -34,29 +35,29 @@ input[type="button"]:hover, button:hover {
     background-color: #ccc;
     cursor: pointer;
     border-color: gray;
-    /*transition: 0.3s*/
 }
 
 input[type="button"]:active, button:active {
     border-color: black;
     background-color: gray;
-    /*transition: 0.3s*/
 }
 
 #t::selection {
-    background-color: black;
+    background-color: #065378;
     color: white;
 }
 
-.gj, .pr, .tj {
+.gj, .pr, .tj, .hie, pre, #tjb, #tle {
     display: none;
 }
 
 body {
     background-color: #fcfcfc;
     text-align: center;
-    margin: auto;
-    width: calc(100% - 600px);
+    padding-left: 200px;
+    padding-right: 300px;
+    width: calc(100% - 500px);
+    margin: 0;
 }
 
 html, body {
@@ -81,7 +82,7 @@ hr {
     margin: 0;
 }
 
-#hip, #hsp p {
+#hsp p {
     font-size: 18pt;
     margin: 9px;
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
@@ -129,24 +130,15 @@ pre code span {
     color: gray;
 }
 
-pre {
-    display: none;
-}
-
 .xjz {
     border: none !important;
     height: auto !important;
     width: auto !important;
-    border-radius: 0 !important;
 }
 
 .ppl {
     display: none;
     visibility: hidden;
-}
-
-#tjb, #tle {
-    display: none;
 }
 
 #tjb, #hsp {

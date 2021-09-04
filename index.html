@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
+    <link rel="manifest" href="manifest.json" />
     <title>Yblui-b - YBLUI.github.io</title>
 </head>
 
@@ -15,7 +16,7 @@
     <div id="mde">
         <b>计算器</b>
         <p class="b sld" id="sci" onclick="chsld(this);">科学型</p><p class="b" id="pro"
-            onclick="chsld(this);">程序员</p><p class="b" id="tjx" onclick="chsld(this);">统计信息</p><p class="b" onclick="chsld(this);">日期计算</p>
+            onclick="chsld(this);">程序员</p><p class="b" id="tjx" onclick="chsld(this);">统计信息</p><p class="b" onclick="chsld(this);" id="rq">日期计算</p>
         <b>转换器</b>
         <p onclick="chsld(this);" class="b">货币</p><p onclick="chsld(this);"
             class="b">容量</p><p onclick="chsld(this);" class="b">长度</p><p onclick="chsld(this);"
@@ -39,14 +40,22 @@
 <input type="button" value="十进制" class="xjz ivt" onclick="ch('dec')" id="dec"><input type="button" value="十六进制" class="xjz" onclick="ch('hex')" id="hex"><input type="button" value="八进制" class="xjz" onclick="ch('oct')" id="oct"><input type="button" value="二进制" class="xjz" onclick="ch('bin')" id="bin">
 <input type="button" value="双字" class="xjz ivt" onclick="ch('b1')" id="b1"><input type="button" value="字" class="xjz" onclick="ch('b2')" id="b2"><input type="button" value="字节" class="xjz" onclick="ch('b3')" id="b3"></pre>
     <br />
-    <div>
+    <div class="hie">
         <select>
             <option>日期之间的相隔时间</option>
             <option>添加或减去天数</option>
         </select>
         开始日期<input type="date" />
+        结束日期<input type="date" />
+        差值
+        <form>
+            <input type="radio">添加
+            <input type="radio">减去
+        </form>
+        年<input type="text" />月<input type="text" />天<input type="text" />
+        日期
     </div>
-    <div>
+    <div class="hie">
         <span>0</span>
         <select>
             <option>毫升</option>
@@ -169,8 +178,8 @@
     <input type="button" class="pr" value="(" onclick="calCulate(this.value)" />
     <input type="button" class="pr" value=")" onclick="calCulate(this.value)" />
     <div id="fri">
-        <p onclick="his();" id="hip">历史记录</p>
-        <b>记忆</b>
+        <p id="hip"><b>历史记录</b></p>
+        <p><b>记忆</b></p>
         <p id="hsp"></p>
     </div>
     <script src="script.js"></script>

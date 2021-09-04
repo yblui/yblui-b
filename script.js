@@ -134,7 +134,7 @@ function chsld() {
         calCulate(">");
         calCulate(">");
     } else {
-        for(var t=0;t<document.getElementsByClassName("b").length;t++){
+        for (var t = 0; t < document.getElementsByClassName("b").length; t++) {
             document.getElementsByClassName("b")[t].classList.remove("sld");
         }
         arguments[0].classList.add("sld");
@@ -201,6 +201,19 @@ function chsld() {
         document.getElementById("cus").style.visibility = "visible";
         document.getElementById("prv").style.display = "block";
         document.getElementById("pre").style.display = "none";
+    }
+    for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
+        if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "inline";
+    }
+    if (document.getElementById("rq").classList.contains("sld")) {
+        document.getElementsByClassName("hie")[0].style.display = "block";
+        document.getElementsByClassName("hie")[1].style.display = "none";
+        for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
+            if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "none";
+        }
+    } else if (!document.getElementById("sci").classList.contains("sld") && !document.getElementById("pro").classList.contains("sld") && !document.getElementById("tjx").classList.contains("sld")) {
+        document.getElementsByClassName("hie")[1].style.display = "block";
+        document.getElementsByClassName("hie")[0].style.display = "none";
     }
     calCulate(">");
     calCulate(">");
@@ -309,25 +322,6 @@ function ln(lnv) {
         }
     }
     return (fwa[1] + fwa[0]) / 2;
-}
-
-function his() {
-    if (hex) {
-        hex = false;
-        document.getElementById("hsp").innerHTML = "";
-        document.getElementById("hip").classList.remove("ivt");
-    } else {
-        hex = true;
-        hst = hst.split(";").slice(0, hst.split(";").length - 1);
-        for (var i = 0; i < hst.length; i++) {
-            document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML +
-                "<p onclick='document.getElementById(`t`).value=`" + hst[i] + "`.split(`=`)[1];dyh(false)'>" + hst[i] +
-                "</p><hr />";
-        }
-        document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML + "<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>"
-        hst = hst.join(";") + ";";
-        document.getElementById("hip").classList.add("ivt");
-    }
 }
 
 function ism() {
@@ -562,6 +556,15 @@ function dyh(typ) {
             document.getElementById("prv").innerHTML = eval(calcval);
         }
     }
+    hsp.innerHTML = "";
+    hst = hst.split(";").slice(0, hst.split(";").length - 1);
+    for (var i = 0; i < hst.length; i++) {
+        document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML +
+            "<p onclick='document.getElementById(`t`).value=`" + hst[i] + "`.split(`=`)[1];dyh(false)'>" + hst[i] +
+            "</p><hr />";
+    }
+    document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML + "<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>"
+    hst = hst.join(";") + ";";
 }
 
 function calCulate(val) {
@@ -1040,4 +1043,3 @@ function cgebi(civ) {
         }
     }
 }
-
