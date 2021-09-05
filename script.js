@@ -117,6 +117,9 @@ function ike(event) {
 }
 
 function chsld() {
+    for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
+        if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "inline";
+    }
     if (!arguments[0]) {
         if (document.getElementById("sci").classList.contains("sld")) {
             document.getElementById("sci").classList.remove("sld");
@@ -153,11 +156,11 @@ function chsld() {
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none";
-        document.getElementById("pec").style.visibility = "hidden";
+        document.getElementById("pec").style.display = "none";
         document.getElementById("tjb").style.display = "none";
         document.getElementById("tle").style.display = "none";
-        document.getElementById("cng").style.visibility = "visible";
-        document.getElementById("cus").style.visibility = "visible";
+        document.getElementById("cng").style.display = "inline-block";
+        document.getElementById("cus").style.display = "inline-block";
         document.getElementById("prv").style.display = "block";
     } else if (document.getElementById("tjx").classList.contains("sld")) {
         if (document.getElementById("hex").classList.contains("ivt")) {
@@ -174,16 +177,15 @@ function chsld() {
             document.getElementsByClassName("ppl")[i].style.display = "none";
         }
         for (i = 0; i < 8; i++) {
-            document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.visibility =
-                "visible";
+            document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.display = "inline";
         }
         document.getElementById("equ").value = "Add";
         document.getElementById("tjb").style.display = "block";
         document.getElementById("tle").style.display = "block";
-        document.getElementById("pec").style.visibility = "visible";
+        document.getElementById("pec").style.display = "inline-block";
         document.getElementById("pec").value = "CAD";
-        document.getElementById("cng").style.visibility = "hidden";
-        document.getElementById("cus").style.visibility = "hidden";
+        document.getElementById("cng").style.display = "none";
+        document.getElementById("cus").style.display = "none";
         document.getElementById("prv").style.display = "none";
     } else {
         for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
@@ -191,17 +193,14 @@ function chsld() {
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none";
-        document.getElementById("pec").style.visibility = "visible";
+        document.getElementById("pec").style.display = "inline-block";
         document.getElementById("pec").value = "%";
         document.getElementById("tjb").style.display = "none";
         document.getElementById("tle").style.display = "none";
-        document.getElementById("cng").style.visibility = "visible";
-        document.getElementById("cus").style.visibility = "visible";
+        document.getElementById("cng").style.display = "inline-block";
+        document.getElementById("cus").style.display = "inline-block";
         document.getElementById("prv").style.display = "block";
         document.getElementById("pre").style.display = "none";
-    }
-    for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
-        if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "inline";
     }
     if (document.getElementById("rq").classList.contains("sld")) {
         document.getElementsByClassName("hie")[0].style.display = "block";
@@ -951,10 +950,10 @@ function ch(cjz) {
             document.getElementById("oct").classList.remove("ivt");
             document.getElementById("bin").classList.remove("ivt");
             for (var i = 2; i <= 9; i++) {
-                document.getElementById("s" + i).style.visibility = "visible";
+                document.getElementById("s" + i).style.display = "inline-block";
             }
             for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
-                document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
+                document.getElementById("s" + ["a", "b", "c", "d", "e", "f"][i]).style.display = "none";
             }
         } else if (cjz == "hex") {
             dyh(false);
@@ -965,7 +964,7 @@ function ch(cjz) {
             document.getElementById("bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
                 document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style.visibility = "visible";
+                    .style.display = "inline-block";
             }
         } else if (cjz == "oct") {
             dyh(false);
@@ -975,10 +974,10 @@ function ch(cjz) {
             document.getElementById("dec").classList.remove("ivt");
             document.getElementById("bin").classList.remove("ivt");
             for (var i = 2; i <= 7; i++) {
-                document.getElementById("s" + i).style.visibility = "visible";
+                document.getElementById("s" + i).style.display = "inline-block";
             }
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
-                document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
+                document.getElementById("s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "none";
             }
         } else if (cjz == "bin") {
             dyh(false);
@@ -989,26 +988,26 @@ function ch(cjz) {
             document.getElementById("dec").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
                 document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style.visibility = "hidden";
+                    .style.display = "none";
             }
         } else if (cjz == "b1") {
             document.getElementById("b1").classList.add("ivt");
             document.getElementById("b2").classList.remove("ivt");
             document.getElementById("b3").classList.remove("ivt");
-            document.getElementById("fb").style.visibility = "visible";
-            document.getElementById("fb2").style.visibility = "visible";
+            document.getElementById("fb").style.display = "inline-block";
+            document.getElementById("fb2").style.display = "inline-block";
         } else if (cjz == "b2") {
             document.getElementById("b2").classList.add("ivt");
             document.getElementById("b1").classList.remove("ivt");
             document.getElementById("b3").classList.remove("ivt");
-            document.getElementById("fb").style.visibility = "hidden";
-            document.getElementById("fb2").style.visibility = "visible";
+            document.getElementById("fb").style.display = "none";
+            document.getElementById("fb2").style.display = "inline-block";
         } else {
             document.getElementById("b3").classList.add("ivt");
             document.getElementById("b2").classList.remove("ivt");
             document.getElementById("b1").classList.remove("ivt");
-            document.getElementById("fb").style.visibility = "hidden";
-            document.getElementById("fb2").style.visibility = "hidden";
+            document.getElementById("fb").style.display = "none";
+            document.getElementById("fb2").style.display = "none";
         }
     }
 }
@@ -1068,9 +1067,45 @@ function rqj(a) {
 }
 
 function cck() {
-    if((new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value))>0){
-    document.getElementById("czh").innerText = (new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) / 86400000 + "天";
-    } else{
-        document.getElementById("czh").innerText = -(new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) / 86400000 + "天";
+    var zt = (new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) / 86400000
+    if ((new Date(document.getElementById("startDate").value) - new Date(document.getElementById("endDate").value)) > 0) {
+        document.getElementById("czh").innerText = zt + "天";
+    } else {
+        document.getElementById("czh").innerText = -zt + "天";
     }
+    var riqi = document.getElementById("startDate").value.split("-");
+    for (let v = 0; v < riqi.length; v++) {
+        riqi[v] = Number(riqi[v])
+    }
+    var jia = [Number(document.getElementById("year").value), Number(document.getElementById("month").value), Number(document.getElementById("day").value)];
+    var ping = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var run = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if(document.getElementById("ad").checked) {
+        riqi[0] += jia[0];
+        riqi[1] += jia[1];
+        riqi[2] += jia[2];
+        do {
+            riqi[0] += (riqi[1] - riqi[1] % 12) / 12;
+            riqi[1] = riqi[1] % 12;
+            if (!riqi[1]) riqi[1] = 12;
+            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
+                var nian = run;
+            } else {
+                var nian = ping;
+            }
+            if (riqi[2] > nian[riqi[1] - 1]) {
+                riqi[2] -= nian[riqi[1] - 1];
+                riqi[1]++;
+                if (riqi[1] == 13) riqi[1] = 1;
+            }
+        } while (riqi[2] > nian[riqi[1] - 1]);
+    } else {
+        riqi[0] -= jia[0];
+        riqi[1] -= jia[1];
+        riqi[2] -= jia[2];
+        /*do {
+            
+        } while (riqi[2] < nian[riqi[1] - 1]);*/
+    }
+    document.getElementById("jsb").innerText = riqi[0] + "年" + riqi[1] + "月" + riqi[2] + "日";
 }

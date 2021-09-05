@@ -9,7 +9,6 @@
     -webkit-user-select: text;
     -ms-user-select: text;
     user-select: text;
-    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
     color: black;
 }
 
@@ -21,7 +20,6 @@ input[type="button"], button {
     outline: none;
     font-size: 18pt;
     margin: 2px;
-    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
     border-radius: 0;
 }
 
@@ -85,7 +83,6 @@ hr {
 #hsp p {
     font-size: 18pt;
     margin: 9px;
-    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
 
 #prv, #tle {
@@ -100,7 +97,6 @@ hr {
 
 .b {
     padding: 9px 30px;
-    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
     width: 200px;
 }
 
@@ -133,7 +129,6 @@ pre code span {
 
 .ppl {
     display: none;
-    visibility: hidden;
 }
 
 #tjb, #hsp {
@@ -188,4 +183,8 @@ b {
 
 .hie input[type="text"]:focus {
     border-color: #065378;
+}
+
+*{
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }

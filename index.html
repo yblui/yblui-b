@@ -57,22 +57,24 @@
         </select>
         <br />
         开始日期<br />
-        <input type="date" onchange="cck();" id="startDate"/>
+        <input type="date" onchange="cck();" id="startDate" />
         <div class="jsa">
             结束日期<br />
-            <input type="date" onchange="cck();" id="endDate"/>
+            <input type="date" onchange="cck();" id="endDate" />
+            <br />
             差值<br />
             <span id="czh"></span>
         </div>
         <div class="jsa">
             <form>
-                <input type="radio" onclick="cck();" checked="checked">添加
-                <input type="radio" onclick="cck();">减去
+                <label><input type="radio" onclick="cck();" checked="checked" name="radi" id="ad">添加</label>
+                <label><input type="radio" onclick="cck();" name="radi" id="mi">减去</label>
             </form>
-            年<input type="text" onchange="cck();" value="0" />月<input type="text" onchange="cck();" value="0" />天<input type="text" onchange="cck();" value="0" />
+            年<input type="text" onchange="cck();" value="0" id="year" />月<input type="text" onchange="cck();" value="0" id="month" />天<input
+                type="text" onchange="cck();" value="0" id="day" />
             <br />
             日期<br />
-            <span></span>
+            <span id="jsb"></span>
         </div>
     </div>
     <div class="hie">
