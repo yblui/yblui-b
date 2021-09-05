@@ -188,3 +188,7 @@ b {
 *{
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
+
+#fri button {
+    width: 30%;
+}

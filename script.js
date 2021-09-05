@@ -362,7 +362,7 @@ function cfh(a, b, c) {
         tpl++;
     }
     if (spl[tpl]) calcval += spl[tpl];
-    num.value = eval(calcval).toString(c);
+    return calcval;
 }
 
 function dyh(typ) {
@@ -397,11 +397,14 @@ function dyh(typ) {
     if (typ) {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                var calcval=cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                num.value = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                var calcval=cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                num.value = eval(calcval).toString(8);
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                var calcval=cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                num.value = eval(calcval).toString(2);
             } else {
                 num.value = eval(calcval);
             }
@@ -412,108 +415,13 @@ function dyh(typ) {
     } else {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                var spl = calcval.split(/[^0-9abcdef]+/g);
-                var fuh = calcval.split(/[0-9abcdef]+/g);
-                var tpl = 0;
-                while (tpl <= spl.length - 1) {
-                    if (!spl[tpl]) {
-                        spl.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0
-                while (tpl <= fuh.length - 1) {
-                    if (!fuh[tpl]) {
-                        fuh.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0;
-                for (var tpl in spl) {
-                    spl[tpl] = parseInt(spl[tpl], 16);
-                }
-                calcval = "";
-                tpl = 0;
-                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
-                    spl.splice(0, 0, "");
-                }
-                while (tpl <= fuh.length - 1) {
-                    calcval = calcval + spl[tpl] + fuh[tpl];
-                    tpl++;
-                }
-                if (spl[tpl]) calcval += spl[tpl];
+                var calcval=cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
                 document.getElementById("prv").innerText = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                var spl = calcval.split(/[^01234567]+/g);
-                var fuh = calcval.split(/[01234567]+/g);
-                var tpl = 0;
-                while (tpl <= spl.length - 1) {
-                    if (!spl[tpl]) {
-                        spl.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0;
-                while (tpl <= fuh.length - 1) {
-                    if (!fuh[tpl]) {
-                        fuh.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0;
-                for (var tpl in spl) {
-                    spl[tpl] = parseInt(spl[tpl], 8);
-                }
-                calcval = "";
-                tpl = 0;
-                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
-                    spl.splice(0, 0, "");
-                }
-                while (tpl <= fuh.length - 1) {
-                    calcval = calcval + spl[tpl] + fuh[tpl];
-                    tpl++;
-                }
-                if (spl[tpl]) calcval += spl[tpl];
+                var calcval=cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
                 document.getElementById("prv").innerText = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                var spl = calcval.split(/[^01]+/g);
-                var fuh = calcval.split(/[01]+/g);
-                var tpl = 0
-                while (tpl <= spl.length - 1) {
-                    if (!spl[tpl]) {
-                        spl.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0;
-                while (tpl <= fuh.length - 1) {
-                    if (!fuh[tpl]) {
-                        fuh.splice(tpl, 1);
-                        tpl--;
-                    }
-                    tpl++;
-                }
-                tpl = 0;
-                for (var tpl in spl) {
-                    spl[tpl] = parseInt(spl[tpl], 2);
-                }
-                calcval = "";
-                tpl = 0;
-                if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
-                    spl.splice(0, 0, "");
-                }
-                while (tpl <= fuh.length - 1) {
-                    calcval = calcval + spl[tpl] + fuh[tpl];
-                    tpl++;
-                }
-                if (spl[tpl]) {
-                    calcval += spl[tpl];
-                }
+                var calcval=cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
                 document.getElementById("prv").innerText = eval(calcval).toString(2);
             } else {
                 document.getElementById("prv").innerText = eval(calcval);
@@ -1080,7 +988,7 @@ function cck() {
     var jia = [Number(document.getElementById("year").value), Number(document.getElementById("month").value), Number(document.getElementById("day").value)];
     var ping = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var run = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    if(document.getElementById("ad").checked) {
+    if (document.getElementById("ad").checked) {
         riqi[0] += jia[0];
         riqi[1] += jia[1];
         riqi[2] += jia[2];
@@ -1103,9 +1011,25 @@ function cck() {
         riqi[0] -= jia[0];
         riqi[1] -= jia[1];
         riqi[2] -= jia[2];
-        /*do {
-            
-        } while (riqi[2] < nian[riqi[1] - 1]);*/
+        while (riqi[2] < 0 || riqi[1] < 0 || riqi[0] < 0) {
+            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
+                var nian = run;
+            } else {
+                var nian = ping;
+            }
+            if (riqi[1] <= 0) {
+                riqi[0] += ((riqi[1] - riqi[1] % 12) / 12) - 1;
+                riqi[1] = riqi[1] % 12 + 12;
+            }
+            if (riqi[2] <= 0) {
+                riqi[2] += nian[riqi[1] - 1];
+                riqi[1]--;
+            }
+            if (riqi[1] <= 0) {
+                riqi[0] += ((riqi[1] - riqi[1] % 12) / 12) - 1;
+                riqi[1] = riqi[1] % 12 + 12;
+            }
+        };
     }
     document.getElementById("jsb").innerText = riqi[0] + "年" + riqi[1] + "月" + riqi[2] + "日";
 }

@@ -14,6 +14,7 @@
 </head>
 
 <body onkeyup="ike(event);">
+    <button>导航</button>
     <div id="mde">
         <b>计算器</b>
         <p class="b sld" id="sci" onclick="chsld(this);">科学型</p>
@@ -22,7 +23,7 @@
         <p class="b" onclick="chsld(this);" id="rq">日期计算</p>
         <b>转换器</b>
         <p onclick="chsld(this);" class="b">货币</p>
-        <p onclick="chsld(this);" class="b">容量</p>
+        <p onclick="chsld(this);" class="b dwa">容量</p>
         <p onclick="chsld(this);" class="b">长度</p>
         <p onclick="chsld(this);" class="b">重量</p>
         <p onclick="chsld(this);" class="b">温度</p>
@@ -70,8 +71,18 @@
                 <label><input type="radio" onclick="cck();" checked="checked" name="radi" id="ad">添加</label>
                 <label><input type="radio" onclick="cck();" name="radi" id="mi">减去</label>
             </form>
-            年<input type="text" onchange="cck();" value="0" id="year" />月<input type="text" onchange="cck();" value="0" id="month" />天<input
-                type="text" onchange="cck();" value="0" id="day" />
+            <table>
+                <tr>
+                    <td>年</td>
+                    <td>月</td>
+                    <td>日</td>
+                </tr>
+                <tr>
+                    <td><input type="text" onchange="cck();" value="0" id="year" /></td>
+                    <td><input type="text" onchange="cck();" value="0" id="month" /></td>
+                    <td><input type="text" onchange="cck();" value="0" id="day" /></td>
+                </tr>
+            </table>
             <br />
             日期<br />
             <span id="jsb"></span>
@@ -80,26 +91,26 @@
     <div class="hie">
         <span>0</span>
         <select>
-            <option>毫升</option>
-            <option>立方厘米</option>
-            <option>升</option>
-            <option>立方米</option>
-            <option>茶匙（美制）</option>
-            <option>汤匙（美制）</option>
-            <option>液盎司（美制）</option>
-            <option>杯（美制）</option>
-            <option>品脱（美制）</option>
-            <option>夸脱（美制）</option>
-            <option>加仑（美制）</option>
-            <option>立方英寸</option>
-            <option>立方英尺</option>
-            <option>立方码</option>
-            <option>茶匙（英制）</option>
-            <option>汤匙（英制）</option>
-            <option>液盎司（英制）</option>
-            <option>品脱（英制）</option>
-            <option>夸脱（英制）</option>
-            <option>加仑（英制）</option>
+            <option class="dwa">毫升</option>
+            <option class="dwa">立方厘米</option>
+            <option class="dwa">升</option>
+            <option class="dwa">立方米</option>
+            <option class="dwa">茶匙（美制）</option>
+            <option class="dwa">汤匙（美制）</option>
+            <option class="dwa">液盎司（美制）</option>
+            <option class="dwa">杯（美制）</option>
+            <option class="dwa">品脱（美制）</option>
+            <option class="dwa">夸脱（美制）</option>
+            <option class="dwa">加仑（美制）</option>
+            <option class="dwa">立方英寸</option>
+            <option class="dwa">立方英尺</option>
+            <option class="dwa">立方码</option>
+            <option class="dwa">茶匙（英制）</option>
+            <option class="dwa">汤匙（英制）</option>
+            <option class="dwa">液盎司（英制）</option>
+            <option class="dwa">品脱（英制）</option>
+            <option class="dwa">夸脱（英制）</option>
+            <option class="dwa">加仑（英制）</option>
             <option>纳米</option>
             <option>微米</option>
             <option>毫米</option>
