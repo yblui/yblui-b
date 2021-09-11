@@ -72,6 +72,7 @@ html, body {
     -ms-user-select: none;
     user-select: none;
     transition: 0.3s;
+    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
 
 hr {
@@ -185,10 +186,6 @@ b {
     border-color: #065378;
 }
 
-* {
-    font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
-}
-
 #fri button {
     width: 30%;
 }
@@ -203,7 +200,7 @@ b {
     text-align: left;
 }
 
-#about span{
-    float:right;
-    padding:9px
+#about span {
+    float: right;
+    padding: 9px;
 }

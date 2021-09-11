@@ -1038,7 +1038,7 @@ function cck() {
                 riqi[0] += ((riqi[1] - riqi[1] % 12) / 12) - 1;
                 riqi[1] = riqi[1] % 12 + 12;
             }
-        };
+        }
     }
     document.getElementById("jsb").innerText = riqi[0] + "年" + riqi[1] + "月" + riqi[2] + "日";
 }

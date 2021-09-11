@@ -16,12 +16,12 @@
 <body onkeyup="ike(event);">
     <button>导航</button>
     <div id="mde">
-        <b>计算器</b>
+        <strong>计算器</strong>
         <p class="b sld" id="sci" onclick="chsld(this);">科学型</p>
         <p class="b" id="pro" onclick="chsld(this);">程序员</p>
         <p class="b" id="tjx" onclick="chsld(this);">统计信息</p>
         <p class="b" onclick="chsld(this);" id="rq">日期计算</p>
-        <b>转换器</b>
+        <strong>转换器</strong>
         <p onclick="chsld(this);" class="b">货币</p>
         <p onclick="chsld(this);" class="b dwa">容量</p>
         <p onclick="chsld(this);" class="b len">长度</p>
@@ -73,9 +73,9 @@
             </form>
             <table>
                 <tr>
-                    <td>年</td>
-                    <td>月</td>
-                    <td>日</td>
+                    <th>年</th>
+                    <th>月</th>
+                    <th>日</th>
                 </tr>
                 <tr>
                     <td><input type="text" onchange="cck();" value="0" id="year" /></td>
@@ -425,8 +425,8 @@
     <input type="button" class="pr" value="(" onclick="calCulate(this.value);" />
     <input type="button" class="pr" value=")" onclick="calCulate(this.value);" />
     <div id="fri">
-        <p id="hip" onclick="set(this);" class="set"><b>历史记录</b></p>
-        <p id="jbt" onclick="set(this);"><b>记忆</b></p>
+        <p id="hip" onclick="set(this);" class="set"><strong>历史记录</strong></p>
+        <p id="jbt" onclick="set(this);"><strong>记忆</strong></p>
         <p id="hsp"></p>
         <p id="jyi"></p>
     </div>
