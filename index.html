@@ -24,8 +24,8 @@
         <b>转换器</b>
         <p onclick="chsld(this);" class="b">货币</p>
         <p onclick="chsld(this);" class="b dwa">容量</p>
-        <p onclick="chsld(this);" class="b">长度</p>
-        <p onclick="chsld(this);" class="b">重量</p>
+        <p onclick="chsld(this);" class="b len">长度</p>
+        <p onclick="chsld(this);" class="b wei">重量</p>
         <p onclick="chsld(this);" class="b">温度</p>
         <p onclick="chsld(this);" class="b">能量</p>
         <p onclick="chsld(this);" class="b">面积</p>
@@ -35,7 +35,7 @@
         <p onclick="chsld(this);" class="b">数据</p>
         <p onclick="chsld(this);" class="b">压力</p>
         <p onclick="chsld(this);" class="b">角度</p>
-        <p onclick="chsld(this);" class="b">关于</p>
+        <p onclick="document.getElementById('about').style.display='block'" class="b">关于</p>
     </div>
     <label>
         <input type="text" name="t" id="t" disabled="disabled" />
@@ -111,31 +111,31 @@
             <option class="dwa">品脱（英制）</option>
             <option class="dwa">夸脱（英制）</option>
             <option class="dwa">加仑（英制）</option>
-            <option>纳米</option>
-            <option>微米</option>
-            <option>毫米</option>
-            <option>厘米</option>
-            <option>米</option>
-            <option>公里</option>
-            <option>英寸</option>
-            <option>英尺</option>
-            <option>码</option>
-            <option>英里</option>
-            <option>海里</option>
-            <option>克拉</option>
-            <option>毫克</option>
-            <option>厘克</option>
-            <option>十分之一克</option>
-            <option>克</option>
-            <option>十克</option>
-            <option>百克</option>
-            <option>千克</option>
-            <option>公吨</option>
-            <option>盎司</option>
-            <option>磅</option>
-            <option>英石</option>
-            <option>短吨（美制）</option>
-            <option>长吨（英制）</option>
+            <option class="len">纳米</option>
+            <option class="len">微米</option>
+            <option class="len">毫米</option>
+            <option class="len">厘米</option>
+            <option class="len">米</option>
+            <option class="len">公里</option>
+            <option class="len">英寸</option>
+            <option class="len">英尺</option>
+            <option class="len">码</option>
+            <option class="len">英里</option>
+            <option class="len">海里</option>
+            <option class="wei">克拉</option>
+            <option class="wei">毫克</option>
+            <option class="wei">厘克</option>
+            <option class="wei">十分之一克</option>
+            <option class="wei">克</option>
+            <option class="wei">十克</option>
+            <option class="wei">百克</option>
+            <option class="wei">千克</option>
+            <option class="wei">公吨</option>
+            <option class="wei">盎司</option>
+            <option class="wei">磅</option>
+            <option class="wei">英石</option>
+            <option class="wei">短吨（美制）</option>
+            <option class="wei">长吨（英制）</option>
             <option>摄氏度</option>
             <option>华氏度</option>
             <option>开尔文</option>
@@ -221,51 +221,51 @@
         </select>
         <span>0</span>
         <select>
-            <option>毫升</option>
-            <option>立方厘米</option>
-            <option>升</option>
-            <option>立方米</option>
-            <option>茶匙（美制）</option>
-            <option>汤匙（美制）</option>
-            <option>液盎司（美制）</option>
-            <option>杯（美制）</option>
-            <option>品脱（美制）</option>
-            <option>夸脱（美制）</option>
-            <option>加仑（美制）</option>
-            <option>立方英寸</option>
-            <option>立方英尺</option>
-            <option>立方码</option>
-            <option>茶匙（英制）</option>
-            <option>汤匙（英制）</option>
-            <option>液盎司（英制）</option>
-            <option>品脱（英制）</option>
-            <option>夸脱（英制）</option>
-            <option>加仑（英制）</option>
-            <option>纳米</option>
-            <option>微米</option>
-            <option>毫米</option>
-            <option>厘米</option>
-            <option>米</option>
-            <option>公里</option>
-            <option>英寸</option>
-            <option>英尺</option>
-            <option>码</option>
-            <option>英里</option>
-            <option>海里</option>
-            <option>克拉</option>
-            <option>毫克</option>
-            <option>厘克</option>
-            <option>十分之一克</option>
-            <option>克</option>
-            <option>十克</option>
-            <option>百克</option>
-            <option>千克</option>
-            <option>公吨</option>
-            <option>盎司</option>
-            <option>磅</option>
-            <option>英石</option>
-            <option>短吨（美制）</option>
-            <option>长吨（英制）</option>
+            <option class="dwa">毫升</option>
+            <option class="dwa">立方厘米</option>
+            <option class="dwa">升</option>
+            <option class="dwa">立方米</option>
+            <option class="dwa">茶匙（美制）</option>
+            <option class="dwa">汤匙（美制）</option>
+            <option class="dwa">液盎司（美制）</option>
+            <option class="dwa">杯（美制）</option>
+            <option class="dwa">品脱（美制）</option>
+            <option class="dwa">夸脱（美制）</option>
+            <option class="dwa">加仑（美制）</option>
+            <option class="dwa">立方英寸</option>
+            <option class="dwa">立方英尺</option>
+            <option class="dwa">立方码</option>
+            <option class="dwa">茶匙（英制）</option>
+            <option class="dwa">汤匙（英制）</option>
+            <option class="dwa">液盎司（英制）</option>
+            <option class="dwa">品脱（英制）</option>
+            <option class="dwa">夸脱（英制）</option>
+            <option class="dwa">加仑（英制）</option>
+            <option class="len">纳米</option>
+            <option class="len">微米</option>
+            <option class="len">毫米</option>
+            <option class="len">厘米</option>
+            <option class="len">米</option>
+            <option class="len">公里</option>
+            <option class="len">英寸</option>
+            <option class="len">英尺</option>
+            <option class="len">码</option>
+            <option class="len">英里</option>
+            <option class="len">海里</option>
+            <option class="wei">克拉</option>
+            <option class="wei">毫克</option>
+            <option class="wei">厘克</option>
+            <option class="wei">十分之一克</option>
+            <option class="wei">克</option>
+            <option class="wei">十克</option>
+            <option class="wei">百克</option>
+            <option class="wei">千克</option>
+            <option class="wei">公吨</option>
+            <option class="wei">盎司</option>
+            <option class="wei">磅</option>
+            <option class="wei">英石</option>
+            <option class="wei">短吨（美制）</option>
+            <option class="wei">长吨（英制）</option>
             <option>摄氏度</option>
             <option>华氏度</option>
             <option>开尔文</option>
@@ -430,7 +430,13 @@
         <p id="hsp"></p>
         <p id="jyi"></p>
     </div>
+    <div id="about">
+        <span onclick="this.parentNode.style.display = 'none';">关闭</span>
+        <h2>关于</h2>
+        计算器 v3.2.3<br />
+        Copyright 2021 YBLUI.github.io.<br />
+        若要了解如何参与 Yblui-b，请在 <a href="https://github.com/yblui/yblui-b">GitHub</a> 上查看该项目。
+    </div>
     <script src="script.js"></script>
 </body>
-
 </html>

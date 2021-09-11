@@ -185,10 +185,25 @@ b {
     border-color: #065378;
 }
 
-*{
+* {
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;
 }
 
 #fri button {
     width: 30%;
+}
+
+#about {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background-color: #eee;
+    z-index: 100;
+    text-align: left;
+}
+
+#about span{
+    float:right;
+    padding:9px
 }

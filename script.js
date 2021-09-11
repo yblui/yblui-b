@@ -209,8 +209,17 @@ function chsld() {
             if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "none";
         }
     } else if (!document.getElementById("sci").classList.contains("sld") && !document.getElementById("pro").classList.contains("sld") && !document.getElementById("tjx").classList.contains("sld")) {
-        document.getElementsByClassName("hie")[1].style.display = "block";
+        document.querySelectorAll(".hie")[1].style.display = "block";
         document.getElementsByClassName("hie")[0].style.display = "none";
+    }
+    var clst = ["dwa", "len", "wei"];
+    for (var b = 0; b < clst.length; b++) {
+        if (arguments[0].classList.contains(clst[b])) {
+            for (var i = 0; i < document.querySelectorAll("select option").length; i++) {
+                document.querySelectorAll("select option")[i].style.display = "none";
+                if (document.querySelectorAll("select option")[i].classList.contains(clst[b])) document.querySelectorAll("select option")[i].style.display = "block";
+            }
+        }
     }
     calCulate(">");
     calCulate(">");
@@ -397,13 +406,13 @@ function dyh(typ) {
     if (typ) {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
                 num.value = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
                 num.value = eval(calcval).toString(8);
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
                 num.value = eval(calcval).toString(2);
             } else {
                 num.value = eval(calcval);
@@ -415,13 +424,13 @@ function dyh(typ) {
     } else {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
                 document.getElementById("prv").innerText = eval(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
                 document.getElementById("prv").innerText = eval(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
-                var calcval=cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
                 document.getElementById("prv").innerText = eval(calcval).toString(2);
             } else {
                 document.getElementById("prv").innerText = eval(calcval);
