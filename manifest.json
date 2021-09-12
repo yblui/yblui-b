@@ -6,12 +6,18 @@
             "src": "favicon.png",
             "sizes": "192x192",
             "type": "image/png"
+        },
+        {
+            "src": "favicon-large.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "short_name": "Yblui-b",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#fcfcfc",
-    "theme_color": "#fcfcfc",
+    "background_color": "#FCFCFC",
+    "theme_color": "#FCFCFC",
     "lang": "zh-CN"
 }

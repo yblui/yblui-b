@@ -177,10 +177,10 @@ function chsld() {
         document.getElementById("pre").style.display = "none";
         document.getElementById("dot").value = ".";
         prg = false;
-        for (var i of document.getElementsByClassName("ppl")) {
-            i.style.display = "none";
+        for (var p of document.getElementsByClassName("ppl")) {
+            p.style.display = "none";
         }
-        for (i = 0; i < 8; i++) {
+        for (var i = 0; i < 8; i++) {
             document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.display = "inline";
         }
         document.getElementById("equ").value = "Add";
@@ -192,8 +192,8 @@ function chsld() {
         document.getElementById("cus").style.display = "none";
         document.getElementById("prv").style.display = "none";
     } else {
-        for (var i of document.getElementsByClassName("ppl")) {
-            i.style.display = "none";
+        for (var v of document.getElementsByClassName("ppl")) {
+            v.style.display = "none";
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none";
@@ -401,9 +401,9 @@ function dyh(typ) {
     }
     calcval = calcval.join("");
     calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split("@");
-    for (i = 0; i < calcval.length; i++) {
-        if (calcval[i].indexOf("%") != -1) {
-            calcval[i] = Number(calcval[i].replace("%", "")) / 100;
+    for (var z of calcval) {
+        if (z.indexOf("%") != -1) {
+            z = Number(z.replace("%", "")) / 100;
         }
     }
     calcval = calcval.join("").replace(/Mod/g, "%");
@@ -465,7 +465,7 @@ function dyh(typ) {
                     }
                 }
                 tbi = tbi.join("");
-                tbi = (parseInt(tbi, 2) + 1).toString(2)
+                tbi = (parseInt(tbi, 2) + 1).toString(2);
             }
             for (var i = (32 - lsn); i <= 31; i++) {
                 document.getElementById("bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
@@ -476,16 +476,15 @@ function dyh(typ) {
     }
     hsp.innerHTML = "";
     hst = hst.split(";").slice(0, hst.split(";").length - 1);
-    for (var i = 0; i < hst.length; i++) {
+    for (var i of hst) {
         document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML +
-            "<p onclick='document.getElementById(`t`).value=`" + hst[i] + "`.split(`=`)[1];dyh(false)'>" + hst[i] +
-            "</p><hr />";
+            "<p onclick='document.getElementById(`t`).value=`" + i + "`.split(`=`)[1];dyh(false)'>" + i + "</p><hr />";
     }
     document.getElementById("hsp").innerHTML = document.getElementById("hsp").innerHTML + "<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>"
     hst = hst.join(";") + ";";
 }
 
-function mcaozuo(){
+function mcaozuo() {
     var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(
         /e\*\*/, "Math.E**");
     calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
@@ -559,7 +558,7 @@ function calCulate(val) {
             num.value = "";
             break;
         case "M+":
-            var calcval=mcaozuo();
+            var calcval = mcaozuo();
             if (!isNaN(eva(calcval))) {
                 mmm += Number(eva(calcval));
                 ism();
