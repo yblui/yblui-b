@@ -198,9 +198,13 @@ b {
     background-color: #eee;
     z-index: 100;
     text-align: left;
+    padding: 9px;
 }
 
 #about span {
     float: right;
-    padding: 9px;
+}
+
+h2 {
+    font-weight: normal;
 }
