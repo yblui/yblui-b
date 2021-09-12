@@ -209,7 +209,7 @@ function chsld() {
     if (document.getElementById("rq").classList.contains("sld")) {
         document.getElementsByClassName("hie")[0].style.display = "block";
         document.getElementsByClassName("hie")[1].style.display = "none";
-        for (var y of document.getElementsByTagName("input")){
+        for (var y of document.getElementsByTagName("input")) {
             if (y.type == "button") y.style.display = "none";
         }
     } else if (!document.getElementById("sci").classList.contains("sld") && !document.getElementById("pro").classList.contains("sld") && !document.getElementById("tjx").classList.contains("sld")) {
@@ -219,7 +219,7 @@ function chsld() {
     var clst = ["dwa", "len", "wei"];
     for (var b = 0; b < clst.length; b++) {
         if (arguments[0].classList.contains(clst[b])) {
-            for (var i of document.querySelectorAll("select option")){
+            for (var i of document.querySelectorAll("select option")) {
                 i.style.display = "none";
                 if (i.classList.contains(clst[b])) i.style.display = "block";
             }
@@ -485,6 +485,36 @@ function dyh(typ) {
     hst = hst.join(";") + ";";
 }
 
+function mcaozuo(){
+    var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(
+        /e\*\*/, "Math.E**");
+    calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
+        "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
+    calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
+    calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
+        /\÷/g, "@÷@").split("@");
+    if (calcval[0] == "√") {
+        calcval[0] = "Math.sqrt";
+    }
+    for (i = 0; i < calcval.length; i++) {
+        if (calcval[i].indexOf("√") != -1) {
+            calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√",
+                "") + ")";
+            calcval[i] = "Math.pow";
+        }
+    }
+    calcval = calcval.join("");
+    calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
+        "@");
+    for (i = 0; i < calcval.length; i++) {
+        if (calcval[i].indexOf("%") != -1) {
+            calcval[i] = Number(calcval[i].replace("%", "")) / 100;
+        }
+    }
+    calcval = calcval.join("").replace(/Mod/g, "%");
+    return calcval;
+}
+
 function calCulate(val) {
     switch (val) {
         case "=":
@@ -529,85 +559,28 @@ function calCulate(val) {
             num.value = "";
             break;
         case "M+":
-            var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(
-                /e\*\*/, "Math.E**");
-            calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
-                "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
-            calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
-            calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
-                /\÷/g, "@÷@").split("@");
-            if (calcval[0] == "√") {
-                calcval[0] = "Math.sqrt";
-            }
-            for (i = 0; i < calcval.length; i++) {
-                if (calcval[i].indexOf("√") != -1) {
-                    calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√",
-                        "") + ")";
-                    calcval[i] = "Math.pow";
-                }
-            }
-            calcval = calcval.join("");
-            calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
-                "@");
-            for (i = 0; i < calcval.length; i++) {
-                if (calcval[i].indexOf("%") != -1) {
-                    calcval[i] = Number(calcval[i].replace("%", "")) / 100;
-                }
-            }
-            calcval = calcval.join("").replace(/Mod/g, "%");
+            var calcval=mcaozuo();
             if (!isNaN(eva(calcval))) {
                 mmm += Number(eva(calcval));
                 ism();
             }
-            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MR":
             num.value += mmm.toString();
             break;
         case "M-":
-            var calcval = num.value.replace(/sin\(/g, "Math.sin(").replace(/cos\(/g, "Math.cos(").replace(/tan\(/g,
-                "Math.tan(");
-            calcval = calcval.replace(/sinh/g, "Math.sinh").replace(/cosh/g, "Math.cosh").replace(/tanh/g, "Math.tanh");
-            calcval = calcval.replace(/aMath\.sin/g, "Math.asin").replace(/aMath\.cos/g, "Math.acos").replace(
-                /aMath\.tan/g, "Math.atan");
-            calcval = calcval.replace(/aMath\.sinh/g, "Math.asinh").replace(/aMath\.cosh/g, "Math.acosh").replace(
-                /aMath\.tanh/g, "Math.atanh");
-            calcval = calcval.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(
-                /e\*\*/, "Math.E**");
-            calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
-                "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
-            calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
-            calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
-                /\÷/g, "@÷@").split("@");
-            if (calcval[0] == "√") {
-                calcval[0] = "Math.sqrt";
-            }
-            for (i = 0; i < calcval.length; i++) {
-                if (calcval[i].indexOf("√") != -1) {
-                    calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√",
-                        "") + ")";
-                    calcval[i] = "Math.pow";
-                }
-            }
-            calcval = calcval.join("");
-            calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
-                "@");
-            for (i = 0; i < calcval.length; i++) {
-                if (calcval[i].indexOf("%") != -1) {
-                    calcval[i] = Number(calcval[i].replace("%", "")) / 100;
-                }
-            }
-            calcval = calcval.join("").replace(/Mod/g, "%");
+            var calcval = mcaozuo();
             if (!isNaN(eva(calcval))) {
                 mmm -= Number(eva(calcval));
                 ism();
             }
-            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MC":
             mmm = 0;
             ism();
-            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
+            document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "+":
         case "-":
