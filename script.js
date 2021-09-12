@@ -1,21 +1,14 @@
 function $(a) {
-    if (document.querySelectorAll(a).length <= 1) {
-        return document.querySelector(a);
-    } else {
-        return document.querySelectorAll(a);
-    }
+    if (document.querySelectorAll(a).length <= 1) return document.querySelector(a);
+    else return document.querySelectorAll(a);
 }
 
 var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false;
 
 function Int(intv) {
-    if (intv > 0) {
-        return Math.floor(intv);
-    } else if (intv < 0) {
-        return Math.ceil(intv);
-    } else {
-        return 0;
-    }
+    if (intv > 0) return Math.floor(intv);
+    else if (intv < 0) return Math.ceil(intv);
+    else return 0;
 }
 
 function eva(a) {
@@ -46,25 +39,16 @@ function ike(event) {
             calCulate(event.key);
             break;
         case 53:
-            if (event.shiftKey) {
-                calCulate("%");
-            } else {
-                calCulate("5");
-            }
+            if (event.shiftKey) calCulate("%");
+            else calCulate("5");
             break;
         case 57:
-            if (event.shiftKey) {
-                calCulate("(");
-            } else {
-                calCulate("9")
-            }
+            if (event.shiftKey) calCulate("(");
+            else calCulate("9");
             break;
         case 48:
-            if (event.shiftKey) {
-                calCulate(")");
-            } else {
-                calCulate("0")
-            }
+            if (event.shiftKey) calCulate(")");
+            else calCulate("0");
             break;
         case 107:
             calCulate("+");
@@ -82,11 +66,8 @@ function ike(event) {
             break;
         case 187:
         case 13:
-            if ($("#tjx").classList.contains("sld")) {
-                calCulate("Add");
-            } else {
-                calCulate("=");
-            }
+            if ($("#tjx").classList.contains("sld")) calCulate("Add");
+            else calCulate("=");
             break;
         case 8:
             calCulate("<");
@@ -98,14 +79,10 @@ function ike(event) {
             history.go(-1);
             break;
         case 37:
-            if (mhd) {
-                calCulate(">");
-            }
+            if (mhd) calCulate(">");
             break;
         case 39:
-            if (!mhd) {
-                calCulate(">");
-            }
+            if (!mhd) calCulate(">");
             break;
         case 32:
             chsld();
@@ -211,13 +188,13 @@ function chsld() {
             if (y.type == "button") y.style.display = "none";
         }
     } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList.contains("sld")) {
-        document.querySelectorAll(".hie")[1].style.display = "block";
+        $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
-    var clst = ["dwa", "len", "wei"];
+    var clst = ["dwa", "len", "wei", "tem"];
     for (var b = 0; b < clst.length; b++) {
-        if (arguments[0].classList.contains(clst[b])) {
-            for (var i of document.querySelectorAll("select option")) {
+        if (arguments[0] && arguments[0].classList.contains(clst[b])) {
+            for (var i of $("select option")) {
                 i.style.display = "none";
                 if (i.classList.contains(clst[b])) i.style.display = "block";
             }
@@ -246,98 +223,45 @@ function fact(fav) {
     return fcr;
 }
 
-function epow(epv) {
-    return Math.E ** epv;
-}
-
-function sin(a) {
-    return Math.sin(a);
-}
-
-function cos(a) {
-    return Math.cos(a);
-}
-
-function tan(a) {
-    return Math.tan(a);
-}
-
-function sinh(a) {
-    return Math.sinh(a);
-}
-
-function cosh(a) {
-    return Math.cosh(a);
-}
-
-function tanh(a) {
-    return Math.tanh(a);
-}
-
-function asin(a) {
-    return Math.asin(a);
-}
-
-function acos(a) {
-    return Math.acos(a);
-}
-
-function atan(a) {
-    return Math.atan(a);
-}
-
-function asinh(a) {
-    return Math.asinh(a);
-}
-
-function acosh(a) {
-    return Math.acosh(a);
-}
-
-function atanh(a) {
-    return Math.atanh(a);
-}
+var epow = (epv) => Math.E ** epv;
+var sin = (a) => Math.sin(a);
+var cos = (a) => Math.cos(a);
+var tan = (a) => Math.tan(a);
+var sinh = (a) => Math.sinh(a);
+var cosh = (a) => Math.cosh(a);
+var tanh = (a) => Math.tanh(a);
+var asin = (a) => Math.asin(a);
+var acos = (a) => Math.acos(a);
+var atan = (a) => Math.atan(a);
+var asinh = (a) => Math.asinh(a);
+var acosh = (a) => Math.acosh(a);
+var atanh = (a) => Math.atanh(a);
 
 function degrees(dgv) {
     dgv = dgv.toString();
-    if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 1) {
-        dgv = dgv + "000";
-    } else if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 3) {
-        dgv += "0";
-    } else if (dgv.indexOf(".") == -1) {
-        dgv += ".0000";
-    }
+    if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 1) dgv = dgv + "000";
+    else if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 3) dgv += "0";
+    else if (dgv.indexOf(".") == -1) dgv += ".0000";
     return Int(Number(dgv)) + (Number(dgv.slice(dgv.indexOf(".") + 1, dgv.indexOf(".") + 3)) * 3.6) + (Number(dgv.substr(
         dgv.indexOf(".") + 3).split("").splice(2, 0, ".").join("")) * 0.036);
 }
 
 function ln(lnv) {
     var fwa = [-800, 800];
-    if (lnv < 1) {
-        fwa[1] = 0;
-    } else if (lnv > 1) {
-        fwa[0] = 0;
-    } else {
-        return 0;
-    }
+    if (lnv < 1) fwa[1] = 0;
+    else if (lnv > 1) fwa[0] = 0;
+    else return 0;
     while ((fwa[1] - fwa[0]) > 0.0000000001) {
-        if (epow((fwa[0] + fwa[1]) / 2) < lnv) {
-            fwa[0] = (fwa[0] + fwa[1]) / 2;
-        } else if (epow((fwa[0] + fwa[1]) / 2) > lnv) {
-            fwa[1] = (fwa[0] + fwa[1]) / 2;
-        } else {
-            return (fwa[0] + fwa[1]) / 2;
-        }
+        if (epow((fwa[0] + fwa[1]) / 2) < lnv) fwa[0] = (fwa[0] + fwa[1]) / 2;
+        else if (epow((fwa[0] + fwa[1]) / 2) > lnv) fwa[1] = (fwa[0] + fwa[1]) / 2;
+        else return (fwa[0] + fwa[1]) / 2;
     }
     return (fwa[1] + fwa[0]) / 2;
 }
 
 function ism() {
-    if (mmm == 0) {
-        $("#mxs").innerHTML = "";
-    } else {
-        $("#mxs").innerHTML = "M";
-    }
+    if (mmm == 0) $("#mxs").innerHTML = "";
+    else $("#mxs").innerHTML = "M";
 }
 
 function cfh(a, b, c) {
@@ -377,9 +301,7 @@ function cfh(a, b, c) {
 }
 
 function dyh(typ) {
-    if (typ) {
-        hst += num.value + "=";
-    }
+    if (typ) hst += num.value + "=";
     var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(/e\*\*/,
         "Math.E**");
     calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(")
@@ -388,9 +310,7 @@ function dyh(typ) {
         /Rsh/g, ">>>");
     calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
         /\÷/g, "@÷@").split("@");
-    if (calcval[0] == "√") {
-        calcval[0] = "Math.sqrt";
-    }
+    if (calcval[0] == "√") calcval[0] = "Math.sqrt";
     for (i = 0; i < calcval.length; i++) {
         if (calcval[i].indexOf("√") != -1) {
             calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√", "") + ")";
@@ -400,9 +320,7 @@ function dyh(typ) {
     calcval = calcval.join("");
     calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split("@");
     for (var z of calcval) {
-        if (z.indexOf("%") != -1) {
-            z = Number(z.replace("%", "")) / 100;
-        }
+        if (z.indexOf("%") != -1) z = Number(z.replace("%", "")) / 100;
     }
     calcval = calcval.join("").replace(/Mod/g, "%");
     if (typ) {
@@ -456,11 +374,8 @@ function dyh(typ) {
                 tbi = tbi.replace("-", "0");
                 tbi = tbi.split("");
                 for (var i = 0; i <= (lsn - 1); i++) {
-                    if (tbi[i] == "0") {
-                        tbi[i] = "1";
-                    } else {
-                        tbi[i] = "0";
-                    }
+                    if (tbi[i] == "0") tbi[i] = "1";
+                    else tbi[i] = "0";
                 }
                 tbi = tbi.join("");
                 tbi = (parseInt(tbi, 2) + 1).toString(2);
@@ -483,30 +398,22 @@ function dyh(typ) {
 }
 
 function mcaozuo() {
-    var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(
-        /e\*\*/, "Math.E**");
-    calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g,
-        "×Math.sqrt(").replace(/\÷√\(/g, "÷Math.sqrt(");
+    var calcval = num.value.replace(/π/g, "Math.PI").replace(/\^/g, "**").replace(/log\(/g, "Math.log(").replace(/e\*\*/, "Math.E**");
+    calcval = calcval.replace(/\+√\(/g, "+Math.sqrt(").replace(/\-√\(/g, "-Math.sqrt(").replace(/\×√\(/g, "×Math.sqrt(").replace(/\÷√\(/g,
+        "÷Math.sqrt(");
     calcval = calcval.replace(/Xor/g, "^").replace(/And/g, "&").replace(/Or/g, "|")
-    calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(
-        /\÷/g, "@÷@").split("@");
-    if (calcval[0] == "√") {
-        calcval[0] = "Math.sqrt";
-    }
+    calcval = calcval.replace(/√/g, "√@").replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@×@").replace(/\÷/g, "@÷@").split("@");
+    if (calcval[0] == "√") calcval[0] = "Math.sqrt";
     for (i = 0; i < calcval.length; i++) {
         if (calcval[i].indexOf("√") != -1) {
-            calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√",
-                "") + ")";
+            calcval[i + 1] = calcval[i + 1].split("").slice(0, -1).join("") + ",1/" + calcval[i].replace("√", "") + ")";
             calcval[i] = "Math.pow";
         }
     }
     calcval = calcval.join("");
-    calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split(
-        "@");
+    calcval = calcval.replace(/\+/g, "@+@").replace(/\-/g, "@-@").replace(/\×/g, "@*@").replace(/\÷/g, "@/@").split("@");
     for (i = 0; i < calcval.length; i++) {
-        if (calcval[i].indexOf("%") != -1) {
-            calcval[i] = Number(calcval[i].replace("%", "")) / 100;
-        }
+        if (calcval[i].indexOf("%") != -1) calcval[i] = Number(calcval[i].replace("%", "")) / 100;
     }
     calcval = calcval.join("").replace(/Mod/g, "%");
     return calcval;
@@ -521,13 +428,9 @@ function calCulate(val) {
             num.value = num.value.slice(0, -1);
             break;
         case ">":
-            if (prg) {
-                var geb = "pr";
-            } else if ($("#sci").classList.contains("sld")) {
-                var geb = "gj";
-            } else {
-                var geb = "tj";
-            }
+            if (prg) var geb = "pr";
+            else if ($("#sci").classList.contains("sld")) var geb = "gj";
+            else var geb = "tj";
             for (i = 0; i < $(".pr").length; i++) {
                 $(".pr")[i].style.display = "none";
             }
@@ -538,11 +441,8 @@ function calCulate(val) {
                 $(".tj")[i].style.display = "none";
             }
             for (i = 0; i < document.getElementsByClassName(geb).length; i++) {
-                if (!mhd) {
-                    document.getElementsByClassName(geb)[i].style.display = "inline";
-                } else {
-                    document.getElementsByClassName(geb)[i].style.display = "none";
-                }
+                if (!mhd) document.getElementsByClassName(geb)[i].style.display = "inline";
+                else document.getElementsByClassName(geb)[i].style.display = "none";
             }
             if (mhd) {
                 $("#exp").className = "";
@@ -680,34 +580,34 @@ function calCulate(val) {
             break;
         case "RoL":
             dyh(false)
-            if ($("#b1").classList.contains("ivt")) {
-                lsn = 32
-            } else if ($("#b2").classList.contains("ivt")) {
-                lsn = 16
-            } else {
-                lsn = 8
-            }
+            if ($("#b1").classList.contains("ivt")) lsn = 32;
+            else if ($("#b2").classList.contains("ivt")) lsn = 16;
+            else lsn = 8;
             if ($("#dec").classList.contains("ivt")) {
                 if ((Number(num.value) << 1).toString(2).length > lsn) {
-                    num.value = parseInt((Number(num.value) << 1).toString(2).slice((Number(num.value) << 1).toString(2).length - lsn, (Number(num.value) << 1).toString(2).length), 2);
+                    num.value = parseInt((Number(num.value) << 1).toString(2).slice((Number(num.value) << 1).toString(2).length - lsn,
+                        (Number(num.value) << 1).toString(2).length), 2);
                 } else {
-                    num.value = (Number(num.value) << 1)
+                    num.value = (Number(num.value) << 1);
                 }
             } else if ($("#hex").classList.contains("ivt")) {
                 if ((parseInt(num.value, 16) << 1).toString(2).length > lsn) {
-                    num.value = parseInt((parseInt(num.value, 16) << 1).toString(2).slice((parseInt(num.value, 16) << 1).toString(2).length - lsn, (parseInt(num.value, 16) << 1).toString(2).length), 2).toString(16);
+                    num.value = parseInt((parseInt(num.value, 16) << 1).toString(2).slice((parseInt(num.value, 16) << 1).toString(2).length - lsn,
+                        (parseInt(num.value, 16) << 1).toString(2).length), 2).toString(16);
                 } else {
                     num.value = (parseInt(num.value, 16) << 1).toString(16)
                 }
             } else if ($("#oct").classList.contains("ivt")) {
                 if ((parseInt(num.value, 8) << 1).toString(2).length > lsn) {
-                    num.value = parseInt((parseInt(num.value, 8) << 1).toString(2).slice((parseInt(num.value, 8) << 1).toString(2).length - lsn, (parseInt(num.value, 8) << 1).toString(2).length), 2).toString(8);
+                    num.value = parseInt((parseInt(num.value, 8) << 1).toString(2).slice((parseInt(num.value, 8) << 1).toString(2).length - lsn,
+                        (parseInt(num.value, 8) << 1).toString(2).length), 2).toString(8);
                 } else {
                     num.value = (parseInt(num.value, 8) << 1).toString(8)
                 }
             } else {
                 if ((parseInt(num.value, 2) << 1).toString(2).length > lsn) {
-                    num.value = parseInt((parseInt(num.value, 2) << 1).toString(2).slice((parseInt(num.value, 2) << 1).toString(2).length - lsn, (parseInt(num.value, 2) << 1).toString(2).length), 2).toString(2);
+                    num.value = parseInt((parseInt(num.value, 2) << 1).toString(2).slice((parseInt(num.value, 2) << 1).toString(2).length - lsn,
+                        (parseInt(num.value, 2) << 1).toString(2).length), 2).toString(2);
                 } else {
                     num.value = (parseInt(num.value, 2) << 1).toString(2)
                 }
