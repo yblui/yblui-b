@@ -10,6 +10,10 @@ function Int(intv) {
     }
 }
 
+function eva(a) {
+    return Function("'use strict'; return (" + a + ");")(0);
+}
+
 function ike(event) {
     switch (event.keyCode) {
         case 49:
@@ -117,8 +121,8 @@ function ike(event) {
 }
 
 function chsld() {
-    for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
-        if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "inline";
+    for (var y of document.getElementsByTagName("input")) {
+        if (y.type == "button") y.style.display = "inline";
     }
     if (!arguments[0]) {
         if (document.getElementById("sci").classList.contains("sld")) {
@@ -135,8 +139,8 @@ function chsld() {
             document.getElementById("tjx").classList.remove("sld");
         }
     } else {
-        for (var t = 0; t < document.getElementsByClassName("b").length; t++) {
-            document.getElementsByClassName("b")[t].classList.remove("sld");
+        for (var t of document.getElementsByClassName("b")) {
+            t.classList.remove("sld");
         }
         arguments[0].classList.add("sld");
     }
@@ -151,8 +155,8 @@ function chsld() {
         document.getElementById("pre").style.display = "block";
         document.getElementById("dot").value = "Mod";
         prg = true;
-        for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-            document.getElementsByClassName("ppl")[i].style.display = "inline";
+        for (var i of document.getElementsByClassName("ppl")) {
+            i.style.display = "inline";
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none";
@@ -173,8 +177,8 @@ function chsld() {
         document.getElementById("pre").style.display = "none";
         document.getElementById("dot").value = ".";
         prg = false;
-        for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-            document.getElementsByClassName("ppl")[i].style.display = "none";
+        for (var i of document.getElementsByClassName("ppl")) {
+            i.style.display = "none";
         }
         for (i = 0; i < 8; i++) {
             document.getElementById("s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.display = "inline";
@@ -188,8 +192,8 @@ function chsld() {
         document.getElementById("cus").style.display = "none";
         document.getElementById("prv").style.display = "none";
     } else {
-        for (i = 0; i < document.getElementsByClassName("ppl").length; i++) {
-            document.getElementsByClassName("ppl")[i].style.display = "none";
+        for (var i of document.getElementsByClassName("ppl")) {
+            i.style.display = "none";
         }
         document.getElementById("equ").value = "=";
         document.getElementById("tjb").style.display = "none";
@@ -205,8 +209,8 @@ function chsld() {
     if (document.getElementById("rq").classList.contains("sld")) {
         document.getElementsByClassName("hie")[0].style.display = "block";
         document.getElementsByClassName("hie")[1].style.display = "none";
-        for (var y = 0; y < document.getElementsByTagName("input").length; y++) {
-            if (document.getElementsByTagName("input")[y].type == "button") document.getElementsByTagName("input")[y].style.display = "none";
+        for (var y of document.getElementsByTagName("input")){
+            if (y.type == "button") y.style.display = "none";
         }
     } else if (!document.getElementById("sci").classList.contains("sld") && !document.getElementById("pro").classList.contains("sld") && !document.getElementById("tjx").classList.contains("sld")) {
         document.querySelectorAll(".hie")[1].style.display = "block";
@@ -215,9 +219,9 @@ function chsld() {
     var clst = ["dwa", "len", "wei"];
     for (var b = 0; b < clst.length; b++) {
         if (arguments[0].classList.contains(clst[b])) {
-            for (var i = 0; i < document.querySelectorAll("select option").length; i++) {
-                document.querySelectorAll("select option")[i].style.display = "none";
-                if (document.querySelectorAll("select option")[i].classList.contains(clst[b])) document.querySelectorAll("select option")[i].style.display = "block";
+            for (var i of document.querySelectorAll("select option")){
+                i.style.display = "none";
+                if (i.classList.contains(clst[b])) i.style.display = "block";
             }
         }
     }
@@ -407,36 +411,36 @@ function dyh(typ) {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
-                num.value = eval(calcval).toString(16);
+                num.value = eva(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
-                num.value = eval(calcval).toString(8);
+                num.value = eva(calcval).toString(8);
             } else if (document.getElementById("bin").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
-                num.value = eval(calcval).toString(2);
+                num.value = eva(calcval).toString(2);
             } else {
-                num.value = eval(calcval);
+                num.value = eva(calcval);
             }
         } else {
-            num.value = eval(calcval);
+            num.value = eva(calcval);
         }
-        hst += eval(calcval) + ";";
+        hst += eva(calcval) + ";";
     } else {
         if (prg) {
             if (document.getElementById("hex").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
-                document.getElementById("prv").innerText = eval(calcval).toString(16);
+                document.getElementById("prv").innerText = eva(calcval).toString(16);
             } else if (document.getElementById("oct").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
-                document.getElementById("prv").innerText = eval(calcval).toString(8)
+                document.getElementById("prv").innerText = eva(calcval).toString(8)
             } else if (document.getElementById("bin").classList.contains("ivt")) {
                 var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
-                document.getElementById("prv").innerText = eval(calcval).toString(2);
+                document.getElementById("prv").innerText = eva(calcval).toString(2);
             } else {
-                document.getElementById("prv").innerText = eval(calcval);
+                document.getElementById("prv").innerText = eva(calcval);
             }
             var tbi = "";
-            tbi = Number(eval(calcval)).toString(2);
+            tbi = Number(eva(calcval)).toString(2);
             if (document.getElementById("b1").classList.contains("ivt")) {
                 var lsn = 32;
             } else if (document.getElementById("b2").classList.contains("ivt")) {
@@ -467,7 +471,7 @@ function dyh(typ) {
                 document.getElementById("bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
             }
         } else {
-            document.getElementById("prv").innerHTML = eval(calcval);
+            document.getElementById("prv").innerHTML = eva(calcval);
         }
     }
     hsp.innerHTML = "";
@@ -551,8 +555,8 @@ function calCulate(val) {
                 }
             }
             calcval = calcval.join("").replace(/Mod/g, "%");
-            if (isNaN(eval(calcval)) == false) {
-                mmm += Number(eval(calcval));
+            if (!isNaN(eva(calcval))) {
+                mmm += Number(eva(calcval));
                 ism();
             }
             document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
@@ -594,8 +598,8 @@ function calCulate(val) {
                 }
             }
             calcval = calcval.join("").replace(/Mod/g, "%");
-            if (!isNaN(eval(calcval))) {
-                mmm -= Number(eval(calcval));
+            if (!isNaN(eva(calcval))) {
+                mmm -= Number(eva(calcval));
                 ism();
             }
             document.getElementById("jyi").innerHTML = "<p>" + mmm + "</p><button>MC</button><button>M+</button><button>M-</button>";
