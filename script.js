@@ -193,12 +193,12 @@ function chsld() {
         $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
-    var clst = ["dwa", "len", "wei", "tem"];
-    for (var b = 0; b < clst.length; b++) {
-        if (arguments[0] && arguments[0].classList.contains(clst[b])) {
+    var clst = ["dwa", "len", "wei", "tem", "ene"];
+    for (var b of clst) {
+        if (arguments[0] && arguments[0].classList.contains(b)) {
             for (var i of $("select option")) {
                 i.style.display = "none";
-                if (i.classList.contains(clst[b])) i.style.display = "block";
+                if (i.classList.contains(b)) i.style.display = "block";
             }
         }
     }
@@ -218,7 +218,7 @@ function dms(dmsv) {
 
 function fact(fav) {
     fav = Int(fav);
-    fcr = 1;
+    var fcr = 1;
     for (var fai = 1; fai <= fav; fai++) {
         fcr *= fai;
     }
@@ -286,10 +286,10 @@ function cfh(a, b, c) {
         tpl++;
     }
     tpl = 0;
-    for (var tpl in spl) {
+    for (tpl in spl) {
         spl[tpl] = parseInt(spl[tpl], c);
     }
-    calcval = "";
+    var calcval = "";
     tpl = 0;
     if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
         spl.splice(0, 0, "");
@@ -328,47 +328,35 @@ function dyh(typ) {
     if (typ) {
         if (prg) {
             if ($("#hex").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
                 num.value = eva(calcval).toString(16);
             } else if ($("#oct").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
                 num.value = eva(calcval).toString(8);
             } else if ($("#bin").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
                 num.value = eva(calcval).toString(2);
-            } else {
-                num.value = eva(calcval);
-            }
-        } else {
-            num.value = eva(calcval);
-        }
+            } else num.value = eva(calcval);
+        } else num.value = eva(calcval);
         hst += eva(calcval) + ";";
     } else {
         if (prg) {
             if ($("#hex").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
+                calcval = cfh(calcval.split(/[^0-9abcdef]+/g), calcval.split(/[0-9abcdef]+/g), 16);
                 $("#prv").innerText = eva(calcval).toString(16);
             } else if ($("#oct").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
+                calcval = cfh(calcval.split(/[^01234567]+/g), calcval.split(/[01234567]+/g), 8);
                 $("#prv").innerText = eva(calcval).toString(8)
             } else if ($("#bin").classList.contains("ivt")) {
-                var calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
+                calcval = cfh(calcval.split(/[^01]+/g), calcval.split(/[01]+/g), 2);
                 $("#prv").innerText = eva(calcval).toString(2);
-            } else {
-                $("#prv").innerText = eva(calcval);
-            }
+            } else $("#prv").innerText = eva(calcval);
             var tbi = "";
             tbi = Number(eva(calcval)).toString(2);
-            if ($("#b1").classList.contains("ivt")) {
-                var lsn = 32;
-            } else if ($("#b2").classList.contains("ivt")) {
-                var lsn = 16
-            } else {
-                var lsn = 8;
-            }
-            if (tbi.length > lsn) {
-                num.value = num.value.slice(0, -1);
-            }
+            if ($("#b1").classList.contains("ivt")) var lsn = 32;
+            else if ($("#b2").classList.contains("ivt")) var lsn = 16
+            else var lsn = 8;
+            if (tbi.length > lsn) num.value = num.value.slice(0, -1);
             while (tbi.length < lsn) {
                 tbi = "0" + tbi;
             }
@@ -379,8 +367,7 @@ function dyh(typ) {
                     if (tbi[i] == "0") tbi[i] = "1";
                     else tbi[i] = "0";
                 }
-                tbi = tbi.join("");
-                tbi = (parseInt(tbi, 2) + 1).toString(2);
+                tbi = (parseInt(tbi.join(""), 2) + 1).toString(2);
             }
             for (var i = (32 - lsn); i <= 31; i++) {
                 $("#bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
@@ -430,9 +417,10 @@ function calCulate(val) {
             num.value = num.value.slice(0, -1);
             break;
         case ">":
-            if (prg) var geb = "pr";
-            else if ($("#sci").classList.contains("sld")) var geb = "gj";
-            else var geb = "tj";
+            var geb;
+            if (prg) geb = "pr";
+            else if ($("#sci").classList.contains("sld")) geb = "gj";
+            else geb = "tj";
             for (i = 0; i < $(".pr").length; i++) {
                 $(".pr")[i].style.display = "none";
             }
@@ -463,7 +451,8 @@ function calCulate(val) {
                 mmm += Number(eva(calcval));
                 ism();
             }
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
+                "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MR":
             num.value += mmm.toString();
@@ -474,12 +463,14 @@ function calCulate(val) {
                 mmm -= Number(eva(calcval));
                 ism();
             }
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
+                "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MC":
             mmm = 0;
             ism();
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button><button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
+                "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "+":
         case "-":
@@ -525,9 +516,7 @@ function calCulate(val) {
         case "F-E":
             dyh(true);
             if (Number(num.value) >= 10) {
-                if (num.value.indexOf(".") == -1) {
-                    num.value += ".";
-                }
+                if (num.value.indexOf(".") == -1) num.value += ".";
                 var aws = num.value.length - num.value.indexOf(".");
                 var tmp = num.value.replace(".", "").split("");
                 tmp[1] = "." + tmp[1];
@@ -581,7 +570,8 @@ function calCulate(val) {
             }
             break;
         case "RoL":
-            dyh(false)
+            dyh(false);
+            var lsn;
             if ($("#b1").classList.contains("ivt")) lsn = 32;
             else if ($("#b2").classList.contains("ivt")) lsn = 16;
             else lsn = 8;
@@ -589,55 +579,37 @@ function calCulate(val) {
                 if ((Number(num.value) << 1).toString(2).length > lsn) {
                     num.value = parseInt((Number(num.value) << 1).toString(2).slice((Number(num.value) << 1).toString(2).length - lsn,
                         (Number(num.value) << 1).toString(2).length), 2);
-                } else {
-                    num.value = (Number(num.value) << 1);
-                }
+                } else num.value = (Number(num.value) << 1);
             } else if ($("#hex").classList.contains("ivt")) {
                 if ((parseInt(num.value, 16) << 1).toString(2).length > lsn) {
                     num.value = parseInt((parseInt(num.value, 16) << 1).toString(2).slice((parseInt(num.value, 16) << 1).toString(2).length - lsn,
                         (parseInt(num.value, 16) << 1).toString(2).length), 2).toString(16);
-                } else {
-                    num.value = (parseInt(num.value, 16) << 1).toString(16)
-                }
+                } else num.value = (parseInt(num.value, 16) << 1).toString(16);
             } else if ($("#oct").classList.contains("ivt")) {
                 if ((parseInt(num.value, 8) << 1).toString(2).length > lsn) {
                     num.value = parseInt((parseInt(num.value, 8) << 1).toString(2).slice((parseInt(num.value, 8) << 1).toString(2).length - lsn,
                         (parseInt(num.value, 8) << 1).toString(2).length), 2).toString(8);
-                } else {
-                    num.value = (parseInt(num.value, 8) << 1).toString(8)
-                }
+                } else num.value = (parseInt(num.value, 8) << 1).toString(8);
             } else {
                 if ((parseInt(num.value, 2) << 1).toString(2).length > lsn) {
                     num.value = parseInt((parseInt(num.value, 2) << 1).toString(2).slice((parseInt(num.value, 2) << 1).toString(2).length - lsn,
                         (parseInt(num.value, 2) << 1).toString(2).length), 2).toString(2);
-                } else {
-                    num.value = (parseInt(num.value, 2) << 1).toString(2)
-                }
+                } else num.value = (parseInt(num.value, 2) << 1).toString(2);
             }
             break;
         case "RoR":
-            dyh(false)
-            if ($("#dec").classList.contains("ivt")) {
-                num.value = Number(num.value) >>> 1;
-            } else if ($("#hex").classList.contains("ivt")) {
-                num.value = (parseInt(num.value, 16) >>> 1).toString(16)
-            } else if ($("#oct").classList.contains("ivt")) {
-                num.value = (parseInt(num.value, 8) >>> 1).toString(8)
-            } else {
-                num.value = (parseInt(num.value, 2) >>> 1).toString(2)
-            }
+            dyh(false);
+            if ($("#dec").classList.contains("ivt")) num.value = Number(num.value) >>> 1;
+            else if ($("#hex").classList.contains("ivt")) num.value = (parseInt(num.value, 16) >>> 1).toString(16);
+            else if ($("#oct").classList.contains("ivt")) num.value = (parseInt(num.value, 8) >>> 1).toString(8);
+            else num.value = (parseInt(num.value, 2) >>> 1).toString(2);
             break;
         case "Not":
-            dyh(false)
-            if ($("#dec").classList.contains("ivt")) {
-                num.value = ~Number(num.value);
-            } else if ($("#hex").classList.contains("ivt")) {
-                num.value = (~parseInt(num.value, 16)).toString(16)
-            } else if ($("#oct").classList.contains("ivt")) {
-                num.value = (~parseInt(num.value, 8)).toString(8)
-            } else {
-                num.value = (~parseInt(num.value, 2)).toString(2)
-            }
+            dyh(false);
+            if ($("#dec").classList.contains("ivt")) num.value = ~Number(num.value);
+            else if ($("#hex").classList.contains("ivt")) num.value = (~parseInt(num.value, 16)).toString(16);
+            else if ($("#oct").classList.contains("ivt")) num.value = (~parseInt(num.value, 8)).toString(8);
+            else num.value = (~parseInt(num.value, 2)).toString(2);
             break;
         case "Add":
             $("#tjb").innerHTML += ("<span contenteditable='true'>" + num.value + "</span><hr />");
@@ -647,18 +619,14 @@ function calCulate(val) {
         case "∑x":
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]);
-                }
+                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]);
             }
             num.value = sxm;
             break;
         case "∑x^2":
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
-                }
+                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
             num.value = sxm;
             break;
@@ -666,8 +634,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) / (document.getElementById(
-                        "tjb").innerHTML.split("<hr>").length - 1);
+                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -676,8 +643,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2 / (document.getElementById(
-                        "tjb").innerHTML.split("<hr>").length - 1);
+                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2 / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -685,15 +651,11 @@ function calCulate(val) {
         case "σn":
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
-                }
+                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
             var sxn = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
-                }
+                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
             }
             num.value = Math.sqrt(sxm / ($("#tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
                 ($("#tjb").innerHTML.split("<hr>").length - 1) ** 2);
