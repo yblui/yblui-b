@@ -15,6 +15,8 @@ function eva(a) {
     return Function("'use strict'; return (" + a + ");")(0);
 }
 
+$("#select2").innerHTML = $("#select1").innerHTML;
+
 function ike(event) {
     switch (event.keyCode) {
         case 49:
