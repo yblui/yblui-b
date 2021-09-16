@@ -11,9 +11,7 @@ function Int(intv) {
     else return 0;
 }
 
-function eva(a) {
-    return Function("'use strict'; return (" + a + ");")(0);
-}
+var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
 
 $("#select2").innerHTML = $("#select1").innerHTML;
 
@@ -99,7 +97,7 @@ function ike(event) {
     }
     try {
         dyh(false);
-        if ($("#prv").innerHTML.indexOf(";") != -1) throw "错误";
+        if ($("#prv").innerHTML.indexOf(";") != -1) throw new Error("");
     } catch (err) {
         $("#prv").innerHTML = "错误";
     }
@@ -157,8 +155,8 @@ function chsld() {
         for (var p of $(".ppl")) {
             p.style.display = "none";
         }
-        for (var i = 0; i < 8; i++) {
-            $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9"][i]).style.display = "inline";
+        for (var q = 0; q < 8; q++) {
+            $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9"][q]).style.display = "inline";
         }
         $("#equ").value = "Add";
         $("#tjb").style.display = "block";
@@ -193,12 +191,12 @@ function chsld() {
         $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
-    var clst = ["dwa", "len", "wei", "tem", "ene"];
+    var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal"];
     for (var b of clst) {
         if (arguments[0] && arguments[0].classList.contains(b)) {
-            for (var i of $("select option")) {
-                i.style.display = "none";
-                if (i.classList.contains(b)) i.style.display = "block";
+            for (var w of $("select option")) {
+                w.style.display = "none";
+                if (w.classList.contains(b)) w.style.display = "block";
             }
         }
     }
@@ -206,9 +204,7 @@ function chsld() {
     calCulate(">");
 }
 
-function frac(frv) {
-    return frv - Int(frv);
-}
+var frac = (frv) => frv - Int(frv);
 
 function dms(dmsv) {
     var min = Int(frac(dmsv) * 60) / 100;
@@ -291,9 +287,7 @@ function cfh(a, b, c) {
     }
     var calcval = "";
     tpl = 0;
-    if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) {
-        spl.splice(0, 0, "");
-    }
+    if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) spl.splice(0, 0, "");
     while (tpl <= fuh.length - 1) {
         calcval = calcval + spl[tpl] + fuh[tpl];
         tpl++;
@@ -353,9 +347,10 @@ function dyh(typ) {
             } else $("#prv").innerText = eva(calcval);
             var tbi = "";
             tbi = Number(eva(calcval)).toString(2);
-            if ($("#b1").classList.contains("ivt")) var lsn = 32;
-            else if ($("#b2").classList.contains("ivt")) var lsn = 16
-            else var lsn = 8;
+            var lsn;
+            if ($("#b1").classList.contains("ivt")) lsn = 32;
+            else if ($("#b2").classList.contains("ivt")) lsn = 16
+            else lsn = 8;
             if (tbi.length > lsn) num.value = num.value.slice(0, -1);
             while (tbi.length < lsn) {
                 tbi = "0" + tbi;
@@ -634,7 +629,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
+                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) / ($("#tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -643,7 +638,7 @@ function calCulate(val) {
             var sxm = 0;
             for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2 / (document.getElementById("tjb").innerHTML.split("<hr>").length - 1);
+                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2 / ($("#tjb").innerHTML.split("<hr>").length - 1);
                 }
             }
             num.value = sxm;
@@ -688,7 +683,7 @@ function calCulate(val) {
     try {
         dyh(false);
         if ($("#prv").innerHTML.indexOf(";") != -1) {
-            throw "错误";
+            throw new Error("");
         }
     } catch (err) {
         $("#prv").innerHTML = "错误";
@@ -712,18 +707,17 @@ function ch(cjz) {
             }
         } else if (cjz == "hex") {
             dyh(false);
-            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(16)
+            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(16);
             $("#hex").classList.add("ivt");
             $("#dec").classList.remove("ivt");
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
-                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style.display = "inline-block";
+                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "inline-block";
             }
         } else if (cjz == "oct") {
             dyh(false);
-            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(8)
+            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(8);
             $("#oct").classList.add("ivt");
             $("#hex").classList.remove("ivt");
             $("#dec").classList.remove("ivt");
@@ -736,7 +730,7 @@ function ch(cjz) {
             }
         } else if (cjz == "bin") {
             dyh(false);
-            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(2)
+            num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(2);
             $("#bin").classList.add("ivt");
             $("#hex").classList.remove("ivt");
             $("#oct").classList.remove("ivt");
@@ -835,6 +829,7 @@ function cck() {
     var jia = [Number($("#year").value), Number($("#month").value), Number($("#day").value)];
     var ping = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var run = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var nian;
     if ($("#ad").checked) {
         riqi[0] += jia[0];
         riqi[1] += jia[1];
@@ -844,9 +839,9 @@ function cck() {
             riqi[1] = riqi[1] % 12;
             if (!riqi[1]) riqi[1] = 12;
             if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
-                var nian = run;
+                nian = run;
             } else {
-                var nian = ping;
+                nian = ping;
             }
             if (riqi[2] > nian[riqi[1] - 1]) {
                 riqi[2] -= nian[riqi[1] - 1];
@@ -860,9 +855,9 @@ function cck() {
         riqi[2] -= jia[2];
         while (riqi[2] < 0 || riqi[1] < 0 || riqi[0] < 0) {
             if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
-                var nian = run;
+                nian = run;
             } else {
-                var nian = ping;
+                nian = ping;
             }
             if (riqi[1] <= 0) {
                 riqi[0] += ((riqi[1] - riqi[1] % 12) / 12) - 1;
