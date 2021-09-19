@@ -208,3 +208,7 @@ b {
 h2 {
     font-weight: normal;
 }
+
+.hie span {
+    font-size: xx-large;
+}

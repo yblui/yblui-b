@@ -12,7 +12,6 @@ function Int(intv) {
 }
 
 var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
-
 $("#select2").innerHTML = $("#select1").innerHTML;
 
 function ike(event) {
@@ -134,7 +133,7 @@ function chsld() {
         $("#pre").style.display = "block";
         $("#dot").value = "Mod";
         prg = true;
-        for (var i of $(".ppl")) {
+        for (i of $(".ppl")) {
             i.style.display = "inline";
         }
         $("#equ").value = "=";
@@ -205,12 +204,7 @@ function chsld() {
 }
 
 var frac = (frv) => frv - Int(frv);
-
-function dms(dmsv) {
-    var min = Int(frac(dmsv) * 60) / 100;
-    var sec = (frac(dmsv) - min * 100 / 60) * 3600 / 10000;
-    return Int(dmsv) + min + sec;
-}
+var dms = (dmsv) => Int(dmsv) + Int(frac(dmsv) * 60) / 100 + (frac(dmsv) - min * 100 / 60) * 3600 / 10000;
 
 function fact(fav) {
     fav = Int(fav);
@@ -221,18 +215,12 @@ function fact(fav) {
     return fcr;
 }
 
-var epow = (epv) => Math.E ** epv;
-var sin = (a) => Math.sin(a);
-var cos = (a) => Math.cos(a);
-var tan = (a) => Math.tan(a);
-var sinh = (a) => Math.sinh(a);
-var cosh = (a) => Math.cosh(a);
-var tanh = (a) => Math.tanh(a);
-var asin = (a) => Math.asin(a);
-var acos = (a) => Math.acos(a);
-var atan = (a) => Math.atan(a);
-var asinh = (a) => Math.asinh(a);
-var acosh = (a) => Math.acosh(a);
+var epow = (epv) => Math.E ** epv, sin = (a) => Math.sin(a);
+var cos = (a) => Math.cos(a), tan = (a) => Math.tan(a);
+var sinh = (a) => Math.sinh(a), cosh = (a) => Math.cosh(a);
+var tanh = (a) => Math.tanh(a), asin = (a) => Math.asin(a);
+var acos = (a) => Math.acos(a), atan = (a) => Math.atan(a);
+var asinh = (a) => Math.asinh(a), acosh = (a) => Math.acosh(a);
 var atanh = (a) => Math.atanh(a);
 
 function degrees(dgv) {
@@ -349,7 +337,7 @@ function dyh(typ) {
             tbi = Number(eva(calcval)).toString(2);
             var lsn;
             if ($("#b1").classList.contains("ivt")) lsn = 32;
-            else if ($("#b2").classList.contains("ivt")) lsn = 16
+            else if ($("#b2").classList.contains("ivt")) lsn = 16;
             else lsn = 8;
             if (tbi.length > lsn) num.value = num.value.slice(0, -1);
             while (tbi.length < lsn) {
@@ -358,26 +346,24 @@ function dyh(typ) {
             if (tbi.indexOf("-") != -1) {
                 tbi = tbi.replace("-", "0");
                 tbi = tbi.split("");
-                for (var i = 0; i <= (lsn - 1); i++) {
+                for (i = 0; i <= (lsn - 1); i++) {
                     if (tbi[i] == "0") tbi[i] = "1";
                     else tbi[i] = "0";
                 }
                 tbi = (parseInt(tbi.join(""), 2) + 1).toString(2);
             }
-            for (var i = (32 - lsn); i <= 31; i++) {
+            for (i = (32 - lsn); i <= 31; i++) {
                 $("#bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
             }
-        } else {
-            $("#prv").innerHTML = eva(calcval);
-        }
+        } else $("#prv").innerHTML = eva(calcval);
     }
     hsp.innerHTML = "";
     hst = hst.split(";").slice(0, hst.split(";").length - 1);
-    for (var i of hst) {
+    for (i of hst) {
         $("#hsp").innerHTML = $("#hsp").innerHTML +
             "<p onclick='document.getElementById(`t`).value=`" + i + "`.split(`=`)[1];dyh(false)'>" + i + "</p><hr />";
     }
-    $("#hsp").innerHTML = $("#hsp").innerHTML + "<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>"
+    $("#hsp").innerHTML = $("#hsp").innerHTML + "<p onclick='hst=``;document.getElementById(`hsp`).innerHTML=`<p>清空历史</p>`'>清空历史</p>";
     hst = hst.join(";") + ";";
 }
 
@@ -699,7 +685,7 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (var i = 2; i <= 9; i++) {
+            for (i = 2; i <= 9; i++) {
                 $("#s" + i).style.display = "inline-block";
             }
             for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
@@ -722,7 +708,7 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#dec").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (var i = 2; i <= 7; i++) {
+            for (i = 2; i <= 7; i++) {
                 $("#s" + i).style.display = "inline-block";
             }
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
@@ -780,7 +766,7 @@ function cgebi(civ) {
             tbi = (parseInt(tbi, 2) - 1).toString(2);
             tbi = tbi.replace("1", "-");
             tbi = tbi.split("");
-            for (var i = 1; i <= 31; i++) {
+            for (i = 1; i <= 31; i++) {
                 if (tbi[i] == "0") {
                     tbi[i] = "1";
                 } else {
