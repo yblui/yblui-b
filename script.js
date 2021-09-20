@@ -4,6 +4,8 @@ function $(a) {
 }
 
 var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false;
+var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
+$("#select2").innerHTML = $("#select1").innerHTML;
 
 function Int(intv) {
     if (intv > 0) return Math.floor(intv);
@@ -11,32 +13,8 @@ function Int(intv) {
     else return 0;
 }
 
-var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
-$("#select2").innerHTML = $("#select1").innerHTML;
-
 function ike(event) {
     switch (event.keyCode) {
-        case 49:
-        case 97:
-        case 50:
-        case 98:
-        case 51:
-        case 99:
-        case 52:
-        case 100:
-        case 101:
-        case 54:
-        case 102:
-        case 55:
-        case 103:
-        case 56:
-        case 104:
-        case 105:
-        case 96:
-        case 110:
-        case 190:
-            calCulate(event.key);
-            break;
         case 53:
             if (event.shiftKey) calCulate("%");
             else calCulate("5");
@@ -48,13 +26,6 @@ function ike(event) {
         case 48:
             if (event.shiftKey) calCulate(")");
             else calCulate("0");
-            break;
-        case 107:
-            calCulate("+");
-            break;
-        case 189:
-        case 109:
-            calCulate("-");
             break;
         case 106:
             calCulate("×");
@@ -86,12 +57,34 @@ function ike(event) {
         case 32:
             chsld();
             break;
+        case 49:
+        case 50:
+        case 51:
+        case 52:
+        case 54:
+        case 55:
+        case 56:
         case 65:
         case 66:
         case 67:
         case 68:
         case 69:
         case 70:
+        case 96:
+        case 97:
+        case 98:
+        case 99:
+        case 100:
+        case 101:
+        case 102:
+        case 103:
+        case 104:
+        case 105:
+        case 107:
+        case 110:
+        case 189:
+        case 109:
+        case 190:
             calCulate(event.key);
     }
     try {
@@ -133,9 +126,7 @@ function chsld() {
         $("#pre").style.display = "block";
         $("#dot").value = "Mod";
         prg = true;
-        for (i of $(".ppl")) {
-            i.style.display = "inline";
-        }
+        for (i of $(".ppl")) i.style.display = "inline";
         $("#equ").value = "=";
         $("#tjb").style.display = "none";
         $("#pec").style.display = "none";
@@ -151,12 +142,8 @@ function chsld() {
         $("#pre").style.display = "none";
         $("#dot").value = ".";
         prg = false;
-        for (var p of $(".ppl")) {
-            p.style.display = "none";
-        }
-        for (var q = 0; q < 8; q++) {
-            $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9"][q]).style.display = "inline";
-        }
+        for (var p of $(".ppl")) p.style.display = "none";
+        for (var q = 0; q < 8; q++) $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9"][q]).style.display = "inline";
         $("#equ").value = "Add";
         $("#tjb").style.display = "block";
         $("#tle").style.display = "block";
@@ -166,9 +153,7 @@ function chsld() {
         $("#cus").style.display = "none";
         $("#prv").style.display = "none";
     } else {
-        for (var v of $(".ppl")) {
-            v.style.display = "none";
-        }
+        for (var v of $(".ppl")) v.style.display = "none";
         $("#equ").value = "=";
         $("#tjb").style.display = "none";
         $("#pec").style.display = "inline-block";
@@ -183,11 +168,8 @@ function chsld() {
     if ($("#rq").classList.contains("sld")) {
         $(".hie")[0].style.display = "block";
         $(".hie")[1].style.display = "none";
-        for (var y of $("input")) {
-            if (y.type == "button") y.style.display = "none";
-        }
-    } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList
-        .contains("sld")) {
+        for (y of $("input")) if (y.type == "button") y.style.display = "none";
+    } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList.contains("sld")) {
         $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
@@ -210,9 +192,7 @@ var dms = (dmsv) => Int(dmsv) + Int(frac(dmsv) * 60) / 100 + (frac(dmsv) - min *
 function fact(fav) {
     fav = Int(fav);
     var fcr = 1;
-    for (var fai = 1; fai <= fav; fai++) {
-        fcr *= fai;
-    }
+    for (var fai = 1; fai <= fav; fai++) fcr *= fai;
     return fcr;
 }
 
@@ -271,9 +251,7 @@ function cfh(a, b, c) {
         tpl++;
     }
     tpl = 0;
-    for (tpl in spl) {
-        spl[tpl] = parseInt(spl[tpl], c);
-    }
+    for (tpl in spl) spl[tpl] = parseInt(spl[tpl], c);
     var calcval = "";
     tpl = 0;
     if (num.value[0] == "(" || ((num.value[0] == "+" || num.value[0] == "-") && num.value[1] == "(")) spl.splice(0, 0, "");
@@ -403,9 +381,7 @@ function calCulate(val) {
             if (prg) geb = "pr";
             else if ($("#sci").classList.contains("sld")) geb = "gj";
             else geb = "tj";
-            for (i = 0; i < $(".pr").length; i++) {
-                $(".pr")[i].style.display = "none";
-            }
+            for (i = 0; i < $(".pr").length; i++) $(".pr")[i].style.display = "none";
             for (i = 0; i < $(".gj").length; i++) $(".gj")[i].style.display = "none";
             for (i = 0; i < $(".tj").length; i++) $(".tj")[i].style.display = "none";
             for (i = 0; i < document.getElementsByClassName(geb).length; i++) {
@@ -740,11 +716,9 @@ function ch(cjz) {
 function cgebi(civ) {
     if ($("#bi" + civ).innerText == "0") $("#bi" + civ).innerText = "1";
     else $("#bi" + civ).innerText = "0";
-    if ($("#hex").classList.contains("ivt")) {
-        num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(16);
-    } else if ($("#oct").classList.contains("ivt")) {
-        num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(8);
-    } else if ($("#bin").classList.contains("ivt")) num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(2);
+    if ($("#hex").classList.contains("ivt")) num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(16);
+    else if ($("#oct").classList.contains("ivt")) num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(8);
+    else if ($("#bin").classList.contains("ivt")) num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(2);
     else {
         num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2);
         if ($("#bis").innerText.replace(/\s/g, "")[0] == "1") {
