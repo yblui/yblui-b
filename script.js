@@ -5,6 +5,17 @@ function $(a) {
 
 var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false;
 var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
+var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal", "dee"];
+var tdli = [
+    [1, 1, 0.001, 0.000001, 0.202884, 0.067628, 0.033814, 0.004227, 0.002113, 0.001057, 0.000264, 0.061024, 0.000035, 0.000001, 0.168936, 0.056312,
+        0.035195, 0.00176, 0.00088, 0.00022],
+    [1, 0.001, 0.000001, 0.0000001, 0.000000001, 0.000000000001, 0.000000039370079, 0.00000000328084, 0.000000001093613, 0.000000000000621,
+        0.00000000000054],
+    [1, 200, 20, 2, 0.2, 0.02, 0.002, 0.0002, 0.0000002, 0.007055, 0.000441, 0.000031, 0.000000220462262, 0.000000196841306],
+    null,
+    [1, 1.602177e-19, 1.602177e-22, 3.829294e-20, 3.829294e-23, 1.181705e-19, 1.518570e-22]
+];
+var minu = [0, 20, 31, 45, 48, 55, 65, 71, 79, 84, 118, 124];
 $("#select2").innerHTML = $("#select1").innerHTML;
 
 function Int(intv) {
@@ -93,6 +104,14 @@ function ike(event) {
     } catch (err) {
         $("#prv").innerHTML = "错误";
     }
+    for (i = 0; i < clst.length; i++) {
+        if (clst[i] == $(".sld").classList[1]) break;
+    }
+    if (!$(".sld").id) {
+        var dq = tdli[i];
+        $('span[onclick="fo(this);"]:not(.foc)').innerText = Number($(".foc").innerText) / dq[$(".foc+br+select").selectedIndex - minu[i]] *
+            dq[$('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[i]];
+    }
 }
 
 function chsld() {
@@ -173,7 +192,6 @@ function chsld() {
         $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
-    var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal", "dee"];
     for (var b of clst) {
         if (arguments[0] && arguments[0].classList.contains(b)) {
             for (var w of $("select option")) {
@@ -375,6 +393,7 @@ function calCulate(val) {
             break;
         case "<":
             num.value = num.value.slice(0, -1);
+            if (!num.value) num.value = "0";
             break;
         case ">":
             var geb;
@@ -397,7 +416,7 @@ function calCulate(val) {
             }
             break;
         case "AC":
-            num.value = "";
+            num.value = "0";
             break;
         case "M+":
             var calcval = mcaozuo();
@@ -635,6 +654,7 @@ function calCulate(val) {
         default:
             num.value = num.value + val;
             jgl = false;
+            if (num.value[0] == "0" && !isNaN(Number(num.value[1]))) num.value = num.value.replace("0", "");
             break;
     }
     try {
@@ -643,6 +663,7 @@ function calCulate(val) {
     } catch (err) {
         $("#prv").innerHTML = "错误";
     }
+    $(".foc").innerText = num.value;
 }
 
 function ch(cjz) {
