@@ -1,4 +1,4 @@
-#t {
+#t, .hie span {
     margin: 10px 0;
     font-size: 30pt;
     width: 360px;
@@ -209,6 +209,6 @@ h2 {
     font-weight: normal;
 }
 
-.hie span {
-    font-size: xx-large;
+.foc{
+    font-weight: bold;
 }

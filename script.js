@@ -186,11 +186,12 @@ function chsld() {
         for (var y of $("input")) {
             if (y.type == "button") y.style.display = "none";
         }
-    } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList.contains("sld")) {
+    } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList
+        .contains("sld")) {
         $(".hie")[1].style.display = "block";
         $(".hie")[0].style.display = "none";
     }
-    var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal"];
+    var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal", "dee"];
     for (var b of clst) {
         if (arguments[0] && arguments[0].classList.contains(b)) {
             for (var w of $("select option")) {
@@ -228,8 +229,8 @@ function degrees(dgv) {
     if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 1) dgv = dgv + "000";
     else if (dgv.slice(dgv.indexOf(".") + 1, -1).length == 3) dgv += "0";
     else if (dgv.indexOf(".") == -1) dgv += ".0000";
-    return Int(Number(dgv)) + (Number(dgv.slice(dgv.indexOf(".") + 1, dgv.indexOf(".") + 3)) * 3.6) + (Number(dgv.substr(
-        dgv.indexOf(".") + 3).split("").splice(2, 0, ".").join("")) * 0.036);
+    return Int(Number(dgv)) + (Number(dgv.slice(dgv.indexOf(".") + 1, dgv.indexOf(".") + 3)) * 3.6) + (Number(dgv
+        .substr(dgv.indexOf(".") + 3).split("").splice(2, 0, ".").join("")) * 0.036);
 }
 
 function ln(lnv) {
@@ -405,12 +406,8 @@ function calCulate(val) {
             for (i = 0; i < $(".pr").length; i++) {
                 $(".pr")[i].style.display = "none";
             }
-            for (i = 0; i < $(".gj").length; i++) {
-                $(".gj")[i].style.display = "none";
-            }
-            for (i = 0; i < $(".tj").length; i++) {
-                $(".tj")[i].style.display = "none";
-            }
+            for (i = 0; i < $(".gj").length; i++) $(".gj")[i].style.display = "none";
+            for (i = 0; i < $(".tj").length; i++) $(".tj")[i].style.display = "none";
             for (i = 0; i < document.getElementsByClassName(geb).length; i++) {
                 if (!mhd) document.getElementsByClassName(geb)[i].style.display = "inline";
                 else document.getElementsByClassName(geb)[i].style.display = "none";
@@ -432,8 +429,8 @@ function calCulate(val) {
                 mmm += Number(eva(calcval));
                 ism();
             }
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
-                "<button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>"
+                + "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MR":
             num.value += mmm.toString();
@@ -444,14 +441,14 @@ function calCulate(val) {
                 mmm -= Number(eva(calcval));
                 ism();
             }
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
-                "<button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>"
+                + "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "MC":
             mmm = 0;
             ism();
-            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>" +
-                "<button onclick='calCulate(\"M-\");'>M-</button>";
+            $("#jyi").innerHTML = "<p>" + mmm + "</p><button onclick='calCulate(\"MC\");'>MC</button><button onclick='calCulate(\"M+\");'>M+</button>"
+                + "<button onclick='calCulate(\"M-\");'>M-</button>";
             break;
         case "+":
         case "-":
@@ -460,9 +457,7 @@ function calCulate(val) {
             if (!jgl) {
                 num.value = num.value + val;
                 jgl = true;
-            } else {
-                num.value = num.value.slice(0, -1) + val;
-            }
+            } else num.value = num.value.slice(0, -1) + val;
             break;
         case "sin":
         case "cos":
@@ -668,9 +663,7 @@ function calCulate(val) {
     }
     try {
         dyh(false);
-        if ($("#prv").innerHTML.indexOf(";") != -1) {
-            throw new Error("");
-        }
+        if ($("#prv").innerHTML.indexOf(";") != -1) throw new Error("");
     } catch (err) {
         $("#prv").innerHTML = "错误";
     }
@@ -685,9 +678,7 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (i = 2; i <= 9; i++) {
-                $("#s" + i).style.display = "inline-block";
-            }
+            for (i = 2; i <= 9; i++) $("#s" + i).style.display = "inline-block";
             for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
                 $("#s" + ["a", "b", "c", "d", "e", "f"][i]).style.display = "none";
             }
@@ -699,7 +690,8 @@ function ch(cjz) {
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
-                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "inline-block";
+                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display =
+                    "inline-block";
             }
         } else if (cjz == "oct") {
             dyh(false);
@@ -708,9 +700,7 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#dec").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (i = 2; i <= 7; i++) {
-                $("#s" + i).style.display = "inline-block";
-            }
+            for (i = 2; i <= 7; i++) $("#s" + i).style.display = "inline-block";
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
                 $("#s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "none";
             }
@@ -748,18 +738,14 @@ function ch(cjz) {
 }
 
 function cgebi(civ) {
-    if ($("#bi" + civ).innerText == "0") {
-        $("#bi" + civ).innerText = "1";
-    } else {
-        $("#bi" + civ).innerText = "0";
-    }
+    if ($("#bi" + civ).innerText == "0") $("#bi" + civ).innerText = "1";
+    else $("#bi" + civ).innerText = "0";
     if ($("#hex").classList.contains("ivt")) {
         num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(16);
     } else if ($("#oct").classList.contains("ivt")) {
         num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(8);
-    } else if ($("#bin").classList.contains("ivt")) {
-        num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(2);
-    } else {
+    } else if ($("#bin").classList.contains("ivt")) num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2).toString(2);
+    else {
         num.value = parseInt($("#bis").innerText.replace(/\s/g, ""), 2);
         if ($("#bis").innerText.replace(/\s/g, "")[0] == "1") {
             var tbi = $("#bis").innerText.replace(/\s/g, "");
@@ -767,11 +753,8 @@ function cgebi(civ) {
             tbi = tbi.replace("1", "-");
             tbi = tbi.split("");
             for (i = 1; i <= 31; i++) {
-                if (tbi[i] == "0") {
-                    tbi[i] = "1";
-                } else {
-                    tbi[i] = "0";
-                }
+                if (tbi[i] == "0") tbi[i] = "1";
+                else tbi[i] = "0";
             }
             tbi = tbi.join("");
             num.value = parseInt(tbi, 2);
@@ -794,24 +777,16 @@ function set(a) {
 
 function rqj(a) {
     $(".jsa")[a].style.display = "block";
-    if (a == 0) {
-        $(".jsa")[1].style.display = "none";
-    } else {
-        $(".jsa")[0].style.display = "none";
-    }
+    if (a == 0) $(".jsa")[1].style.display = "none";
+    else $(".jsa")[0].style.display = "none";
 }
 
 function cck() {
-    var zt = (new Date($("#startDate").value) - new Date($("#endDate").value)) / 86400000
-    if ((new Date($("#startDate").value) - new Date($("#endDate").value)) > 0) {
-        $("#czh").innerText = zt + "天";
-    } else {
-        $("#czh").innerText = -zt + "天";
-    }
+    var zt = (new Date($("#startDate").value) - new Date($("#endDate").value)) / 86400000;
+    if ((new Date($("#startDate").value) - new Date($("#endDate").value)) > 0) $("#czh").innerText = zt + "天";
+    else $("#czh").innerText = -zt + "天";
     var riqi = $("#startDate").value.split("-");
-    for (let v = 0; v < riqi.length; v++) {
-        riqi[v] = Number(riqi[v])
-    }
+    for (let v = 0; v < riqi.length; v++) riqi[v] = Number(riqi[v]);
     var jia = [Number($("#year").value), Number($("#month").value), Number($("#day").value)];
     var ping = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var run = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -824,11 +799,8 @@ function cck() {
             riqi[0] += (riqi[1] - riqi[1] % 12) / 12;
             riqi[1] = riqi[1] % 12;
             if (!riqi[1]) riqi[1] = 12;
-            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
-                nian = run;
-            } else {
-                nian = ping;
-            }
+            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) nian = run;
+            else nian = ping;
             if (riqi[2] > nian[riqi[1] - 1]) {
                 riqi[2] -= nian[riqi[1] - 1];
                 riqi[1]++;
@@ -840,11 +812,8 @@ function cck() {
         riqi[1] -= jia[1];
         riqi[2] -= jia[2];
         while (riqi[2] < 0 || riqi[1] < 0 || riqi[0] < 0) {
-            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) {
-                nian = run;
-            } else {
-                nian = ping;
-            }
+            if ((riqi[0] % 4 == 0 && riqi[0] % 100 != 0) || riqi[0] % 400 == 0) nian = run;
+            else nian = ping;
             if (riqi[1] <= 0) {
                 riqi[0] += ((riqi[1] - riqi[1] % 12) / 12) - 1;
                 riqi[1] = riqi[1] % 12 + 12;
@@ -860,4 +829,9 @@ function cck() {
         }
     }
     $("#jsb").innerText = riqi[0] + "年" + riqi[1] + "月" + riqi[2] + "日";
+}
+
+function fo(v) {
+    for (var b of $(".hie span")) b.classList.remove("foc");
+    v.classList.add("foc");
 }
