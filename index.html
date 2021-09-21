@@ -14,7 +14,8 @@
 </head>
 
 <body onkeyup="ike(event);">
-    <button>导航</button>
+    <button id="dha" onclick="$('#mde').style.left='0';">导航</button>
+    <h2><strong>科学型</strong></h2>
     <div id="mde">
         <strong>计算器</strong>
         <p class="b sld" id="sci" onclick="chsld(this);">科学型</p>
@@ -35,7 +36,7 @@
         <p onclick="chsld(this);" class="b bit">数据</p>
         <p onclick="chsld(this);" class="b yal">压力</p>
         <p onclick="chsld(this);" class="b dee">角度</p>
-        <p onclick="document.getElementById('about').style.display = 'block';" class="b">关于</p>
+        <p onclick="$('#about').style.display = 'block';" class="b">关于</p>
     </div>
     <label>
         <input type="text" name="t" id="t" disabled="disabled" value="0"/>
@@ -310,7 +311,7 @@
     <div id="about">
         <span onclick="this.parentNode.style.display = 'none';">关闭</span>
         <h2>关于</h2>
-        计算器 v3.2.9<br />
+        计算器 v3.4.0<br />
         Copyright 2021 YBLUI.github.io.<br />
         若要了解如何参与 Yblui-b，请在 <a href="https://github.com/yblui/yblui-b">GitHub</a> 上查看该项目。
     </div>

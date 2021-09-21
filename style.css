@@ -52,9 +52,8 @@ input[type="button"]:active, button:active {
 body {
     background-color: #fcfcfc;
     text-align: center;
-    padding-left: 200px;
     padding-right: 300px;
-    width: calc(100% - 500px);
+    width: calc(100% - 300px);
     margin: 0;
 }
 
@@ -104,13 +103,14 @@ hr {
 #mde {
     position: fixed;
     top: 0;
-    left: 0;
     width: 200px;
     text-align: left;
     overflow-y: auto;
     height: 100%;
     overflow-x: hidden;
     z-index: 100;
+    left: -200px;
+    background-color: white;
 }
 
 pre code span {
@@ -209,6 +209,12 @@ h2 {
     font-weight: normal;
 }
 
-.foc{
+.foc {
     font-weight: bold;
+}
+
+#dha {
+    position: fixed;
+    top: 0;
+    left: 0;
 }
