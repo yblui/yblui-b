@@ -3,7 +3,7 @@ function $(a) {
     else return document.querySelectorAll(a);
 }
 
-var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false;
+var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false, sxm, sxi;
 var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
 var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal", "dee"];
 var tdli = [
@@ -24,7 +24,7 @@ var tdli = [
     [0.068046, 0.068948, 6.894757, 51.72361, 6894.757, 1],
     [0.9, 0.015708, 1]
 ];
-var minu = [0, 20, 31, 45, 48, 55, 65, 71, 79, 84, 118, 124];
+var minu = [0, 20, 31, 45, 48, 55, 65, 71, 79, 84, 118, 124, null];
 $("#select2").innerHTML = $("#select1").innerHTML;
 
 function Int(intv) {
@@ -34,6 +34,11 @@ function Int(intv) {
 }
 
 function ike(event) {
+    for (var g = 0; g < clst.length; g++) {
+        if (clst[g] == $(".sld").classList[1]) break;
+    }
+    if ($("#select1").selectedIndex < minu[g] || $("#select1").selectedIndex >= minu[g + 1]) $("#select1").selectedIndex = minu[g];
+    if ($("#select2").selectedIndex < minu[g] || $("#select2").selectedIndex >= minu[g + 1]) $("#select2").selectedIndex = minu[g];
     switch (event.keyCode) {
         case 53:
             if (event.shiftKey) calCulate("%");
@@ -113,19 +118,13 @@ function ike(event) {
     } catch (err) {
         $("#prv").innerHTML = "错误";
     }
-    for (i = 0; i < clst.length; i++) {
-        if (clst[i] == $(".sld").classList[1]) break;
-    }
     if (!$(".sld").id) {
-        var dq = tdli[i];
-        var hsu = Number($(".foc").innerText) / dq[$(".foc+br+select").selectedIndex - minu[i]] *
-            dq[$('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[i]];
+        var dq = tdli[g];
+        var hsu = Number($(".foc").innerText) / dq[$(".foc+br+select").selectedIndex - minu[g]] *
+            dq[$('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[g]];
         if ($(".sld").classList.contains("tem")) {
-            if ($('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[i] == 1) {
-                hsu += 32;
-            } else if ($('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[i] == 2) {
-                hsu += 273.15;
-            }
+            if ($('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[g] == 1) hsu += 32;
+            else if ($('span[onclick="fo(this);"]:not(.foc)+br+select').selectedIndex - minu[g] == 2) hsu += 273.15;
         }
         $('span[onclick="fo(this);"]:not(.foc)').innerText = hsu;
     }
@@ -286,7 +285,6 @@ function cfh(a, b, c) {
         }
         tpl++;
     }
-    tpl = 0;
     for (tpl in spl) spl[tpl] = parseInt(spl[tpl], c);
     var calcval = "";
     tpl = 0;
@@ -425,13 +423,9 @@ function calCulate(val) {
                 if (!mhd) document.getElementsByClassName(geb)[i].style.display = "inline";
                 else document.getElementsByClassName(geb)[i].style.display = "none";
             }
-            if (mhd) {
-                $("#exp").className = "";
-                mhd = false;
-            } else {
-                $("#exp").className = "equ";
-                mhd = true;
-            }
+            if (mhd) $("#exp").className = "";
+            else $("#exp").className = "equ";
+            mhd = !mhd;
             break;
         case "AC":
             num.value = "0";
@@ -613,15 +607,15 @@ function calCulate(val) {
             num.value = sxm;
             break;
         case "∑x^2":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
             num.value = sxm;
             break;
         case "x":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) / ($("#tjb").innerHTML.split("<hr>").length - 1);
                 }
@@ -629,8 +623,8 @@ function calCulate(val) {
             num.value = sxm;
             break;
         case "x^2":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2 / ($("#tjb").innerHTML.split("<hr>").length - 1);
                 }
@@ -638,26 +632,26 @@ function calCulate(val) {
             num.value = sxm;
             break;
         case "σn":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
             var sxn = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
             }
             num.value = Math.sqrt(sxm / ($("#tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
                 ($("#tjb").innerHTML.split("<hr>").length - 1) ** 2);
             break;
         case "σn-1":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
                 }
             }
             var sxn = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
                 }
