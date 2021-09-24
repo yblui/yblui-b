@@ -3,7 +3,7 @@ function $(a) {
     else return document.querySelectorAll(a);
 }
 
-var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false, sxm, sxi;
+var mmm = 0, num = $("#t"), jgl = false, i, mhd = false, ivd = false, hst = "", hex = false, prg = false, sxm, sxi, sxn;
 var eva = (a) => Function("'use strict'; return (" + a + ");")(0);
 var clst = ["dwa", "len", "wei", "tem", "ene", "sqr", "spe", "tim", "lyu", "bit", "yal", "dee"];
 var tdli = [
@@ -18,9 +18,9 @@ var tdli = [
     [1, 0.01, 0.036, 0.032808, 0.022371, 0.01944, 0.000029],
     [31557600000000, 31557600000, 31557600, 525960, 8766, 365.25, 52.17857, 1],
     [17.58427, 0.017584, 0.023581, 778.1694, 1],
-    [9.671407e+24, 1.208926e+24, 9.671407e+21, 9.444733e+21, 1.208926e+21, 1.180592e+21, 9.671407e+18, 9.223372e+18, 1.208926e+18, 1.152922e+18, 9.671407e+15,
-        9.007199e+15, 1.208926e+15, 1.125900e+15, 9671406556917, 8769093022208, 1208925819615, 1099511627776, 9671406557, 8589934592, 1208925820, 1073741824,
-        9671407, 8388608, 1208926, 1048576, 9671.407, 8192, 1208.926, 1024, 9.671407, 8, 1.208926, 1],
+    [9.671407e+24, 1.208926e+24, 9.671407e+21, 9.444733e+21, 1.208926e+21, 1.180592e+21, 9.671407e+18, 9.223372e+18, 1.208926e+18, 1.152922e+18,
+        9.671407e+15, 9.007199e+15, 1.208926e+15, 1.125900e+15, 9671406556917, 8769093022208, 1208925819615, 1099511627776, 9671406557, 8589934592,
+        1208925820, 1073741824, 9671407, 8388608, 1208926, 1048576, 9671.407, 8192, 1208.926, 1024, 9.671407, 8, 1.208926, 1],
     [0.068046, 0.068948, 6.894757, 51.72361, 6894.757, 1],
     [0.9, 0.015708, 1]
 ];
@@ -149,9 +149,7 @@ function chsld() {
             $("#tjx").classList.remove("sld");
         }
     } else {
-        for (var t of $(".b")) {
-            t.classList.remove("sld");
-        }
+        for (var t of $(".b")) t.classList.remove("sld");
         arguments[0].classList.add("sld");
     }
     if ($("#pro").classList.contains("sld")) {
@@ -206,6 +204,9 @@ function chsld() {
         for (y of $("input")) if (y.type == "button") y.style.display = "none";
     } else if (!$("#sci").classList.contains("sld") && !$("#pro").classList.contains("sld") && !$("#tjx").classList.contains("sld")) {
         $(".hie")[1].style.display = "block";
+        $(".hie")[0].style.display = "none";
+    } else {
+        $(".hie")[1].style.display = "none";
         $(".hie")[0].style.display = "none";
     }
     for (var b of clst) {
@@ -365,9 +366,7 @@ function dyh(typ) {
                 }
                 tbi = (parseInt(tbi.join(""), 2) + 1).toString(2);
             }
-            for (i = (32 - lsn); i <= 31; i++) {
-                $("#bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
-            }
+            for (i = (32 - lsn); i <= 31; i++) $("#bi" + (i + 1)).innerText = tbi[i - (32 - lsn)];
         } else $("#prv").innerHTML = eva(calcval);
     }
     hsp.innerHTML = "";
@@ -535,7 +534,6 @@ function calCulate(val) {
                 $("#intb").value = "Int";
                 $("#dmsb").value = "dms";
                 $("#pib").value = "pi";
-                ivd = false;
             } else {
                 $("#inb").style.color = "white";
                 $("#inb").style.backgroundColor = "black";
@@ -549,8 +547,8 @@ function calCulate(val) {
                 $("#intb").value = "Frac";
                 $("#dmsb").value = "deg";
                 $("#pib").value = "2*π";
-                ivd = true;
             }
+            ivd = !ivd;
             break;
         case "RoL":
             dyh(false);
@@ -600,8 +598,8 @@ function calCulate(val) {
             num.value = "";
             break;
         case "∑x":
-            var sxm = 0;
-            for (var sxi in $("#tjb").innerHTML.split("<hr>")) {
+            sxm = 0;
+            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]);
             }
             num.value = sxm;
@@ -636,7 +634,7 @@ function calCulate(val) {
             for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
-            var sxn = 0;
+            sxn = 0;
             for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
             }
@@ -646,22 +644,20 @@ function calCulate(val) {
         case "σn-1":
             sxm = 0;
             for (sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
-                    sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
-                }
+                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
             }
-            var sxn = 0;
+            sxn = 0;
             for (sxi in $("#tjb").innerHTML.split("<hr>")) {
                 if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") {
                     sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
                 }
             }
-            num.value = Math.sqrt(sxm / ($("#tjb").innerHTML.split("<hr>").length - 2) - (sxn ** 2) /
-                ($("#tjb").innerHTML.split("<hr>").length - 2) ** 2);
+            num.value = Math.sqrt(sxm / ($("#tjb").innerHTML.split("<hr>").length - 2) - (sxn ** 2) / ($("#tjb").innerHTML.split("<hr>").length - 2)
+                ** 2);
             break;
         case "CAD":
             $("#tjb").innerHTML = "";
-            $("#tle").innerText = "计数=0"
+            $("#tle").innerText = "计数=0";
             break;
         default:
             num.value = num.value + val;
@@ -688,9 +684,7 @@ function ch(cjz) {
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
             for (i = 2; i <= 9; i++) $("#s" + i).style.display = "inline-block";
-            for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) {
-                $("#s" + ["a", "b", "c", "d", "e", "f"][i]).style.display = "none";
-            }
+            for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) $("#s" + ["a", "b", "c", "d", "e", "f"][i]).style.display = "none";
         } else if (cjz == "hex") {
             dyh(false);
             num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(16);
@@ -699,8 +693,7 @@ function ch(cjz) {
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
-                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display =
-                    "inline-block";
+                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "inline-block";
             }
         } else if (cjz == "oct") {
             dyh(false);
