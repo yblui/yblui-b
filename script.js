@@ -683,8 +683,8 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (i = 2; i <= 9; i++) $("#s" + i).style.display = "inline-block";
-            for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) $("#s" + ["a", "b", "c", "d", "e", "f"][i]).style.display = "none";
+            for (i = 2; i <= 9; i++) $("#s" + i).style.visibility = "visible";
+            for (i = 0; i < ["a", "b", "c", "d", "e", "f"].length; i++) $("#s" + ["a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
         } else if (cjz == "hex") {
             dyh(false);
             num.value = parseInt($("#pre").innerText.replace(/\s/g, ""), 2).toString(16);
@@ -693,7 +693,7 @@ function ch(cjz) {
             $("#oct").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
-                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "inline-block";
+                $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "visible";
             }
         } else if (cjz == "oct") {
             dyh(false);
@@ -702,9 +702,9 @@ function ch(cjz) {
             $("#hex").classList.remove("ivt");
             $("#dec").classList.remove("ivt");
             $("#bin").classList.remove("ivt");
-            for (i = 2; i <= 7; i++) $("#s" + i).style.display = "inline-block";
+            for (i = 2; i <= 7; i++) $("#s" + i).style.visibility = "visible";
             for (i = 0; i < ["8", "9", "a", "b", "c", "d", "e", "f"].length; i++) {
-                $("#s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.display = "none";
+                $("#s" + ["8", "9", "a", "b", "c", "d", "e", "f"][i]).style.visibility = "hidden";
             }
         } else if (cjz == "bin") {
             dyh(false);
@@ -715,7 +715,7 @@ function ch(cjz) {
             $("#dec").classList.remove("ivt");
             for (i = 0; i < 14; i++) {
                 $("#s" + ["2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"][i])
-                    .style.display = "none";
+                    .style.visibility = "hidden";
             }
         } else if (cjz == "b1") {
             $("#b1").classList.add("ivt");
