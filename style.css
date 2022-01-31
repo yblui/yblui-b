@@ -6,6 +6,8 @@
     border: none;
     text-align: right;
     background-color: transparent;
+    -webkit-user-select: text;
+    -ms-user-select: text;
     user-select: text;
     color: black;
 }
@@ -65,6 +67,8 @@ html, body {
 }
 
 * {
+    -webkit-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     transition: 0.3s;
     font-family: "Microsoft Yahei UI", "Segoe UI", sans-serif;

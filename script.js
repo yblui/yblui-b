@@ -34,8 +34,8 @@ function Int(intv) {
 }
 
 function ike(event) {
-    for (var g = 0; g < clst.length; g++) {
-        if (clst[g] == $(".sld").classList[1]) break;
+    for (var g of clst) {
+        if (g == $(".sld").classList[1]) break;
     }
     if ($("#select1").selectedIndex < minu[g] || $("#select1").selectedIndex >= minu[g + 1]) $("#select1").selectedIndex = minu[g];
     if ($("#select2").selectedIndex < minu[g] || $("#select2").selectedIndex >= minu[g + 1]) $("#select2").selectedIndex = minu[g];
@@ -630,16 +630,16 @@ function calCulate(val) {
             num.value = sxm;
             break;
         case "σn":
-            sxm = 0;
-            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxm = sxm + Number($("#tjb").innerText.split("\n")[sxi]) ** 2;
+            var variance = 0, average = 0;
+            for (sxi in $("#tjb").innerText.split("\n")) {
+                average += Number($("#tjb").innerText.split("\n")[sxi]);
             }
-            sxn = 0;
-            for (sxi in $("#tjb").innerHTML.split("<hr>")) {
-                if ($("#tjb").innerHTML.split("<hr>")[sxi] != "") sxn = sxn + Number($("#tjb").innerText.split("\n")[sxi]);
+            average /= $("#tjb").innerText.split("\n").length;
+            for (sxi in $("#tjb").innerText.split("\n")) {
+                variance += (Number($("#tjb").innerText.split("\n")[sxi]) - average) ** 2
             }
-            num.value = Math.sqrt(sxm / ($("#tjb").innerHTML.split("<hr>").length - 1) - (sxn ** 2) /
-                ($("#tjb").innerHTML.split("<hr>").length - 1) ** 2);
+            variance /= $("#tjb").innerText.split("\n").length;
+            num.value = Math.sqrt(variance);
             break;
         case "σn-1":
             sxm = 0;
